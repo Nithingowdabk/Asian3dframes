@@ -499,9 +499,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   right: clamp(16px, 5vw, 72px);
   top: 50%;
   transform: translateY(-48%);
-  width: clamp(96px, 11vw, 150px);
-  max-width: 150px;
-  max-height: 220px;
+  width: clamp(96px, 10vw, 140px);
+  height: clamp(132px, 15vw, 190px);
+  max-width: 140px;
+  max-height: 190px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -510,7 +511,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .hero-mini-frame {
   width: 100%;
-  aspect-ratio: var(--hero-frame-ratio, 0.75);
+  height: 100%;
   background: linear-gradient(180deg, #111114 0%, #070708 100%);
   border: 7px solid #0a0a0c;
   border-radius: 6px;
@@ -1628,10 +1629,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     right: auto;
     top: auto;
     transform: none;
-    flex: 0 1 clamp(108px, 34vw, 140px);
-    width: clamp(108px, 34vw, 140px);
+    flex: 0 1 clamp(108px, 34vw, 132px);
+    width: clamp(108px, 34vw, 132px);
+    height: clamp(146px, 46vw, 176px);
     max-width: 42vw;
-    max-height: none;
+    max-height: 176px;
     margin: 4px auto 14px;
     justify-content: center;
   }
@@ -1740,8 +1742,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-btns       { flex-direction: column; align-items: center; }
   .hero-title      { font-size: 2.6rem; }
   .hero-frame-visual {
-    width: clamp(96px, 40vw, 124px);
-    flex-basis: clamp(96px, 40vw, 124px);
+    width: clamp(92px, 38vw, 112px);
+    height: clamp(126px, 50vw, 148px);
+    flex-basis: clamp(92px, 38vw, 112px);
+    max-height: 148px;
     margin-bottom: 10px;
   }
 }

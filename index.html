@@ -609,14 +609,6 @@
       const linkEl = document.getElementById('heroMiniFrameLink');
       if (!imgEl || !linkEl) return;
 
-      const applyResponsiveFrameRatio = () => {
-        const w = Number(imgEl.naturalWidth || 0);
-        const h = Number(imgEl.naturalHeight || 0);
-        if (!w || !h) return;
-        const ratio = w / h;
-        linkEl.style.setProperty('--hero-frame-ratio', String(ratio));
-      };
-
       try {
         const res = await fetch('php/get_products.php?limit=100');
         const data = await res.json();
@@ -628,11 +620,6 @@
         imgEl.src = String(pick.image || '').trim() || imgEl.src;
         imgEl.alt = String(pick.name || 'Featured frame product');
         linkEl.href = `product.html?id=${encodeURIComponent(pick.id)}`;
-        if (imgEl.complete) {
-          applyResponsiveFrameRatio();
-        } else {
-          imgEl.addEventListener('load', applyResponsiveFrameRatio, { once: true });
-        }
       } catch (_err) {
         // Keep fallback if load fails.
       }
