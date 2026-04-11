@@ -2,45 +2,10 @@
   .hero-btns {
     margin-bottom: 0;
   }
-  .hero-random-wrap {
-    margin-bottom: 0 !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    left: 0;
-    right: 0;
-  }
-}
-@media (max-width: 1099px) {
-  .hero-random-card {
-    width: 84%;
-    height: 50vw;
-    max-width: 160px;
-    max-height: 240px;
-  }
-  .hero-random-card img {
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    max-height: none;
-    object-fit: contain;
-    object-position: center;
-  }
 }
 @media (min-width: 1100px) {
   .hero {
     position: relative;
-  }
-  .hero-random-wrap {
-    position: absolute !important;
-    right: 200px !important;
-    left: auto !important;
-    top: 50%;
-    transform: translateY(-50%);
-    width: min(340px, 28vw);
-    max-height: 480px;
-    margin: 0;
-    z-index: 10;
-    display: block;
   }
 }
 /* Dark brown button for Buy Now */
@@ -444,8 +409,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero {
   display: block;
 }
-.hero .hero-content,
-.hero .hero-visual {
+.hero .hero-content {
   position: relative;
   z-index: 1;
 }
@@ -462,7 +426,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-deco, .hero-scroll-hint { grid-column: 1 / -1; }
 .hero-deco { grid-row: 1; }
 .hero-content { grid-column: 1; grid-row: 1; }
-.hero-visual  { grid-column: 2; grid-row: 1; }
 .hero-scroll-hint { grid-row: 2; }
 
 /* Undo that bad override */
@@ -475,7 +438,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 60px;
 }
 .hero-content { flex: 1 1 460px; }
-.hero-visual  { flex: 1 1 400px; }
 .hero-deco, .hero-scroll-hint { position: absolute; }
 
 .hero-badge {
@@ -523,124 +485,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .hero .btn-ghost:hover {
   background: rgba(255,255,255,.92);
-}
-
-.hero-random-wrap {
-  position: relative;
-  width: min(260px, 78vw);
-  aspect-ratio: 3 / 4;
-  height: auto;
-  max-height: 360px;
-  margin: 0 0 24px;
-}
-
-.hero-random-deck {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: opacity .45s cubic-bezier(.22,.61,.36,1);
-  will-change: opacity;
-}
-
-.hero-random-deck.is-refreshing {
-  opacity: .72;
-}
-
-.hero-random-card {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 3 / 4;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
-  border-radius: 22px;
-  border: 1px solid rgba(255,255,255,.24);
-  box-shadow: 0 16px 40px rgba(0,0,0,.36);
-  transform-origin: 50% 110%;
-  transform: translate3d(calc(var(--card-index) * 8px), calc(var(--card-index) * 7px), 0) rotate(calc((var(--card-index) - 1.5) * 4deg)) scale(calc(1 - (var(--card-index) * .04)));
-  animation: heroDeckShuffle 16s cubic-bezier(.22,.61,.36,1) infinite;
-  animation-delay: calc(var(--card-index) * 4s);
-  background: rgba(18, 13, 8, .9);
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-}
-
-.hero-random-card img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  object-position: center;
-}
-
-.hero-random-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(8,6,4,.08) 18%, rgba(8,6,4,.76) 100%);
-}
-
-.hero-random-meta {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 10px;
-  padding: 14px 14px 12px;
-  color: #fff;
-}
-
-.hero-random-meta strong {
-  font-size: .88rem;
-  line-height: 1.2;
-  max-width: 70%;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.hero-random-meta span {
-  font-size: .76rem;
-  color: #f4d6b8;
-  font-weight: 700;
-}
-
-@keyframes heroDeckShuffle {
-  0% {
-    opacity: .2;
-    transform: translate3d(calc(var(--card-index) * 10px), calc(var(--card-index) * 8px), 0) rotate(calc((var(--card-index) - 1.5) * 4deg)) scale(calc(1 - (var(--card-index) * .06)));
-    z-index: 1;
-  }
-  10%, 44% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
-    z-index: 5;
-  }
-  62% {
-    opacity: .92;
-    transform: translate3d(8px, 8px, 0) scale(.98) rotate(3deg);
-    z-index: 4;
-  }
-  100% {
-    opacity: 0;
-    transform: translate3d(-28px, -8px, 0) scale(.9) rotate(-9deg);
-    z-index: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-random-card {
-    animation: none;
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
-  }
 }
 
 .hero-btns {
@@ -1732,57 +1576,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
   .hero-content { align-items: center; }
   .hero-subtitle { margin: 0 auto 36px; }
-  .hero-random-wrap {
-    width: min(240px, 72vw);
-    aspect-ratio: 3 / 4;
-    height: auto;
-    max-height: 330px;
-    margin: 0 auto 22px;
-  }
-  .hero-random-meta {
-    padding: 12px;
-  }
-  .hero-random-meta strong {
-    font-size: .82rem;
-  }
-  .hero-random-meta span {
-    font-size: .72rem;
-  }
   .hero-btns     { justify-content: center; }
   .hero-stats    { justify-content: center; }
-
-  .hero-visual {
-    display: block;
-    width: 100%;
-    margin-top: 8px;
-  }
-  .frame-showcase {
-    height: auto;
-    display: flex;
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 12px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 8px 2px 2px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-  .frame-showcase::-webkit-scrollbar { height: 0; }
-  .frame-card,
-  .main-frame,
-  .top-frame,
-  .bottom-frame {
-    position: static;
-    width: 180px;
-    min-width: 180px;
-    animation: none;
-    scroll-snap-align: start;
-  }
-  .frame-label {
-    margin-top: 8px;
-    font-size: .74rem;
-  }
 
   .upload-layout { grid-template-columns: 1fr; gap: 48px; }
 
@@ -1869,11 +1664,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 @media (max-width: 480px) {
   .categories-grid { gap: 12px; }
-  .hero-random-wrap {
-    width: min(220px, 68vw);
-    aspect-ratio: 3 / 4;
-    height: auto;
-  }
   .products-grid   { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .product-card    { max-width: 100%; }
   .product-info    { padding: 10px 10px; }
@@ -2046,14 +1836,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 @media (max-width: 560px) {
-  .hero-random-wrap {
-    width: min(220px, 68vw);
-    aspect-ratio: 3 / 4;
-    height: auto;
-    max-height: 295px;
-    margin-bottom: 18px;
-  }
-
   .mockup-customizer {
     padding: 18px;
     margin-top: 24px;
