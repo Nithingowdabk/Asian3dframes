@@ -598,6 +598,13 @@
       if (!container) return;
 
       const slotClasses = ['frame-a', 'frame-b', 'frame-c', 'frame-d', 'frame-e'];
+      const slotStyles = [
+        'width:31%;height:62%;left:1%;top:33%;transform:rotate(-4deg);z-index:3;',
+        'width:28%;height:30%;left:32%;top:2%;transform:rotate(2deg);z-index:2;',
+        'width:30%;height:33%;left:64%;top:5%;transform:rotate(1deg);z-index:2;',
+        'width:34%;height:35%;left:31%;top:46%;transform:rotate(-1deg);z-index:1;',
+        'width:28%;height:31%;left:68%;top:52%;transform:rotate(3deg);z-index:2;'
+      ];
       const fallbackImages = [
         'assets/images/products/product_20260322_120037_ad0fea98dc2b8f85.webp',
         'assets/images/products/product_20260323_084206_99d99b421abda402.webp',
@@ -613,7 +620,7 @@
           const name = String(item.name || 'Photo Frame').trim() || 'Photo Frame';
           const image = String(item.image || '').trim() || fallbackImages[idx % fallbackImages.length];
           return `
-            <a href="${href}" class="hero-frame-card ${slot}" aria-label="${name}">
+            <a href="${href}" class="hero-frame-card ${slot}" style="${slotStyles[idx] || ''}" aria-label="${name}">
               <img src="${image}" alt="${name}" onerror="this.src='${fallbackImages[idx % fallbackImages.length]}'" />
             </a>
           `;

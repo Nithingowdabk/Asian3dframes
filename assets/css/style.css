@@ -529,6 +529,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: relative;
   width: min(430px, 92vw);
   aspect-ratio: 10 / 7;
+  height: clamp(250px, 30vw, 330px);
+  max-height: 330px;
   margin: 0 0 28px;
 }
 
