@@ -515,6 +515,36 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1.8;
 }
 
+.hero-frames-layout {
+  position: relative;
+  width: min(560px, 100%);
+  height: 390px;
+  margin-left: auto;
+}
+
+.hero-product-frame {
+  position: absolute;
+  display: block;
+  border: 10px solid #3c3229;
+  background: #fff;
+  box-shadow: 0 10px 26px rgba(24, 18, 12, .24);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.hero-product-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-product-frame.frame-1 { top: 16px; left: 160px; width: 210px; height: 144px; z-index: 4; }
+.hero-product-frame.frame-2 { top: 86px; left: 46px;  width: 170px; height: 120px; z-index: 2; }
+.hero-product-frame.frame-3 { top: 82px; left: 300px; width: 172px; height: 118px; z-index: 2; }
+.hero-product-frame.frame-4 { top: 190px; left: 106px; width: 160px; height: 110px; z-index: 1; }
+.hero-product-frame.frame-5 { top: 202px; left: 274px; width: 164px; height: 112px; z-index: 1; }
+
 .hero .btn-ghost {
   background: rgba(255,255,255,.72);
   color: var(--dark);
@@ -1756,6 +1786,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     width: 100%;
     margin-top: 8px;
   }
+
+  .hero-frames-layout {
+    width: min(510px, 96vw);
+    height: 340px;
+    margin: 0 auto;
+  }
+
+  .hero-product-frame.frame-1 { top: 8px;  left: 145px; width: 194px; height: 132px; }
+  .hero-product-frame.frame-2 { top: 72px; left: 36px;  width: 154px; height: 106px; }
+  .hero-product-frame.frame-3 { top: 70px; left: 280px; width: 156px; height: 106px; }
+  .hero-product-frame.frame-4 { top: 166px; left: 94px; width: 146px; height: 100px; }
+  .hero-product-frame.frame-5 { top: 176px; left: 254px; width: 148px; height: 102px; }
+
   .frame-showcase {
     height: auto;
     display: flex;
@@ -1869,6 +1912,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 @media (max-width: 480px) {
   .categories-grid { gap: 12px; }
+  .hero-frames-layout {
+    width: min(340px, 95vw);
+    height: 236px;
+  }
+  .hero-product-frame { border-width: 7px; border-radius: 6px; }
+  .hero-product-frame.frame-1 { top: 8px;  left: 95px; width: 134px; height: 92px; }
+  .hero-product-frame.frame-2 { top: 52px; left: 18px; width: 106px; height: 74px; }
+  .hero-product-frame.frame-3 { top: 50px; left: 206px; width: 108px; height: 74px; }
+  .hero-product-frame.frame-4 { top: 116px; left: 58px; width: 100px; height: 70px; }
+  .hero-product-frame.frame-5 { top: 124px; left: 182px; width: 102px; height: 70px; }
   .hero-random-wrap {
     width: min(220px, 68vw);
     aspect-ratio: 3 / 4;
@@ -2070,86 +2123,5 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .mockup-toolbar .btn {
     width: 100%;
     justify-content: center;
-  }
-}
-
-/* ── HERO FRAME LAYOUT ────────────────────────────────────────────────── */
-.hero-frame-layout {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  aspect-ratio: 1 / 1;
-  margin: 30px auto 0;
-  transform: rotate(-3deg);
-  transition: transform 0.6s var(--ease-out);
-}
-.hero-frame-layout:hover {
-  transform: rotate(0deg) scale(1.03);
-}
-
-.frame-item {
-  position: absolute;
-  background: #fff;
-  border: 10px solid #2a1a0c;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 1px 4px rgba(0,0,0,0.15);
-  overflow: hidden;
-  transition: all 0.4s var(--ease-out);
-}
-.frame-item:hover {
-  z-index: 10;
-  transform: scale(1.1) !important;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.25), 0 3px 8px rgba(0,0,0,0.2);
-}
-.frame-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.frame-1 {
-  width: 35%;
-  height: 50%;
-  top: 0;
-  left: 0;
-  transform: rotate(-8deg);
-}
-.frame-2 {
-  width: 40%;
-  height: 65%;
-  top: 5%;
-  left: 30%;
-  z-index: 2;
-  transform: rotate(2deg);
-}
-.frame-3 {
-  width: 35%;
-  height: 45%;
-  top: 0;
-  right: 0;
-  transform: rotate(7deg);
-}
-.frame-4 {
-  width: 45%;
-  height: 38%;
-  bottom: 0;
-  left: 5%;
-  z-index: 1;
-  transform: rotate(-5deg);
-}
-.frame-5 {
-  width: 40%;
-  height: 42%;
-  bottom: 0;
-  right: 5%;
-  z-index: 3;
-  transform: rotate(4deg);
-}
-
-@media (max-width: 900px) {
-  .hero-frame-layout {
-    max-width: 80vw;
-    margin-top: 20px;
-    margin-bottom: 30px;
   }
 }

@@ -68,6 +68,25 @@
 
       <!-- hero-stats removed as requested -->
     </div>
+
+    <div class="hero-visual hero-frames-layout" aria-label="Featured framed products" id="heroFramesLayout">
+      <a href="products.html" class="hero-product-frame frame-1" id="heroFrameLink1" aria-label="Featured frame 1">
+        <img id="heroFrameImg1" src="https://placehold.co/480x640/f3e8d8/a0704a?text=Frame+1" alt="Featured frame product 1" loading="lazy"/>
+      </a>
+      <a href="products.html" class="hero-product-frame frame-2" id="heroFrameLink2" aria-label="Featured frame 2">
+        <img id="heroFrameImg2" src="https://placehold.co/480x640/e9f0d9/6b5c4e?text=Frame+2" alt="Featured frame product 2" loading="lazy"/>
+      </a>
+      <a href="products.html" class="hero-product-frame frame-3" id="heroFrameLink3" aria-label="Featured frame 3">
+        <img id="heroFrameImg3" src="https://placehold.co/480x640/f5e6d3/c8956c?text=Frame+3" alt="Featured frame product 3" loading="lazy"/>
+      </a>
+      <a href="products.html" class="hero-product-frame frame-4" id="heroFrameLink4" aria-label="Featured frame 4">
+        <img id="heroFrameImg4" src="https://placehold.co/480x640/f6e3cf/8b6f53?text=Frame+4" alt="Featured frame product 4" loading="lazy"/>
+      </a>
+      <a href="products.html" class="hero-product-frame frame-5" id="heroFrameLink5" aria-label="Featured frame 5">
+        <img id="heroFrameImg5" src="https://placehold.co/480x640/efe5d6/7b6650?text=Frame+5" alt="Featured frame product 5" loading="lazy"/>
+      </a>
+    </div>
+
     <div class="hero-scroll-hint">
       <span>Scroll to explore</span>
       <i class="fas fa-chevron-down"></i>
@@ -587,6 +606,35 @@
         grid.innerHTML = renderHomeProductCards(items);
       } catch (_err) {
         grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#fca5a5;">Unable to load featured products right now.</p>';
+      }
+    }
+
+    async function loadHeroFrameProducts() {
+      const slots = [1, 2, 3, 4, 5].map((n) => ({
+        link: document.getElementById(`heroFrameLink${n}`),
+        img: document.getElementById(`heroFrameImg${n}`)
+      }));
+      if (slots.some((slot) => !slot.link || !slot.img)) return;
+
+      try {
+        const res = await fetch('php/get_products.php?limit=100');
+        const data = await res.json();
+        if (!data.success || !Array.isArray(data.products)) return;
+
+        const products = data.products.filter((p) => p && p.id).slice(0, 5);
+        if (!products.length) return;
+
+        slots.forEach((slot, idx) => {
+          const p = products[idx % products.length];
+          const name = String(p.name || `Featured product ${idx + 1}`);
+          const image = String(p.image || '').trim() || `https://placehold.co/480x640/f3e8d8/a0704a?text=Frame+${idx + 1}`;
+          slot.link.href = `product.html?id=${encodeURIComponent(p.id)}`;
+          slot.link.setAttribute('aria-label', name);
+          slot.img.src = image;
+          slot.img.alt = name;
+        });
+      } catch (_err) {
+        // Keep placeholders when API is unavailable.
       }
     }
 
@@ -1143,6 +1191,7 @@
 
     /* ── Init ── */
     initHeroSparkles();
+    loadHeroFrameProducts();
     loadBestSellerProducts();
     loadFeaturedProducts();
     loadHomeCategories();
