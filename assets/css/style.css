@@ -2072,3 +2072,84 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     justify-content: center;
   }
 }
+
+/* ── HERO FRAME LAYOUT ────────────────────────────────────────────────── */
+.hero-frame-layout {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
+  margin: 30px auto 0;
+  transform: rotate(-3deg);
+  transition: transform 0.6s var(--ease-out);
+}
+.hero-frame-layout:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+.frame-item {
+  position: absolute;
+  background: #fff;
+  border: 10px solid #2a1a0c;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 1px 4px rgba(0,0,0,0.15);
+  overflow: hidden;
+  transition: all 0.4s var(--ease-out);
+}
+.frame-item:hover {
+  z-index: 10;
+  transform: scale(1.1) !important;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25), 0 3px 8px rgba(0,0,0,0.2);
+}
+.frame-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.frame-1 {
+  width: 35%;
+  height: 50%;
+  top: 0;
+  left: 0;
+  transform: rotate(-8deg);
+}
+.frame-2 {
+  width: 40%;
+  height: 65%;
+  top: 5%;
+  left: 30%;
+  z-index: 2;
+  transform: rotate(2deg);
+}
+.frame-3 {
+  width: 35%;
+  height: 45%;
+  top: 0;
+  right: 0;
+  transform: rotate(7deg);
+}
+.frame-4 {
+  width: 45%;
+  height: 38%;
+  bottom: 0;
+  left: 5%;
+  z-index: 1;
+  transform: rotate(-5deg);
+}
+.frame-5 {
+  width: 40%;
+  height: 42%;
+  bottom: 0;
+  right: 5%;
+  z-index: 3;
+  transform: rotate(4deg);
+}
+
+@media (max-width: 900px) {
+  .hero-frame-layout {
+    max-width: 80vw;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+}
