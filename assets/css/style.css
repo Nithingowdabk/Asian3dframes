@@ -333,6 +333,44 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 120px 0 80px;
   justify-content: space-between;
 }
+/* Hero product frame (right side) */
+.hero-product-frame {
+  position: absolute;
+  right: 6vw;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #181818;
+  border: 6px solid #111;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px 0 rgba(0,0,0,0.18);
+  padding: 8px;
+  width: 140px;
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.hero-frame-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+}
+@media (max-width: 900px) {
+  .hero-product-frame {
+    position: static;
+    margin: 32px auto 0 auto;
+    transform: none;
+    width: 110px;
+    height: 130px;
+    right: unset;
+    top: unset;
+    display: flex;
+    justify-content: center;
+  }
+}
 
 .hero-sparkle-canvas {
   position: absolute;
@@ -439,46 +477,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 60px;
 }
 .hero-content { flex: 1 1 460px; }
-.hero-product-frame {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  height: 420px;
-  min-width: 280px;
-  max-width: 32vw;
-  margin-left: 32px;
-  z-index: 2;
-}
-.framed-product-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border: 12px solid #181818;
-  border-radius: 18px;
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
-  background: #181818;
-}
-@media (max-width: 900px) {
-  .hero {
-    flex-direction: column;
-    padding: 120px 5% 60px;
-    text-align: center;
-    background-position: 58% center;
-  }
-  .hero-product-frame {
-    height: 220px;
-    min-width: 140px;
-    max-width: 80vw;
-    margin: 32px auto 0 auto;
-    justify-content: center;
-  }
-  .framed-product-img {
-    border-width: 7px;
-    border-radius: 10px;
-  }
-}
 .hero-deco, .hero-scroll-hint { position: absolute; }
 
 .hero-badge {
