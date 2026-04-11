@@ -478,73 +478,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-visual  { flex: 1 1 400px; }
 .hero-deco, .hero-scroll-hint { position: absolute; }
 
-.hero-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-frame-collage {
-  width: min(500px, 94vw);
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-auto-rows: 46px;
-  gap: 10px;
-  align-items: start;
-}
-
-.hero-frame {
-  display: block;
-  text-decoration: none;
-}
-
-.hero-frame-border {
-  display: block;
-  width: 100%;
-  height: 100%;
-  padding: 6px;
-  border-radius: 4px;
-  border: 1px solid rgba(33,27,22,.35);
-  box-shadow: 0 8px 20px rgba(0,0,0,.2);
-  overflow: hidden;
-  background: #2e2722;
-}
-
-.hero-frame-border.frame-black {
-  background: #2e2722;
-}
-
-.hero-frame-border.frame-wood {
-  background: linear-gradient(145deg, #8c6647, #6f4d33 60%, #5a3e2a);
-}
-
-.hero-frame-border.frame-charcoal {
-  background: linear-gradient(145deg, #3f3a35, #2d2a27);
-}
-
-.hero-frame-mat {
-  display: block;
-  width: 100%;
-  height: 100%;
-  padding: 4px;
-  background: #f4efe8;
-  border-radius: 2px;
-}
-
-.hero-frame img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  border-radius: 1px;
-}
-
-.hero-frame.tile-1 { grid-column: 1 / span 2; grid-row: 2 / span 4; }
-.hero-frame.tile-2 { grid-column: 3 / span 4; grid-row: 1 / span 3; }
-.hero-frame.tile-3 { grid-column: 3 / span 2; grid-row: 3 / span 4; }
-.hero-frame.tile-4 { grid-column: 5 / span 3; grid-row: 3 / span 3; }
-.hero-frame.tile-5 { grid-column: 2 / span 4; grid-row: 6 / span 2; }
-
 .hero-badge {
   display: inline-block;
   background: rgba(200,149,108,.18);
@@ -1823,20 +1756,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     width: 100%;
     margin-top: 8px;
   }
-
-  .hero-frame-collage {
-    width: min(440px, 100%);
-    margin: 0 auto;
-    grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: 42px;
-    gap: 10px;
-  }
-
-  .hero-frame.tile-1 { grid-column: 1 / span 2; grid-row: 2 / span 3; }
-  .hero-frame.tile-2 { grid-column: 3 / span 4; grid-row: 1 / span 3; }
-  .hero-frame.tile-3 { grid-column: 3 / span 2; grid-row: 4 / span 3; }
-  .hero-frame.tile-4 { grid-column: 5 / span 2; grid-row: 4 / span 2; }
-  .hero-frame.tile-5 { grid-column: 2 / span 4; grid-row: 7 / span 2; }
   .frame-showcase {
     height: auto;
     display: flex;
