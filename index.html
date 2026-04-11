@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Asian3DFrames – Frame Your Memories</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=20260407s"/>
+  <link rel="stylesheet" href="assets/css/style.css?v=20260411j"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
@@ -15,10 +15,7 @@
   <!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
-      <a href="index.html" class="nav-logo">
-        <span class="logo-icon">🎁</span>
-        Asian<span class="logo-accent">3D Frames</span>
-      </a>
+      <a href="index.html" class="nav-logo nav-logo-bg"><img src="/uploads/Asian3DFrames_logo.png" alt="Asian3DFrames logo" class="brand-logo-img" style="height:74px;width:auto;display:block;" /></a>
 
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html" class="nav-link active">Home</a></li>
@@ -57,11 +54,6 @@
       <p class="hero-subtitle">
         Turn your cherished moments into timeless art. Personalised, handcrafted photo frames — delivered to your door.
       </p>
-      <div class="hero-random-wrap" aria-label="Random featured products">
-        <div class="hero-random-deck" id="heroProductsContainer">
-          <!-- Random hero products will load here -->
-        </div>
-      </div>
       <div class="hero-btns">
         <a href="products.html" class="btn btn-primary">
           Shop Now <i class="fas fa-arrow-right"></i>
@@ -76,6 +68,37 @@
 
       <!-- hero-stats removed as requested -->
     </div>
+
+    <div class="hero-visual" aria-label="Featured photo frame layouts">
+      <div class="hero-frame-collage">
+        <a href="products.html" class="hero-frame tile-1" aria-label="Explore framed memory design 1">
+          <span class="hero-frame-border border-gold">
+            <img src="assets/images/products/product_20260321_162915_74bfece21e7761f6.jpg" alt="Framed product sample 1" loading="lazy" />
+          </span>
+        </a>
+        <a href="products.html" class="hero-frame tile-2" aria-label="Explore framed memory design 2">
+          <span class="hero-frame-border border-dark">
+            <img src="assets/images/products/product_20260322_115920_cdd9b69fb8e80ad3.webp" alt="Framed product sample 2" loading="lazy" />
+          </span>
+        </a>
+        <a href="products.html" class="hero-frame tile-3" aria-label="Explore framed memory design 3">
+          <span class="hero-frame-border border-silver">
+            <img src="assets/images/products/product_20260323_084206_99d99b421abda402.webp" alt="Framed product sample 3" loading="lazy" />
+          </span>
+        </a>
+        <a href="products.html" class="hero-frame tile-4" aria-label="Explore framed memory design 4">
+          <span class="hero-frame-border border-gold">
+            <img src="assets/images/products/product_20260322_115955_729f8d201eb5e8eb.webp" alt="Framed product sample 4" loading="lazy" />
+          </span>
+        </a>
+        <a href="products.html" class="hero-frame tile-5" aria-label="Explore framed memory design 5">
+          <span class="hero-frame-border border-dark">
+            <img src="assets/images/products/product_20260321_162927_d3a07912dbcfa1d4.jpg" alt="Framed product sample 5" loading="lazy" />
+          </span>
+        </a>
+      </div>
+    </div>
+
     <div class="hero-scroll-hint">
       <span>Scroll to explore</span>
       <i class="fas fa-chevron-down"></i>
@@ -353,9 +376,7 @@
       <div class="footer-grid">
 
         <div class="footer-brand">
-          <a href="index.html" class="nav-logo">
-            <span class="logo-icon">🎁</span>Asian<span class="logo-accent">3D Frames</span>
-          </a>
+          <a href="index.html" class="nav-logo"><img src="/uploads/Asian3DFrames_logo.png" alt="Asian3DFrames logo" class="brand-logo-img" style="height:58px;width:auto;display:block;" /></a>
           <p>Turning moments into memories, one frame at a time.</p>
           <div class="social-links">
             <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
@@ -653,51 +674,6 @@
     }
 
 
-
-    async function loadHeroProducts() {
-      const container = document.getElementById('heroProductsContainer');
-      if (!container) return;
-
-      const shuffleArray = (list) => {
-        const next = [...list];
-        for (let i = next.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [next[i], next[j]] = [next[j], next[i]];
-        }
-        return next;
-      };
-
-      try {
-        const res = await fetch('php/get_products.php');
-        const data = await res.json();
-        if (!data.success || !Array.isArray(data.products)) return;
-        const allProducts = data.products.filter(p => p && p.id);
-        if (!allProducts.length) return;
-
-        const renderDeck = () => {
-          const products = shuffleArray(allProducts).slice(0, 4);
-          container.classList.add('is-refreshing');
-          container.innerHTML = products.map((p, idx) => {
-            const img = String(p.image || '').trim() || 'https://placehold.co/450x600/f5e6d3/c8956c?text=Asian3DFrames';
-            const name = String(p.name || '').trim() || 'Product';
-            const price = Number(p.price || 0);
-            const productUrl = `product.html?id=${encodeURIComponent(p.id)}`;
-            return `
-              <a href="${productUrl}" class="hero-random-card" style="--card-index:${idx};text-decoration:none;" aria-label="${name}">
-                <img src="${img}" alt="${name}" onerror="this.src='https://placehold.co/450x600/f5e6d3/c8956c?text=Asian3DFrames'"/>
-              </a>
-            `;
-          }).join('');
-          requestAnimationFrame(() => container.classList.remove('is-refreshing'));
-        };
-
-        renderDeck();
-        if (window.heroDeckRotateTimer) clearInterval(window.heroDeckRotateTimer);
-        window.heroDeckRotateTimer = setInterval(renderDeck, 32000);
-      } catch (_err) {
-        // Keep static layout if load fails
-      }
-    }
 
     /* ── Toast ── */
     function showToast(msg) {
@@ -1198,7 +1174,6 @@
 
     /* ── Init ── */
     initHeroSparkles();
-    loadHeroProducts();
     loadBestSellerProducts();
     loadFeaturedProducts();
     loadHomeCategories();

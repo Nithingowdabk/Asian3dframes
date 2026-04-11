@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
         .mockup-thumb {
@@ -49,7 +49,7 @@
     .media-nav.next { right: 10px; }
     .media-dots { display:flex; justify-content:center; gap:7px; margin-top: 8px; }
     .media-dot { width:8px; height:8px; border-radius:50%; border:0; background:#d1d5db; }
-    .media-dot.is-active { background:#111827; }
+    .media-dot.is-active { background:#c48754; }
     .thumb-strip { display:grid; grid-template-columns:repeat(auto-fit,minmax(64px,1fr)); gap:8px; margin-top:12px; }
     .thumb-btn { border:1px solid rgba(0,0,0,.12); background:#fff; border-radius:10px; padding:0; overflow:hidden; cursor:pointer; aspect-ratio:3/4; }
     .thumb-btn img { width:100%; height:100%; object-fit:cover; display:block; }
@@ -373,7 +373,7 @@
       transition: background .2s ease, color .2s ease, border-color .2s ease;
     }
     .pill-btn:hover { border-color: #111827; }
-    .pill-btn.is-selected { background:#111827; color:#fff; border-color:#111827; }
+    .pill-btn.is-selected { background:#c48754; color:#fff; border-color:#c48754; }
     .qty-row { display:flex; align-items:center; gap:9px; margin-bottom: 16px; }
     .qty-box { display:flex; align-items:center; border:1px solid rgba(0,0,0,.14); border-radius: 999px; overflow:hidden; }
     .qty-btn { width:36px; height:36px; border:0; background:#fff; cursor:pointer; font-size:1rem; }
@@ -400,9 +400,9 @@
     }
     .mockup-orientation-btn:hover { border-color: #111827; }
     .mockup-orientation-btn.is-active {
-      background: #111827;
+      background: #c48754;
       color: #fff;
-      border-color: #111827;
+      border-color: #c48754;
     }
     .mockup-inline-title { font-size:.54rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#5f554a; }
     .mockup-frame-meta { display:flex; flex-direction: column; gap:1px; font-size:.52rem; color:#5f554a; }
@@ -488,7 +488,7 @@
 <body data-page="product-detail">
   <nav class="navbar scrolled" id="navbar">
     <div class="nav-container">
-      <a href="index.html" class="nav-logo"><span class="logo-icon">🎁</span>Asian<span class="logo-accent">3D Frames</span></a>
+      <a href="index.html" class="nav-logo"><img src="/uploads/Asian3DFrames_logo.png" alt="Asian3DFrames logo" class="brand-logo-img" style="height:58px;width:auto;display:block;" /></a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="products.html" class="nav-link active">Products</a></li>
@@ -733,9 +733,7 @@
       <div class="footer-grid">
 
         <div class="footer-brand">
-          <a href="index.html" class="nav-logo">
-            <span class="logo-icon">🎁</span>Asian<span class="logo-accent">3D Frames</span>
-          </a>
+          <a href="index.html" class="nav-logo"><img src="/uploads/Asian3DFrames_logo.png" alt="Asian3DFrames logo" class="brand-logo-img" style="height:58px;width:auto;display:block;" /></a>
           <p>Turning moments into memories, one frame at a time.</p>
           <div class="social-links">
             <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>

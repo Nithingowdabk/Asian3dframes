@@ -74,10 +74,10 @@
 }
 /* ════════════════════════════════════════════════════════════════════
   Asian3DFrames — Premium Style Sheet
-   Font stack: Playfair Display (headings) + Inter (body)
+  Font stack: Bodoni Moda (site-wide)
    ════════════════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800&display=swap');
 
 /* ── RESET & BASE ──────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -87,6 +87,8 @@
   --gold:        #c8956c;
   --gold-light:  #e8c09a;
   --gold-dark:   #a0704a;
+  --beige:       #f3e8d8;
+  --pista:       #a8c68a;
   --dark:        #1a1510;
   --dark-2:      #2e2620;
   --mid:         #6b5c4e;
@@ -98,8 +100,8 @@
   --accent-purple: #9c7cd4;
 
   /* Typography */
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body:    'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-heading: 'Bodoni Moda', Georgia, serif;
+  --font-body:    'Bodoni Moda', Georgia, serif;
 
   /* Spacing */
   --section-py:  84px;
@@ -123,7 +125,8 @@ html { scroll-behavior: smooth; font-size: 15px; }
 
 body {
   font-family: var(--font-body);
-  background: var(--white);
+  background: linear-gradient(135deg, var(--beige) 0%, #e9f0d9 52%, var(--pista) 100%);
+  background-attachment: fixed;
   color: var(--dark);
   line-height: 1.6;
   overflow-x: hidden;
@@ -251,6 +254,26 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 6px;
   transition: color var(--trans);
 }
+
+.nav-logo-bg {
+  background: linear-gradient(120deg, #f7ecd7 0%, #d6f5c6 100%);
+  border-radius: 18px;
+  box-shadow: 0 2px 12px 0 rgba(60,40,10,0.07);
+  padding: 6px 18px 6px 12px;
+  display: inline-flex;
+  align-items: center;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+@media (max-width: 700px) {
+  .nav-logo-bg {
+    padding: 4px 10px 4px 6px;
+    border-radius: 12px;
+  }
+  .nav-logo-bg .brand-logo-img {
+    height: 48px !important;
+  }
+}
 .logo-icon { font-size: 1.4rem; }
 .logo-accent { color: var(--gold-light); }
 
@@ -334,7 +357,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ── HERO ──────────────────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1510 0%, #2e2010 40%, #3d2912 70%, #1a1510 100%);
+  background-image: url('/uploads/image.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   position: relative;
@@ -452,11 +478,64 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-visual  { flex: 1 1 400px; }
 .hero-deco, .hero-scroll-hint { position: absolute; }
 
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-frame-collage {
+  width: min(520px, 94vw);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 64px;
+  gap: 12px;
+}
+
+.hero-frame {
+  display: block;
+  text-decoration: none;
+}
+
+.hero-frame-border {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid rgba(200,149,108,.18);
+  box-shadow: 0 8px 24px rgba(0,0,0,.16);
+  overflow: hidden;
+  background: linear-gradient(135deg, #f0d060, #c8956c, #a0704a, #e0b070);
+}
+
+.hero-frame-border.border-silver {
+  background: linear-gradient(135deg, #d0d8e0, #9eafc2, #7080a0);
+}
+
+.hero-frame-border.border-dark {
+  background: linear-gradient(135deg, #e8c29c, #cf9462);
+}
+
+.hero-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+.hero-frame.tile-1 { grid-column: 1 / span 2; grid-row: 1 / span 3; }
+.hero-frame.tile-2 { grid-column: 3 / span 4; grid-row: 1 / span 4; }
+.hero-frame.tile-3 { grid-column: 1 / span 2; grid-row: 4 / span 3; }
+.hero-frame.tile-4 { grid-column: 3 / span 2; grid-row: 5 / span 2; }
+.hero-frame.tile-5 { grid-column: 5 / span 2; grid-row: 5 / span 2; }
+
 .hero-badge {
   display: inline-block;
   background: rgba(200,149,108,.18);
   border: 1px solid rgba(200,149,108,.35);
-  color: var(--gold-light);
+  color: var(--gold-dark);
   font-size: .8rem;
   font-weight: 600;
   letter-spacing: .08em;
@@ -470,7 +549,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-family: var(--font-heading);
   font-size: clamp(3rem, 6vw, 5rem);
   line-height: 1.1;
-  color: var(--white);
+  color: var(--dark);
   margin-bottom: 20px;
 }
 
@@ -483,10 +562,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .hero-subtitle {
   font-size: 1.05rem;
-  color: rgba(255,255,255,.65);
+  color: rgba(26,21,16,.78);
   max-width: 480px;
   margin-bottom: 36px;
   line-height: 1.8;
+}
+
+.hero .btn-ghost {
+  background: rgba(255,255,255,.72);
+  color: var(--dark);
+  border-color: rgba(26,21,16,.2);
+}
+
+.hero .btn-ghost:hover {
+  background: rgba(255,255,255,.92);
 }
 
 .hero-random-wrap {
@@ -859,7 +948,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: linear-gradient(135deg, #d0d8e0, #9eafc2, #7080a0);
 }
 .frame-border.dark {
-  background: linear-gradient(135deg, #4a3828, #2e2010);
+  background: linear-gradient(135deg, #e8c29c, #cf9462);
 }
 
 .frame-inner {
@@ -927,7 +1016,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  color: rgba(255,255,255,.4);
+  color: rgba(26,21,16,.45);
   font-size: .75rem;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -1233,7 +1322,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ── HOW IT WORKS ──────────────────────────────────────────────────── */
 .how-section {
-  background: linear-gradient(135deg, #1a1510, #2e2010, #1a1510);
+  background: linear-gradient(135deg, #f8ead9 0%, #f3ddc4 52%, #ebc79f 100%);
   position: relative;
   overflow: hidden;
 }
@@ -1241,18 +1330,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(200,149,108,.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(180,120,68,.12) 0%, transparent 72%);
   pointer-events: none;
 }
 
 .how-section .section-tag {
-  background: linear-gradient(90deg, var(--gold-light), #f0d080);
+  background: linear-gradient(90deg, #d39a66, #b8773f);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.how-section .section-title { color: var(--white); }
-.how-section .section-sub    { color: rgba(255,255,255,.6); }
+.how-section .section-title { color: #3f2816; }
+.how-section .section-sub    { color: rgba(63,40,22,.75); }
 
 .steps-grid {
   display: grid;
@@ -1263,19 +1352,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .step-card {
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(200,149,108,.2);
+  background: rgba(255,255,255,.42);
+  border: 1px solid rgba(184,120,63,.24);
   border-radius: var(--radius-lg);
   padding: 40px 28px;
   text-align: center;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(6px);
   transition: all var(--trans);
 }
 .step-card:hover {
-  background: rgba(200,149,108,.1);
-  border-color: rgba(200,149,108,.45);
+  background: rgba(255,255,255,.6);
+  border-color: rgba(184,120,63,.45);
   transform: translateY(-6px);
-  box-shadow: var(--glow-gold);
+  box-shadow: 0 14px 38px rgba(160,102,53,.18);
 }
 
 .step-num {
@@ -1284,7 +1373,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 700;
   line-height: 1;
   margin-bottom: 16px;
-  background: linear-gradient(135deg, rgba(200,149,108,.25), rgba(200,149,108,.08));
+  background: linear-gradient(135deg, rgba(184,120,63,.48), rgba(152,92,44,.22));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1304,15 +1393,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .step-card h3 {
   font-family: var(--font-heading);
   font-size: 1.2rem;
-  color: var(--white);
+  color: #4a2e18;
   margin-bottom: 12px;
 }
-.step-card p { font-size: .9rem; color: rgba(255,255,255,.6); line-height: 1.7; }
+.step-card p { font-size: .9rem; color: rgba(74,46,24,.78); line-height: 1.7; }
 
 .step-connector {
-  color: var(--gold);
+  color: #ad6e3b;
   font-size: 1.4rem;
-  opacity: .6;
+  opacity: .75;
 }
 
 /* ── UPLOAD SECTION ─────────────────────────────────────────────────── */
@@ -1457,13 +1546,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .testimonial-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
 
 .featured-testimonial {
-  background: linear-gradient(135deg, #1a1510, #2e2010);
+  background: linear-gradient(135deg, #f6e3cf, #e7c19a);
   border-color: rgba(200,149,108,.25);
   transform: scale(1.04);
 }
-.featured-testimonial p { color: rgba(255,255,255,.8); }
-.featured-testimonial .testimonial-author strong { color: var(--white); }
-.featured-testimonial .testimonial-author span   { color: rgba(255,255,255,.5); }
+.featured-testimonial p { color: rgba(63,40,22,.82); }
+.featured-testimonial .testimonial-author strong { color: #3f2816; }
+.featured-testimonial .testimonial-author span   { color: rgba(63,40,22,.68); }
 .featured-testimonial:hover { transform: scale(1.04) translateY(-6px); }
 
 .testimonial-stars { display: flex; gap: 3px; margin-bottom: 18px; }
@@ -1498,7 +1587,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ── CTA BANNER ─────────────────────────────────────────────────────── */
 .cta-banner {
-  background: linear-gradient(135deg, #1a1510 0%, #3d2912 50%, #1a1510 100%);
+  background: linear-gradient(135deg, #f6e3cf 0%, #e8c29c 52%, #d39b69 100%);
   padding: 100px 0;
   text-align: center;
   position: relative;
@@ -1513,10 +1602,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .cta-banner h2 {
   font-family: var(--font-heading);
   font-size: clamp(2rem, 4vw, 3.2rem);
-  color: var(--white);
+  color: #3f2816;
   margin-bottom: 16px;
 }
-.cta-banner p { color: rgba(255,255,255,.65); font-size: 1.05rem; margin-bottom: 36px; }
+.cta-banner p { color: rgba(63,40,22,.8); font-size: 1.05rem; margin-bottom: 36px; }
 
 .custom-form {
   max-width: 860px;
@@ -1533,9 +1622,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .custom-input {
   width: 100%;
-  border: 1px solid rgba(255,255,255,.26);
-  background: rgba(255,255,255,.1);
-  color: #fff;
+  border: 1px solid rgba(122,79,47,.22);
+  background: rgba(255,255,255,.72);
+  color: #3f2816;
   border-radius: 12px;
   padding: 12px 14px;
   font: 500 .92rem/1.35 var(--font-body);
@@ -1543,11 +1632,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: border-color var(--trans), background var(--trans);
 }
 
-.custom-input::placeholder { color: rgba(255,255,255,.72); }
+.custom-input::placeholder { color: rgba(63,40,22,.58); }
 
 .custom-input:focus {
-  border-color: var(--gold-light);
-  background: rgba(255,255,255,.18);
+  border-color: #b8773f;
+  background: rgba(255,255,255,.9);
 }
 
 .custom-input option {
@@ -1568,7 +1657,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ── FOOTER ─────────────────────────────────────────────────────────── */
 .footer {
-  background: #0e0c09;
+  background: #c88d5d;
   padding: 80px 0 0;
 }
 
@@ -1692,6 +1781,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     flex-direction: column;
     padding: 120px 5% 60px;
     text-align: center;
+    background-position: 58% center;
   }
   .hero-content { align-items: center; }
   .hero-subtitle { margin: 0 auto 36px; }
@@ -1718,6 +1808,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     display: block;
     width: 100%;
     margin-top: 8px;
+  }
+
+  .hero-frame-collage {
+    width: min(440px, 100%);
+    margin: 0 auto;
+    grid-auto-rows: 52px;
+    gap: 10px;
   }
   .frame-showcase {
     height: auto;
@@ -1943,9 +2040,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .mockup-scene-tab.is-active {
-  background: #111827;
+  background: #c48754;
   color: #fff;
-  border-color: #111827;
+  border-color: #c48754;
 }
 
 .mockup-canvas-wrap {
