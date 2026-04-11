@@ -495,9 +495,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .hero-frame-visual {
-  flex: 0 0 220px;
-  width: 220px;
-  max-width: 30vw;
+  flex: 0 1 clamp(140px, 18vw, 220px);
+  width: clamp(140px, 18vw, 220px);
+  max-width: 32vw;
   margin-left: auto;
   display: flex;
   justify-content: flex-end;
@@ -508,7 +508,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .hero-mini-frame {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: var(--hero-frame-ratio, 0.75);
   background: linear-gradient(180deg, #1a1a1d 0%, #0f0f10 100%);
   border: 8px solid #111;
   border-radius: 6px;
@@ -530,7 +530,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 
@@ -1617,8 +1617,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-content { align-items: center; }
   .hero-subtitle { margin: 0 auto 36px; }
   .hero-frame-visual {
-    flex: 0 0 170px;
-    width: 170px;
+    flex: 0 1 clamp(130px, 42vw, 170px);
+    width: clamp(130px, 42vw, 170px);
     max-width: 52vw;
     margin: 4px auto 14px;
     justify-content: center;
@@ -1728,8 +1728,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-btns       { flex-direction: column; align-items: center; }
   .hero-title      { font-size: 2.6rem; }
   .hero-frame-visual {
-    width: 150px;
-    flex-basis: 150px;
+    width: clamp(120px, 48vw, 150px);
+    flex-basis: clamp(120px, 48vw, 150px);
     margin-bottom: 10px;
   }
 }
