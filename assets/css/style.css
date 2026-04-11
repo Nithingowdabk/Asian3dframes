@@ -496,12 +496,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .hero-collage {
   position: relative;
-  width: min(380px, 34vw);
-  min-width: 290px;
+  width: 300px;
+  min-width: 300px;
   height: 300px;
   margin-left: auto;
   flex: 0 0 auto;
   z-index: 1;
+}
+
+@media (min-width: 901px) {
+  .hero {
+    gap: 30px;
+  }
 }
 
 .hero-frame {
@@ -527,18 +533,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-frame-c { width: 166px; height: 128px; left: 45px; top: -120px; z-index: 3; }
 .hero-frame-d { width: 128px; height: 168px; left: -30px; top: 0px; z-index: 6; }
 .hero-frame-e { width: 128px; height: 168px; right: 28px; top: -80px; z-index: 4; }
-
-@media (min-width: 901px) {
-  .hero {
-    gap: 30px;
-  }
-
-  .hero-collage {
-    width: 360px;
-    min-width: 360px;
-    height: 280px;
-  }
-}
 /* ── HERO ALBUM PICKER ────────────────────────────────────────────── */
 .hero-album-overlay {
   position: fixed;
@@ -1627,8 +1621,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     min-width: 0;
     height: 280px;
     margin: 0 auto 16px;
-    transform: scale(0.84);
-    transform-origin: center top;
   }
   .hero-btns     { justify-content: center; }
   .hero-stats    { justify-content: center; }
