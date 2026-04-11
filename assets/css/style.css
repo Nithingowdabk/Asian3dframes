@@ -523,10 +523,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .hero-frame-a { width: 128px; height: 88px; left: 90px; top:0px; z-index: 4; }
-.hero-frame-b { width: 168px; height: 128px; right: 95px; top: 80px; z-index: 5; }
-.hero-frame-c { width: 166px; height: 128px; left: 45px; top: -120px; z-index: 3; }
-.hero-frame-d { width: 128px; height: 168px; left: -30px; top: 0px; z-index: 6; }
-.hero-frame-e { width: 128px; height: 168px; right: 28px; top: -80px; z-index: 4; }
+.hero-frame-b { width: 168px; height: 128px; right: 95px; top: 95px; z-index: 5; }
+.hero-frame-c { width: 168px; height: 128px; left: 45px; top: -135px; z-index: 3; }
+.hero-frame-d { width: 128px; height: 168px; left: -45px; top: 10px; z-index: 6; }
+.hero-frame-e { width: 128px; height: 168px; right: 5px; top: -90px; z-index: 4; }
 
 @media (min-width: 901px) {
   .hero {
