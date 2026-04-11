@@ -523,9 +523,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .hero-frame-a { width: 128px; height: 88px; left: 90px; top:0px; z-index: 4; }
-.hero-frame-b { width: 168px; height: 128px; right: 115px; top: 95px; z-index: 5; }
-.hero-frame-c { width: 166px; height: 128px; left: 45px; top: -135px; z-index: 3; }
-.hero-frame-d { width: 128px; height: 168px; left: -45px; top: 0px; z-index: 6; }
+.hero-frame-b { width: 168px; height: 128px; right: 95px; top: 80px; z-index: 5; }
+.hero-frame-c { width: 166px; height: 128px; left: 45px; top: -120px; z-index: 3; }
+.hero-frame-d { width: 128px; height: 168px; left: -30px; top: 0px; z-index: 6; }
 .hero-frame-e { width: 128px; height: 168px; right: 28px; top: -80px; z-index: 4; }
 
 @media (min-width: 901px) {
@@ -1623,23 +1623,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-subtitle { margin: 0 auto 36px; }
   .hero-collage {
     order: -1;
-    width: min(330px, 92vw);
+    width: min(360px, 88vw);
     min-width: 0;
-    height: 250px;
+    height: 280px;
     margin: 0 auto 16px;
-    transform: none;
+    transform: scale(0.84);
     transform-origin: center top;
   }
-
-  .hero-frame {
-    border-width: 6px;
-  }
-
-  .hero-frame-a { width: 102px; height: 72px; left: 96px; top: 0; }
-  .hero-frame-b { width: 126px; height: 96px; right: 16px; top: 44px; }
-  .hero-frame-c { width: 120px; height: 92px; left: 86px; top: 108px; }
-  .hero-frame-d { width: 94px; height: 124px; left: 8px; top: 56px; }
-  .hero-frame-e { width: 98px; height: 126px; right: 20px; top: 104px; }
   .hero-btns     { justify-content: center; }
   .hero-stats    { justify-content: center; }
 
