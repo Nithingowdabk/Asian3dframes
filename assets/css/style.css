@@ -863,38 +863,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* Hero visual */
-.hero-photo-wall {
-  position: relative;
-  width: min(520px, 42vw);
-  height: 360px;
-  margin-left: auto;
-}
-
-.wall-frame {
-  position: absolute;
-  display: block;
-  background: #fdfaf6;
-  border: 4px solid #3a2b1e;
-  border-radius: 4px;
-  padding: 5px;
-  box-shadow: 0 14px 28px rgba(18, 14, 11, .22);
-  overflow: hidden;
-}
-
-.wall-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 1px;
-}
-
-.frame-a { width: 166px; height: 114px; top: 18px; left: 58px; transform: rotate(-4deg); }
-.frame-b { width: 178px; height: 122px; top: 2px; left: 232px; transform: rotate(2.8deg); }
-.frame-c { width: 188px; height: 128px; top: 130px; left: 132px; transform: rotate(-1.5deg); z-index: 2; }
-.frame-d { width: 138px; height: 96px; top: 226px; left: 30px; transform: rotate(3deg); }
-.frame-e { width: 146px; height: 102px; top: 224px; left: 330px; transform: rotate(-3deg); }
-
 .frame-showcase {
   position: relative;
   display: flex;
@@ -1788,19 +1756,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     width: 100%;
     margin-top: 8px;
   }
-
-  .hero-photo-wall {
-    width: min(420px, 94vw);
-    height: 300px;
-    margin: 14px auto 0;
-  }
-
-  .frame-a { width: 136px; height: 94px; top: 12px; left: 30px; }
-  .frame-b { width: 148px; height: 100px; top: 4px; left: 196px; }
-  .frame-c { width: 162px; height: 108px; top: 106px; left: 108px; }
-  .frame-d { width: 118px; height: 84px; top: 198px; left: 14px; }
-  .frame-e { width: 122px; height: 86px; top: 198px; left: 276px; }
-
   .frame-showcase {
     height: auto;
     display: flex;
@@ -1834,25 +1789,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .testimonials-track.is-animated { animation-duration: 22s; }
   .featured-testimonial { transform: scale(1); }
   .featured-testimonial:hover { transform: translateY(-6px); }
-}
-
-@media (max-width: 520px) {
-  .hero-photo-wall {
-    width: min(340px, 96vw);
-    height: 252px;
-  }
-
-  .wall-frame {
-    border-width: 3px;
-    padding: 4px;
-    box-shadow: 0 10px 20px rgba(18, 14, 11, .18);
-  }
-
-  .frame-a { width: 112px; height: 78px; top: 10px; left: 16px; }
-  .frame-b { width: 120px; height: 82px; top: 4px; left: 154px; }
-  .frame-c { width: 132px; height: 90px; top: 92px; left: 80px; }
-  .frame-d { width: 96px; height: 68px; top: 170px; left: 6px; }
-  .frame-e { width: 98px; height: 70px; top: 168px; left: 232px; }
 }
 
 @media (max-width: 768px) {

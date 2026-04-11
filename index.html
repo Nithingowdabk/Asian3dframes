@@ -68,27 +68,6 @@
 
       <!-- hero-stats removed as requested -->
     </div>
-
-    <div class="hero-visual" aria-label="Featured framed products">
-      <div class="hero-photo-wall" id="heroFrameWall">
-        <a href="products.html" class="wall-frame frame-a" id="heroFrame1" aria-label="Featured frame 1">
-          <img src="https://placehold.co/500x350/f5e6d3/c8956c?text=Asian3DFrames" alt="Featured frame product" onerror="this.src='https://placehold.co/500x350/f5e6d3/c8956c?text=Asian3DFrames'" />
-        </a>
-        <a href="products.html" class="wall-frame frame-b" id="heroFrame2" aria-label="Featured frame 2">
-          <img src="https://placehold.co/500x350/f5e6d3/c8956c?text=Asian3DFrames" alt="Featured frame product" onerror="this.src='https://placehold.co/500x350/f5e6d3/c8956c?text=Asian3DFrames'" />
-        </a>
-        <a href="products.html" class="wall-frame frame-c" id="heroFrame3" aria-label="Featured frame 3">
-          <img src="https://placehold.co/500x350/f5e6d3/c8956c?text=Asian3DFrames" alt="Featured frame product" onerror="this.src='https://placehold.co/500x350/f5e6d3/c8956c?text=Asian3DFrames'" />
-        </a>
-        <a href="products.html" class="wall-frame frame-d" id="heroFrame4" aria-label="Featured frame 4">
-          <img src="https://placehold.co/500x350/f5e6d3/c8956c?text=Asian3DFrames" alt="Featured frame product" onerror="this.src='https://placehold.co/500x350/f5e6d3/c8956c?text=Asian3DFrames'" />
-        </a>
-        <a href="products.html" class="wall-frame frame-e" id="heroFrame5" aria-label="Featured frame 5">
-          <img src="https://placehold.co/500x350/f5e6d3/c8956c?text=Asian3DFrames" alt="Featured frame product" onerror="this.src='https://placehold.co/500x350/f5e6d3/c8956c?text=Asian3DFrames'" />
-        </a>
-      </div>
-    </div>
-
     <div class="hero-scroll-hint">
       <span>Scroll to explore</span>
       <i class="fas fa-chevron-down"></i>
@@ -608,50 +587,6 @@
         grid.innerHTML = renderHomeProductCards(items);
       } catch (_err) {
         grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#fca5a5;">Unable to load featured products right now.</p>';
-      }
-    }
-
-    async function loadHeroFrameLayout() {
-      const wall = document.getElementById('heroFrameWall');
-      if (!wall) return;
-      const frames = Array.from(wall.querySelectorAll('.wall-frame'));
-      if (!frames.length) return;
-
-      const shuffleArray = (list) => {
-        const next = [...list];
-        for (let i = next.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [next[i], next[j]] = [next[j], next[i]];
-        }
-        return next;
-      };
-
-      try {
-        const res = await fetch('php/get_products.php?limit=100');
-        const data = await res.json();
-        if (!data.success || !Array.isArray(data.products)) return;
-
-        const source = data.products.filter((p) => p && p.id && String(p.image || '').trim());
-        if (!source.length) return;
-
-        const picked = shuffleArray(source).slice(0, 5);
-        const items = picked.length >= frames.length ? picked : frames.map((_, idx) => picked[idx % picked.length]);
-
-        frames.forEach((frame, idx) => {
-          const product = items[idx];
-          if (!product) return;
-          const productName = String(product.name || 'Featured product').trim();
-          const productImage = String(product.image || '').trim();
-          frame.href = `product.html?id=${encodeURIComponent(product.id)}`;
-          frame.setAttribute('aria-label', productName);
-          const img = frame.querySelector('img');
-          if (img) {
-            img.src = productImage;
-            img.alt = productName;
-          }
-        });
-      } catch (_err) {
-        // Keep fallback placeholders if API is unavailable.
       }
     }
 
@@ -1208,7 +1143,6 @@
 
     /* ── Init ── */
     initHeroSparkles();
-    loadHeroFrameLayout();
     loadBestSellerProducts();
     loadFeaturedProducts();
     loadHomeCategories();
