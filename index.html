@@ -54,9 +54,6 @@
       <p class="hero-subtitle">
         Turn your cherished moments into timeless art. Personalised, handcrafted photo frames — delivered to your door.
       </p>
-      <div class="hero-frames-layout" id="heroFramesLayout" aria-label="Featured photo frames collage">
-        <!-- 5 product frames will load here -->
-      </div>
       <div class="hero-btns">
         <a href="products.html" class="btn btn-primary">
           Shop Now <i class="fas fa-arrow-right"></i>
@@ -590,72 +587,6 @@
         grid.innerHTML = renderHomeProductCards(items);
       } catch (_err) {
         grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#fca5a5;">Unable to load featured products right now.</p>';
-      }
-    }
-
-    async function loadHeroFrameCollage() {
-      const container = document.getElementById('heroFramesLayout');
-      if (!container) return;
-
-      const slotClasses = ['frame-a', 'frame-b', 'frame-c', 'frame-d', 'frame-e'];
-      const slotStyles = [
-        'width:31%;height:62%;left:1%;top:33%;transform:rotate(-4deg);z-index:3;',
-        'width:28%;height:30%;left:32%;top:2%;transform:rotate(2deg);z-index:2;',
-        'width:30%;height:33%;left:64%;top:5%;transform:rotate(1deg);z-index:2;',
-        'width:34%;height:35%;left:31%;top:46%;transform:rotate(-1deg);z-index:1;',
-        'width:28%;height:31%;left:68%;top:52%;transform:rotate(3deg);z-index:2;'
-      ];
-      const fallbackImages = [
-        'assets/images/products/product_20260322_120037_ad0fea98dc2b8f85.webp',
-        'assets/images/products/product_20260323_084206_99d99b421abda402.webp',
-        'assets/images/products/product_20260323_084309_a6d5473267b4e6a9.webp',
-        'assets/images/products/product_20260322_115955_729f8d201eb5e8eb.webp',
-        'assets/images/products/product_20260322_115920_cdd9b69fb8e80ad3.webp'
-      ];
-
-      const renderFrames = (items) => {
-        container.innerHTML = items.slice(0, 5).map((item, idx) => {
-          const slot = slotClasses[idx] || '';
-          const href = `product.html?id=${encodeURIComponent(item.id)}`;
-          const name = String(item.name || 'Photo Frame').trim() || 'Photo Frame';
-          const image = String(item.image || '').trim() || fallbackImages[idx % fallbackImages.length];
-          return `
-            <a href="${href}" class="hero-frame-card ${slot}" style="${slotStyles[idx] || ''}" aria-label="${name}">
-              <img src="${image}" alt="${name}" onerror="this.src='${fallbackImages[idx % fallbackImages.length]}'" />
-            </a>
-          `;
-        }).join('');
-      };
-
-      try {
-        const res = await fetch('php/get_products.php?limit=100');
-        const data = await res.json();
-        if (!data.success || !Array.isArray(data.products)) throw new Error('Invalid products response');
-
-        let items = data.products
-          .filter((p) => p && p.id && String(p.image || '').trim())
-          .slice(0, 5)
-          .map((p) => ({ id: p.id, name: p.name || 'Photo Frame', image: p.image }));
-
-        if (items.length < 5) {
-          const missing = 5 - items.length;
-          for (let i = 0; i < missing; i++) {
-            items.push({
-              id: `fallback-${i}`,
-              name: 'Photo Frame',
-              image: fallbackImages[i % fallbackImages.length]
-            });
-          }
-        }
-
-        renderFrames(items);
-      } catch (_err) {
-        const fallbackItems = fallbackImages.map((img, idx) => ({
-          id: `fallback-${idx}`,
-          name: 'Photo Frame',
-          image: img
-        }));
-        renderFrames(fallbackItems);
       }
     }
 
@@ -1212,7 +1143,6 @@
 
     /* ── Init ── */
     initHeroSparkles();
-    loadHeroFrameCollage();
     loadBestSellerProducts();
     loadFeaturedProducts();
     loadHomeCategories();

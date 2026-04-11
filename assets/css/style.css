@@ -525,38 +525,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: rgba(255,255,255,.92);
 }
 
-.hero-frames-layout {
-  position: relative;
-  width: min(430px, 92vw);
-  aspect-ratio: 10 / 7;
-  height: clamp(250px, 30vw, 330px);
-  max-height: 330px;
-  margin: 0 0 28px;
-}
-
-.hero-frame-card {
-  position: absolute;
-  display: block;
-  overflow: hidden;
-  background: #fff;
-  border: 7px solid #4b3220;
-  border-radius: 7px;
-  box-shadow: 0 14px 28px rgba(0,0,0,.22);
-}
-
-.hero-frame-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.hero-frame-card.frame-a { width: 31%; height: 62%; left: 1%;  top: 33%; transform: rotate(-4deg); z-index: 3; }
-.hero-frame-card.frame-b { width: 28%; height: 30%; left: 32%; top: 2%;  transform: rotate(2deg);  z-index: 2; }
-.hero-frame-card.frame-c { width: 30%; height: 33%; left: 64%; top: 5%;  transform: rotate(1deg);  z-index: 2; }
-.hero-frame-card.frame-d { width: 34%; height: 35%; left: 31%; top: 46%; transform: rotate(-1deg); z-index: 1; }
-.hero-frame-card.frame-e { width: 28%; height: 31%; left: 68%; top: 52%; transform: rotate(3deg);  z-index: 2; }
-
 .hero-random-wrap {
   position: relative;
   width: min(260px, 78vw);
@@ -1764,14 +1732,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
   .hero-content { align-items: center; }
   .hero-subtitle { margin: 0 auto 36px; }
-  .hero-frames-layout {
-    width: min(360px, 94vw);
-    margin: 0 auto 24px;
-  }
-  .hero-frame-card {
-    border-width: 5px;
-    border-radius: 6px;
-  }
   .hero-random-wrap {
     width: min(240px, 72vw);
     aspect-ratio: 3 / 4;
