@@ -1627,6 +1627,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     min-width: 0;
     height: 280px;
     margin: 0 auto 16px;
+    transform: scale(0.84);
+    transform-origin: center top;
   }
   .hero-btns     { justify-content: center; }
   .hero-stats    { justify-content: center; }
