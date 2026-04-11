@@ -1590,6 +1590,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .toast i { color: #10b981; font-size: 1rem; }
 
 /* ── RESPONSIVE ─────────────────────────────────────────────────────── */
+@media (min-width: 901px) {
+  .hero {
+    flex-wrap: nowrap;
+    min-height: 82vh;
+    padding: 120px 5% 56px;
+    gap: 42px;
+  }
+}
+
 @media (max-width: 1100px) {
   .categories-grid { gap: 20px; }
   .cat-card { flex-basis: 180px; }
