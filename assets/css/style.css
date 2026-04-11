@@ -486,24 +486,30 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .hero-frame-collage {
   position: relative;
-  width: min(560px, 94vw);
-  height: 360px;
+  width: min(900px, 100%);
+  height: min(500px, 55vw);
+  min-height: 320px;
 }
 
 .hero-frame {
   display: block;
   text-decoration: none;
   position: absolute;
+  transition: transform .5s ease;
+}
+
+.hero-frame:hover {
+  transform: scale(1.05);
 }
 
 .hero-frame-border {
   display: block;
   width: 100%;
   height: 100%;
-  padding: 6px;
-  border-radius: 4px;
+  padding: 8px;
+  border-radius: 6px;
   border: 1px solid rgba(33,27,22,.35);
-  box-shadow: 0 8px 20px rgba(0,0,0,.2);
+  box-shadow: 0 14px 28px rgba(0,0,0,.22);
   overflow: hidden;
   background: #2e2722;
 }
@@ -524,7 +530,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: block;
   width: 100%;
   height: 100%;
-  padding: 4px;
+  padding: 6px;
   background: #f4efe8;
   border-radius: 2px;
 }
@@ -537,11 +543,50 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: 1px;
 }
 
-.hero-frame.tile-1 { top: 6px; right: 165px; width: 118px; height: 86px; z-index: 2; }
-.hero-frame.tile-2 { top: 58px; right: 0; width: 242px; height: 182px; z-index: 1; }
-.hero-frame.tile-3 { top: 118px; right: 258px; width: 186px; height: 182px; z-index: 2; }
-.hero-frame.tile-4 { top: 176px; right: 110px; width: 228px; height: 152px; z-index: 4; }
-.hero-frame.tile-5 { top: 206px; right: 18px; width: 148px; height: 188px; z-index: 3; }
+.hero-frame.frame-center {
+  width: 240px;
+  height: 240px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.hero-frame.frame-top-left {
+  width: 160px;
+  height: 160px;
+  top: 0;
+  left: 80px;
+  z-index: 6;
+}
+
+.hero-frame.frame-top-right {
+  width: 176px;
+  height: 176px;
+  top: 40px;
+  right: 40px;
+  z-index: 6;
+}
+
+.hero-frame.frame-bottom-left {
+  width: 176px;
+  height: 176px;
+  bottom: 40px;
+  left: 40px;
+  z-index: 6;
+}
+
+.hero-frame.frame-bottom-right {
+  width: 160px;
+  height: 160px;
+  right: 80px;
+  bottom: 0;
+  z-index: 6;
+}
+
+.hero-frame.frame-center:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
 
 .hero-badge {
   display: inline-block;
@@ -1823,35 +1868,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
 
   .hero-frame-collage {
-    width: min(430px, 100%);
-    height: auto;
+    width: min(560px, 100%);
+    height: min(360px, 64vw);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 122px;
-    gap: 10px;
   }
 
-  .hero-frame {
-    position: static;
-    width: 100%;
-    height: 100%;
-  }
-
-  .hero-frame.tile-1,
-  .hero-frame.tile-2,
-  .hero-frame.tile-3,
-  .hero-frame.tile-4,
-  .hero-frame.tile-5 {
-    top: auto;
-    right: auto;
-  }
-
-  .hero-frame.tile-1 { grid-column: 1; grid-row: 1; }
-  .hero-frame.tile-2 { grid-column: 2; grid-row: 1 / span 2; }
-  .hero-frame.tile-3 { grid-column: 1; grid-row: 2 / span 2; }
-  .hero-frame.tile-4 { grid-column: 2; grid-row: 3; }
-  .hero-frame.tile-5 { grid-column: 1 / span 2; grid-row: 4; }
+  .hero-frame.frame-center { width: 165px; height: 165px; }
+  .hero-frame.frame-top-left { width: 118px; height: 118px; left: 24px; top: 8px; }
+  .hero-frame.frame-top-right { width: 124px; height: 124px; right: 18px; top: 18px; }
+  .hero-frame.frame-bottom-left { width: 124px; height: 124px; left: 16px; bottom: 18px; }
+  .hero-frame.frame-bottom-right { width: 118px; height: 118px; right: 24px; bottom: 8px; }
   .frame-showcase {
     height: auto;
     display: flex;
