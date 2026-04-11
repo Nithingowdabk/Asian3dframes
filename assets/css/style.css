@@ -527,6 +527,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-frame-c { width: 166px; height: 128px; left: 45px; top: -120px; z-index: 3; }
 .hero-frame-d { width: 128px; height: 168px; left: -30px; top: 0px; z-index: 6; }
 .hero-frame-e { width: 128px; height: 168px; right: 28px; top: -80px; z-index: 4; }
+
+@media (min-width: 901px) {
+  .hero {
+    padding: 124px 5% 46px;
+    gap: 36px;
+  }
+  .hero-collage {
+    height: 210px;
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+}
 /* ── HERO ALBUM PICKER ────────────────────────────────────────────── */
 .hero-album-overlay {
   position: fixed;
