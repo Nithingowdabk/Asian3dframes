@@ -496,10 +496,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .hero-collage {
   position: relative;
-  width: min(380px, 34vw);
-  min-width: 290px;
-  height: 300px;
-  margin-left: auto;
+  width: min(340px, 30vw);
+  min-width: 260px;
+  height: 250px;
+  margin: 0 0 16px;
   flex: 0 0 auto;
   z-index: 1;
 }
@@ -522,12 +522,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: block;
 }
 
-.hero-frame-a { width: 148px; height: 96px; left: 80px; top: 0; z-index: 4; }
-.hero-frame-b { width: 162px; height: 104px; right: 16px; top: 8px; z-index: 5; }
-.hero-frame-c { width: 126px; height: 168px; left: 8px; top: 90px; z-index: 3; }
-.hero-frame-d { width: 168px; height: 112px; left: 118px; top: 106px; z-index: 6; }
-.hero-frame-e { width: 128px; height: 168px; right: 2px; top: 94px; z-index: 4; }
-
+.hero-frame-a { width: 128px; height: 88px; left: 90px; top:0px; z-index: 4; }
+.hero-frame-b { width: 168px; height: 128px; right: 95px; top: 80px; z-index: 5; }
+.hero-frame-c { width: 166px; height: 128px; left: 45px; top: -120px; z-index: 3; }
+.hero-frame-d { width: 128px; height: 168px; left: -30px; top: 0px; z-index: 6; }
+.hero-frame-e { width: 128px; height: 168px; right: 28px; top: -80px; z-index: 4; }
 /* ── HERO ALBUM PICKER ────────────────────────────────────────────── */
 .hero-album-overlay {
   position: fixed;
@@ -1614,7 +1613,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     width: min(360px, 88vw);
     min-width: 0;
     height: 280px;
-    margin: 6px auto 0;
+    margin: 0 auto 16px;
   }
   .hero-btns     { justify-content: center; }
   .hero-stats    { justify-content: center; }
