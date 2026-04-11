@@ -494,53 +494,39 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 52px;
 }
 
-.hero-frame-visual {
-  position: absolute;
-  right: clamp(16px, 5vw, 72px);
-  top: 50%;
-  transform: translateY(-48%);
-  width: clamp(96px, 10vw, 140px);
-  height: clamp(132px, 15vw, 190px);
-  max-width: 140px;
-  max-height: 190px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.hero-collage {
+  position: relative;
+  width: min(380px, 34vw);
+  min-width: 290px;
+  height: 300px;
+  margin-left: auto;
+  flex: 0 0 auto;
   z-index: 1;
 }
 
-.hero-mini-frame {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, #111114 0%, #070708 100%);
-  border: 7px solid #0a0a0c;
-  border-radius: 6px;
-  padding: 6px;
-  box-shadow: 0 16px 30px rgba(0, 0, 0, .34);
+.hero-frame {
+  position: absolute;
   display: block;
-  text-decoration: none;
-}
-
-.hero-mini-frame-inner {
-  width: 100%;
-  height: 100%;
-  border: 1px solid #3a3a3f;
   overflow: hidden;
-  background: #151518;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #181818;
+  border: 8px solid #111;
+  border-radius: 4px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.28);
 }
 
-.hero-mini-frame-inner img {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  display: block;
-  object-fit: contain !important;
+.hero-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   object-position: center;
+  display: block;
 }
+
+.hero-frame-a { width: 148px; height: 96px; left: 80px; top: 0; z-index: 4; }
+.hero-frame-b { width: 162px; height: 104px; right: 16px; top: 8px; z-index: 5; }
+.hero-frame-c { width: 126px; height: 168px; left: 8px; top: 90px; z-index: 3; }
+.hero-frame-d { width: 168px; height: 112px; left: 118px; top: 106px; z-index: 6; }
+.hero-frame-e { width: 128px; height: 168px; right: 2px; top: 94px; z-index: 4; }
 
 /* ── HERO ALBUM PICKER ────────────────────────────────────────────── */
 .hero-album-overlay {
@@ -1624,18 +1610,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
   .hero-content { align-items: center; }
   .hero-subtitle { margin: 0 auto 36px; }
-  .hero-frame-visual {
-    position: static;
-    right: auto;
-    top: auto;
-    transform: none;
-    flex: 0 1 clamp(108px, 34vw, 132px);
-    width: clamp(108px, 34vw, 132px);
-    height: clamp(146px, 46vw, 176px);
-    max-width: 42vw;
-    max-height: 176px;
-    margin: 4px auto 14px;
-    justify-content: center;
+  .hero-collage {
+    width: min(360px, 88vw);
+    min-width: 0;
+    height: 280px;
+    margin: 6px auto 0;
   }
   .hero-btns     { justify-content: center; }
   .hero-stats    { justify-content: center; }
@@ -1741,13 +1720,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .step-card p { display: none; }
   .hero-btns       { flex-direction: column; align-items: center; }
   .hero-title      { font-size: 2.6rem; }
-  .hero-frame-visual {
-    width: clamp(92px, 38vw, 112px);
-    height: clamp(126px, 50vw, 148px);
-    flex-basis: clamp(92px, 38vw, 112px);
-    max-height: 148px;
-    margin-bottom: 10px;
-  }
 }
 
 /* ── PRODUCT MOCKUP CUSTOMIZER ─────────────────────────────────────── */

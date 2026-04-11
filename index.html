@@ -69,16 +69,21 @@
       <!-- hero-stats removed as requested -->
     </div>
 
-    <div class="hero-frame-visual" aria-label="Featured product frame">
-      <a href="products.html" class="hero-mini-frame" id="heroMiniFrameLink" aria-label="View featured product">
-        <div class="hero-mini-frame-inner">
-          <img
-            id="heroMiniFrameImg"
-            src="https://placehold.co/360x480/f5e6d3/c8956c?text=Asian3DFrames"
-            alt="Featured frame product"
-            onerror="this.src='https://placehold.co/360x480/f5e6d3/c8956c?text=Asian3DFrames'"
-          />
-        </div>
+    <div class="hero-collage" aria-label="Featured framed products">
+      <a href="products.html" class="hero-frame hero-frame-a" aria-label="Featured frame 1">
+        <img id="heroFrameImg0" src="https://placehold.co/420x300/f2e8da/1a1510?text=Frame+1" alt="Featured product frame 1" />
+      </a>
+      <a href="products.html" class="hero-frame hero-frame-b" aria-label="Featured frame 2">
+        <img id="heroFrameImg1" src="https://placehold.co/420x300/f2e8da/1a1510?text=Frame+2" alt="Featured product frame 2" />
+      </a>
+      <a href="products.html" class="hero-frame hero-frame-c" aria-label="Featured frame 3">
+        <img id="heroFrameImg2" src="https://placehold.co/420x300/f2e8da/1a1510?text=Frame+3" alt="Featured product frame 3" />
+      </a>
+      <a href="products.html" class="hero-frame hero-frame-d" aria-label="Featured frame 4">
+        <img id="heroFrameImg3" src="https://placehold.co/420x300/f2e8da/1a1510?text=Frame+4" alt="Featured product frame 4" />
+      </a>
+      <a href="products.html" class="hero-frame hero-frame-e" aria-label="Featured frame 5">
+        <img id="heroFrameImg4" src="https://placehold.co/420x300/f2e8da/1a1510?text=Frame+5" alt="Featured product frame 5" />
       </a>
     </div>
 
@@ -604,24 +609,41 @@
       }
     }
 
-    async function loadHeroMiniFrameProduct() {
-      const imgEl = document.getElementById('heroMiniFrameImg');
-      const linkEl = document.getElementById('heroMiniFrameLink');
-      if (!imgEl || !linkEl) return;
+    async function loadHeroFrames() {
+      const slots = [0, 1, 2, 3, 4].map((i) => document.getElementById(`heroFrameImg${i}`)).filter(Boolean);
+      if (!slots.length) return;
+
+      const shuffleArray = (list) => {
+        const next = [...list];
+        for (let i = next.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [next[i], next[j]] = [next[j], next[i]];
+        }
+        return next;
+      };
 
       try {
         const res = await fetch('php/get_products.php?limit=100');
         const data = await res.json();
-        if (!data.success) return;
-        const products = Array.isArray(data.products) ? data.products.filter((p) => p && p.id && p.image) : [];
-        if (!products.length) return;
+        if (!data.success || !Array.isArray(data.products)) return;
+        const picked = shuffleArray(data.products.filter((p) => p && p.image)).slice(0, 5);
+        if (!picked.length) return;
 
-        const pick = products[Math.floor(Math.random() * products.length)];
-        imgEl.src = String(pick.image || '').trim() || imgEl.src;
-        imgEl.alt = String(pick.name || 'Featured frame product');
-        linkEl.href = `product.html?id=${encodeURIComponent(pick.id)}`;
+        slots.forEach((imgEl, idx) => {
+          const product = picked[idx % picked.length];
+          const image = String(product.image || '').trim();
+          const name = String(product.name || `Featured frame ${idx + 1}`).trim();
+          if (!image) return;
+          imgEl.src = image;
+          imgEl.alt = name;
+          const parentLink = imgEl.closest('a');
+          if (parentLink && product.id) {
+            parentLink.href = `product.html?id=${encodeURIComponent(product.id)}`;
+            parentLink.setAttribute('aria-label', name);
+          }
+        });
       } catch (_err) {
-        // Keep fallback if load fails.
+        // Keep fallback placeholders if API is unavailable.
       }
     }
 
@@ -1178,7 +1200,7 @@
 
     /* ── Init ── */
     initHeroSparkles();
-    loadHeroMiniFrameProduct();
+    loadHeroFrames();
     loadBestSellerProducts();
     loadFeaturedProducts();
     loadHomeCategories();
