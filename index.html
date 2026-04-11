@@ -68,9 +68,20 @@
 
       <!-- hero-stats removed as requested -->
     </div>
-      <div class="hero-product-frame">
-        <img src="assets/images/products/product_20260321_155037_0f21fb365b058b06.png" alt="Framed Product" class="hero-frame-img" />
-      </div>
+
+    <div class="hero-frame-visual" aria-label="Featured product frame">
+      <a href="products.html" class="hero-mini-frame" id="heroMiniFrameLink" aria-label="View featured product">
+        <div class="hero-mini-frame-inner">
+          <img
+            id="heroMiniFrameImg"
+            src="https://placehold.co/360x480/f5e6d3/c8956c?text=Asian3DFrames"
+            alt="Featured frame product"
+            onerror="this.src='https://placehold.co/360x480/f5e6d3/c8956c?text=Asian3DFrames'"
+          />
+        </div>
+      </a>
+    </div>
+
     <div class="hero-scroll-hint">
       <span>Scroll to explore</span>
       <i class="fas fa-chevron-down"></i>
@@ -590,6 +601,27 @@
         grid.innerHTML = renderHomeProductCards(items);
       } catch (_err) {
         grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#fca5a5;">Unable to load featured products right now.</p>';
+      }
+    }
+
+    async function loadHeroMiniFrameProduct() {
+      const imgEl = document.getElementById('heroMiniFrameImg');
+      const linkEl = document.getElementById('heroMiniFrameLink');
+      if (!imgEl || !linkEl) return;
+
+      try {
+        const res = await fetch('php/get_products.php?limit=100');
+        const data = await res.json();
+        if (!data.success) return;
+        const products = Array.isArray(data.products) ? data.products.filter((p) => p && p.id && p.image) : [];
+        if (!products.length) return;
+
+        const pick = products[Math.floor(Math.random() * products.length)];
+        imgEl.src = String(pick.image || '').trim() || imgEl.src;
+        imgEl.alt = String(pick.name || 'Featured frame product');
+        linkEl.href = `product.html?id=${encodeURIComponent(pick.id)}`;
+      } catch (_err) {
+        // Keep fallback if load fails.
       }
     }
 
@@ -1146,6 +1178,7 @@
 
     /* ── Init ── */
     initHeroSparkles();
+    loadHeroMiniFrameProduct();
     loadBestSellerProducts();
     loadFeaturedProducts();
     loadHomeCategories();

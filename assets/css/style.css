@@ -331,45 +331,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: relative;
   overflow: hidden;
   padding: 120px 0 80px;
-  justify-content: space-between;
-}
-/* Hero product frame (right side) */
-.hero-product-frame {
-  position: absolute;
-  right: 6vw;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #181818;
-  border: 6px solid #111;
-  border-radius: 18px;
-  box-shadow: 0 6px 32px 0 rgba(0,0,0,0.18);
-  padding: 8px;
-  width: 140px;
-  height: 170px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-.hero-frame-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
-}
-@media (max-width: 900px) {
-  .hero-product-frame {
-    position: static;
-    margin: 32px auto 0 auto;
-    transform: none;
-    width: 110px;
-    height: 130px;
-    right: unset;
-    top: unset;
-    display: flex;
-    justify-content: center;
-  }
 }
 
 .hero-sparkle-canvas {
@@ -531,6 +492,46 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 16px;
   flex-wrap: wrap;
   margin-bottom: 52px;
+}
+
+.hero-frame-visual {
+  flex: 0 0 220px;
+  width: 220px;
+  max-width: 30vw;
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-mini-frame {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(180deg, #1a1a1d 0%, #0f0f10 100%);
+  border: 8px solid #111;
+  border-radius: 6px;
+  padding: 7px;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, .28);
+  display: block;
+  text-decoration: none;
+}
+
+.hero-mini-frame-inner {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #2a2a2d;
+  overflow: hidden;
+  background: #151518;
+}
+
+.hero-mini-frame-inner img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ── HERO ALBUM PICKER ────────────────────────────────────────────── */
@@ -1615,6 +1616,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
   .hero-content { align-items: center; }
   .hero-subtitle { margin: 0 auto 36px; }
+  .hero-frame-visual {
+    flex: 0 0 170px;
+    width: 170px;
+    max-width: 52vw;
+    margin: 4px auto 14px;
+    justify-content: center;
+  }
   .hero-btns     { justify-content: center; }
   .hero-stats    { justify-content: center; }
 
@@ -1719,6 +1727,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .step-card p { display: none; }
   .hero-btns       { flex-direction: column; align-items: center; }
   .hero-title      { font-size: 2.6rem; }
+  .hero-frame-visual {
+    width: 150px;
+    flex-basis: 150px;
+    margin-bottom: 10px;
+  }
 }
 
 /* ── PRODUCT MOCKUP CUSTOMIZER ─────────────────────────────────────── */
