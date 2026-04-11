@@ -614,9 +614,7 @@
         const h = Number(imgEl.naturalHeight || 0);
         if (!w || !h) return;
         const ratio = w / h;
-        // Keep ratio in a visually stable range for hero layout.
-        const boundedRatio = Math.max(0.62, Math.min(1.08, ratio));
-        linkEl.style.setProperty('--hero-frame-ratio', String(boundedRatio));
+        linkEl.style.setProperty('--hero-frame-ratio', String(ratio));
       };
 
       try {
