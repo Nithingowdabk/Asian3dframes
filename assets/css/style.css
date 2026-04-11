@@ -434,8 +434,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  padding: 108px 5% 42px;
-  gap: 42px;
+  padding: 140px 5% 80px;
+  gap: 60px;
 }
 .hero-content { flex: 1 1 460px; }
 .hero-deco, .hero-scroll-hint { position: absolute; }
@@ -491,14 +491,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 24px;
+  margin-bottom: 52px;
 }
 
 .hero-collage {
   position: relative;
   width: min(380px, 34vw);
   min-width: 290px;
-  height: 320px;
+  height: 300px;
   margin-left: auto;
   flex: 0 0 auto;
   z-index: 1;
@@ -522,11 +522,23 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: block;
 }
 
-.hero-frame-a { width: 132px; height: 92px; left: 112px; top: 0; z-index: 4; }
-.hero-frame-b { width: 142px; height: 102px; right: 22px; top: 40px; z-index: 5; }
-.hero-frame-c { width: 124px; height: 160px; left: 20px; top: 96px; z-index: 3; }
-.hero-frame-d { width: 146px; height: 104px; left: 124px; top: 118px; z-index: 6; }
-.hero-frame-e { width: 122px; height: 90px; left: 136px; top: 224px; z-index: 4; }
+.hero-frame-a { width: 128px; height: 88px; left: 90px; top:0px; z-index: 4; }
+.hero-frame-b { width: 168px; height: 128px; right: 95px; top: 80px; z-index: 5; }
+.hero-frame-c { width: 166px; height: 128px; left: 45px; top: -120px; z-index: 3; }
+.hero-frame-d { width: 128px; height: 168px; left: -30px; top: 0px; z-index: 6; }
+.hero-frame-e { width: 128px; height: 168px; right: 28px; top: -80px; z-index: 4; }
+
+@media (min-width: 901px) {
+  .hero {
+    gap: 30px;
+  }
+
+  .hero-collage {
+    width: 360px;
+    min-width: 360px;
+    height: 280px;
+  }
+}
 /* ── HERO ALBUM PICKER ────────────────────────────────────────────── */
 .hero-album-overlay {
   position: fixed;
