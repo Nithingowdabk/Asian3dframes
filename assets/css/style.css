@@ -1623,13 +1623,23 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-subtitle { margin: 0 auto 36px; }
   .hero-collage {
     order: -1;
-    width: min(360px, 88vw);
+    width: min(330px, 92vw);
     min-width: 0;
-    height: 280px;
+    height: 250px;
     margin: 0 auto 16px;
-    transform: translate(22px, 34px) scale(0.72);
+    transform: none;
     transform-origin: center top;
   }
+
+  .hero-frame {
+    border-width: 6px;
+  }
+
+  .hero-frame-a { width: 102px; height: 72px; left: 96px; top: 0; }
+  .hero-frame-b { width: 126px; height: 96px; right: 16px; top: 44px; }
+  .hero-frame-c { width: 120px; height: 92px; left: 86px; top: 108px; }
+  .hero-frame-d { width: 94px; height: 124px; left: 8px; top: 56px; }
+  .hero-frame-e { width: 98px; height: 126px; right: 20px; top: 104px; }
   .hero-btns     { justify-content: center; }
   .hero-stats    { justify-content: center; }
 
