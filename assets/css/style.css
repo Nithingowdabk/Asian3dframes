@@ -525,7 +525,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-product-frame {
   position: absolute;
   display: block;
-  border: 10px solid #3c3229;
+  border: 10px solid #000;
   background: #fff;
   box-shadow: 0 10px 26px rgba(24, 18, 12, .24);
   border-radius: 8px;
