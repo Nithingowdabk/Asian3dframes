@@ -477,6 +477,45 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1.8;
 }
 
+.hero-product-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 32px 0 24px 0;
+}
+.frame-outer {
+  border: 8px solid #181818;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px 0 rgba(0,0,0,0.13);
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  max-width: 340px;
+  width: 90vw;
+}
+.frame-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  aspect-ratio: 4/5;
+}
+
+@media (max-width: 700px) {
+  .frame-outer {
+    max-width: 220px;
+    border-width: 5px;
+    border-radius: 10px;
+  }
+  .frame-img {
+    border-radius: 6px;
+  }
+}
+}
+
 .hero .btn-ghost {
   background: rgba(255,255,255,.72);
   color: var(--dark);
