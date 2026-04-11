@@ -496,10 +496,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .hero-collage {
   position: relative;
-  width: min(340px, 30vw);
-  min-width: 260px;
-  height: 250px;
-  margin: 0 0 16px;
+  width: min(380px, 34vw);
+  min-width: 290px;
+  height: 300px;
+  margin-left: auto;
   flex: 0 0 auto;
   z-index: 1;
 }
@@ -1610,6 +1610,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-content { align-items: center; }
   .hero-subtitle { margin: 0 auto 36px; }
   .hero-collage {
+    order: -1;
     width: min(360px, 88vw);
     min-width: 0;
     height: 280px;
