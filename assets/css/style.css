@@ -276,22 +276,26 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .icon-btn {
   position: relative;
-  width: 44px; height: 44px;
+  width: 42px; height: 42px;
   display: flex; align-items: center; justify-content: center;
   border-radius: 50%;
   color: #fff;
-  background: #18130d;
-  font-size: 1.12rem;
-  box-shadow: 0 2px 8px rgba(24,19,13,0.08);
-  border: 1.5px solid #18130d;
+  background: #1f1a14;
+  border: 1px solid #2e261d;
+  box-shadow: 0 6px 16px rgba(0,0,0,.16);
+  font-size: 1rem;
   transition: all var(--trans);
 }
-.icon-btn:hover, .icon-btn:focus {
-  background: #2d1a07;
-  color: #fff;
-  border-color: #2d1a07;
-  box-shadow: 0 4px 16px rgba(24,19,13,0.13);
+.icon-btn:hover {
+  background: #120f0c;
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 10px 22px rgba(0,0,0,.22);
 }
+.icon-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.navbar.scrolled .icon-btn:hover { background: #120f0c; }
 
 .cart-badge {
   position: absolute;
@@ -314,20 +318,31 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: none;
   flex-direction: column;
   gap: 5px;
-  padding: 6px;
-  background: #18130d;
-  border-radius: 50%;
-  border: 1.5px solid #18130d;
-  box-shadow: 0 2px 8px rgba(24,19,13,0.08);
-  transition: all var(--trans);
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 12px;
+  background: #1f1a14;
+  border: 1px solid #2e261d;
+  box-shadow: 0 6px 16px rgba(0,0,0,.16);
+  align-items: center;
+  justify-content: center;
 }
 .hamburger span {
   display: block;
-  width: 24px; height: 2.5px;
+  width: 24px; height: 2px;
   background: #fff;
   border-radius: 2px;
   transition: all var(--trans);
   transform-origin: center;
+}
+.hamburger:hover {
+  background: #120f0c;
+  transform: translateY(-1px);
+}
+.hamburger:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
@@ -1707,7 +1722,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   .hamburger { display: flex; z-index: 1000; }
   .hamburger span { background: var(--white); }
-  .navbar.scrolled .hamburger span { background: var(--dark); }
+  .navbar.scrolled .hamburger span { background: var(--white); }
 
   .categories-grid { gap: 16px; }
   .cat-card { flex-basis: 150px; }
