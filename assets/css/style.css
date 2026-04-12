@@ -334,9 +334,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: all var(--trans);
   transform-origin: center;
 }
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -1724,6 +1721,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     transform: translateX(-50%) translateY(0);
     opacity: 1;
     pointer-events: auto;
+    box-shadow: 0 8px 32px rgba(20,14,10,.13);
+    border: 1.5px solid rgba(26,21,16,.13);
   }
   .nav-link {
     font-size: 1rem;
