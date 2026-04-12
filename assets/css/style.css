@@ -227,8 +227,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: linear-gradient(120deg, #1a237e 0%, #3949ab 100%); /* Royal blue gradient */
   border-radius: 50%;
   aspect-ratio: 1/1;
-  width: 96px;
-  height: 96px;
+  width: 64px;
+  height: 64px;
   box-shadow: 0 2px 12px 0 rgba(60,40,10,0.07);
   display: flex;
   align-items: center;
