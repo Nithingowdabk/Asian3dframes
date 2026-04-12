@@ -227,15 +227,25 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: linear-gradient(120deg, #1a237e 0%, #3949ab 100%); /* Royal blue gradient */
   border-radius: 50%;
   aspect-ratio: 1/1;
-  padding: 6px;
   width: 96px;
   height: 96px;
-  justify-content: center;
   box-shadow: 0 2px 12px 0 rgba(60,40,10,0.07);
-  padding: 6px 18px 6px 12px;
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
   transition: background 0.3s, box-shadow 0.3s;
+/* Ensure logo image fills and centers in the round background */
+.nav-logo-bg .brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+}
 }
 
 @media (max-width: 700px) {
