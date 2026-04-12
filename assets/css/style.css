@@ -4,7 +4,7 @@
   }
 }
 @media (min-width: 1100px) {
-    margin: 0 auto 0;
+  .hero {
     position: relative;
   }
 }
@@ -1624,7 +1624,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     background-position: 58% center;
   }
   .hero-content { align-items: center; }
-  .hero-subtitle { margin: 0 auto 36px; }
+  .hero-title { margin-bottom: 8px; }
+  .hero-subtitle { margin: 0 auto 8px; }
+  .hero-btns { margin-bottom: 18px; }
   .hero-collage {
     order: -1;
     width: min(360px, 88vw);
