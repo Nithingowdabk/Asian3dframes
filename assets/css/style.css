@@ -1630,12 +1630,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     width: min(360px, 88vw);
     min-width: 0;
     height: 280px;
-    margin: 0 auto 2px;
-    transform: scale(0.82);
+    margin: 0 auto 16px;
+    transform: scale(0.56);
     transform-origin: right center;
-  }
-  .hero-title {
-    margin-top: 0;
   }
   .hero-frame-a { width: 128px; height: 88px; left: 90px; top:0px; z-index: 4; }
   .hero-frame-b { width: 168px; height: 128px; right: 95px; top: 95px; z-index: 5; }
