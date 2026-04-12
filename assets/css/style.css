@@ -496,10 +496,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.7rem;
+  font-weight: 700;
   letter-spacing: 0.01em;
   display: inline-block;
+  color: #2e2620;
+  text-shadow: none;
 }
 
 .hero-subtitle {
@@ -1471,11 +1473,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .cta-content { position: relative; z-index: 1; }
 .cta-banner h2 {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  color: #3f2816;
-  margin-bottom: 16px;
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  color: var(--dark);
+  margin-bottom: 20px;
+  animation: fadeInUp 0.8s var(--ease) forwards;
 }
-.cta-banner p { color: rgba(63,40,22,.8); font-size: 1.05rem; margin-bottom: 36px; }
+
+/* Remove 3D effect from 3D text in hero title */
+.hero-title .no-3d, .hero-title .no-3d-effect {
+  text-shadow: none !important;
+  color: inherit !important;
 
 .custom-form {
   max-width: 860px;
