@@ -321,7 +321,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ── HERO ──────────────────────────────────────────────────────────── */
 .hero {
-  min-height: 130vh;
+  min-height: 100vh;
   background-image: url('/uploads/image.png');
   background-size: cover;
   background-position: center center;
@@ -329,7 +329,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   padding: 120px 0 80px;
 }
 
@@ -859,9 +859,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   overflow: hidden;
   padding: 14px 0;
   white-space: nowrap;
-  margin-top: -60px;
-  position: relative;
-  z-index: 10;
 }
 .marquee-track {
   display: inline-flex;
