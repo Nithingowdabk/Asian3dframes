@@ -1636,7 +1636,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   .hero {
     flex-direction: column;
-    padding: 120px 5% 60px;
+    padding: 60px 4% 28px;
+    min-height: 54vh;
     text-align: center;
     background-image: url('/uploads/WhatsApp Image 2026-04-12 at 12.40.47 PM.jpeg');
     background-size: cover;
