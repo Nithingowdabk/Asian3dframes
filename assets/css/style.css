@@ -276,15 +276,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .icon-btn {
   position: relative;
-  width: 42px; height: 42px;
+  width: 44px; height: 44px;
   display: flex; align-items: center; justify-content: center;
   border-radius: 50%;
-  color: var(--white);
-  font-size: 1rem;
+  color: #fff;
+  background: #18130d;
+  font-size: 1.12rem;
+  box-shadow: 0 2px 8px rgba(24,19,13,0.08);
+  border: 1.5px solid #18130d;
   transition: all var(--trans);
 }
-.icon-btn:hover { background: rgba(255,255,255,.15); }
-.navbar.scrolled .icon-btn:hover { background: rgba(26,21,16,.08); }
+.icon-btn:hover, .icon-btn:focus {
+  background: #2d1a07;
+  color: #fff;
+  border-color: #2d1a07;
+  box-shadow: 0 4px 16px rgba(24,19,13,0.13);
+}
 
 .cart-badge {
   position: absolute;
@@ -307,12 +314,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: none;
   flex-direction: column;
   gap: 5px;
-  padding: 4px;
+  padding: 6px;
+  background: #18130d;
+  border-radius: 50%;
+  border: 1.5px solid #18130d;
+  box-shadow: 0 2px 8px rgba(24,19,13,0.08);
+  transition: all var(--trans);
 }
 .hamburger span {
   display: block;
-  width: 24px; height: 2px;
-  background: var(--white);
+  width: 24px; height: 2.5px;
+  background: #fff;
   border-radius: 2px;
   transition: all var(--trans);
   transform-origin: center;
