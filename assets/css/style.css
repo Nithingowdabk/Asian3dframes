@@ -322,14 +322,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ── HERO ──────────────────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
-  background-image: url('/uploads/image.png'), url('/uploads/image.png');
-  background-size: contain, cover;
-  background-position: center bottom, center bottom;
-  background-repeat: no-repeat, no-repeat;
+  background-image: url('/uploads/image.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   padding: 120px 0 80px;
 }
 
@@ -1623,10 +1623,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     text-align: center;
     background-position: 58% center;
   }
-  .hero-title,
-  .hero-subtitle {
-    display: none;
-  }
   .hero-content { align-items: center; }
   .hero-subtitle { margin: 0 auto 36px; }
   .hero-collage {
@@ -1634,7 +1630,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     width: min(360px, 88vw);
     min-width: 0;
     height: 280px;
-    margin: 0 auto 0;
+    margin: 0 auto 16px;
     transform: scale(0.56);
     transform-origin: right center;
   }
