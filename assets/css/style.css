@@ -456,10 +456,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .hero-title {
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
   line-height: 1.1;
   color: var(--dark);
   margin-bottom: 20px;
+  animation: fadeInUp 0.8s var(--ease) forwards;
 }
 
 .gradient-text {
@@ -851,6 +852,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 @keyframes bounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── MARQUEE STRIP ─────────────────────────────────────────────────── */
