@@ -390,27 +390,37 @@
 	}
 
 	// ---------------------------------------------------------------------------
-	// 1) Mobile Navbar Toggle
+	// 1) Mobile Navbar Toggle (Side Drawer)
 	// ---------------------------------------------------------------------------
 	function setupMobileNavToggle() {
 		const hamburger = qs("#hamburger, .hamburger, [data-nav-toggle]");
-		const navLinks = qs("#navLinks, .nav-links, [data-nav-menu]");
-		if (!hamburger || !navLinks) return;
+		const sideDrawer = qs("#sideDrawer");
+		const drawerOverlay = qs("#drawerOverlay");
+		const drawerClose = qs("#drawerClose");
+		if (!hamburger || !sideDrawer || !drawerOverlay) return;
 
-		const toggle = () => {
-			hamburger.classList.toggle("active");
-			navLinks.classList.toggle("active");
-			document.body.classList.toggle("nav-open");
-		};
+		function openDrawer() {
+			sideDrawer.classList.add("open");
+			drawerOverlay.classList.add("open");
+			hamburger.classList.add("active");
+			document.body.style.overflow = "hidden";
+		}
+		function closeDrawer() {
+			sideDrawer.classList.remove("open");
+			drawerOverlay.classList.remove("open");
+			hamburger.classList.remove("active");
+			document.body.style.overflow = "";
+		}
 
-		hamburger.addEventListener("click", toggle);
-
-		qsa("a", navLinks).forEach((link) => {
-			link.addEventListener("click", () => {
-				hamburger.classList.remove("active");
-				navLinks.classList.remove("active");
-				document.body.classList.remove("nav-open");
-			});
+		hamburger.addEventListener("click", openDrawer);
+		if (drawerClose) drawerClose.addEventListener("click", closeDrawer);
+		drawerOverlay.addEventListener("click", closeDrawer);
+		qsa(".drawer-links .nav-link").forEach((link) => {
+			link.addEventListener("click", closeDrawer);
+		});
+		// Optional: close on Esc key
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && sideDrawer.classList.contains("open")) closeDrawer();
 		});
 	}
 
