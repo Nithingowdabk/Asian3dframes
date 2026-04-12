@@ -239,17 +239,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 @media (max-width: 700px) {
-  .nav-logo-bg {
-    padding: 4px 10px 4px 6px;
-    border-radius: 12px;
-  }
-  .nav-logo-bg .brand-logo-img {
-    height: 88px !important;
-    max-height: 88px;
-    width: auto;
-    margin-top: -8px;
-    margin-bottom: -8px;
-  }
+  /* No mobile override for logo: keep desktop style for both */
 }
 .logo-icon { font-size: 1.4rem; }
 .logo-accent { color: var(--gold-light); }
