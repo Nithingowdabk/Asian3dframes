@@ -1619,14 +1619,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   .hero {
     flex-direction: column;
-    padding: 120px 5% 60px;
+    padding: 48px 5% 60px;
     text-align: center;
     background-position: 58% center;
   }
+  .hero-content {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .hero-title {
+    margin-top: 0;
+  }
   .hero-content { align-items: center; }
-  .hero-title { margin-bottom: 8px; }
-  .hero-subtitle { margin: 0 auto 8px; }
-  .hero-btns { margin-bottom: 18px; }
+  .hero-subtitle { margin: 0 auto 36px; }
   .hero-collage {
     order: -1;
     width: min(360px, 88vw);
