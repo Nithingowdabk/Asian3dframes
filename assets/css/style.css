@@ -1600,6 +1600,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     gap: 42px;
   }
 
+  .hero-btns {
+    margin-top: 48px;
+  }
+
   .hero-collage {
     transform: scale(0.8);
     transform-origin: right center;
