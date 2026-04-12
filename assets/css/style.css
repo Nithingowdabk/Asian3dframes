@@ -237,19 +237,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
   .nav-logo-bg .brand-logo-img {
     height: 48px !important;
-
-  .hero-content {
-    position: static;
-  }
-
-  .hero-btns {
-    position: absolute;
-    right: 5%;
-    bottom: 28px;
-    margin-bottom: 0;
-    justify-content: flex-end;
-    z-index: 2;
-  }
   }
 }
 .logo-icon { font-size: 1.4rem; }
@@ -1611,6 +1598,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     min-height: 92vh;
     padding: 136px 5% 72px;
     gap: 42px;
+  }
+
+  .hero-content {
+    position: static;
+  }
+
+  .hero-btns {
+    position: absolute;
+    right: 5%;
+    bottom: 40px;
+    margin-bottom: 0;
+    justify-content: flex-end;
+    max-width: min(560px, 48vw);
+    z-index: 3;
   }
 
   .hero-collage {
