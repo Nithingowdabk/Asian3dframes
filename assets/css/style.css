@@ -224,7 +224,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .nav-logo-bg {
-  background: linear-gradient(120deg, #f7ecd7 0%, #d6f5c6 100%);
+  background: linear-gradient(120deg, #1a237e 0%, #3949ab 100%); /* Royal blue gradient */
   border-radius: 18px;
   box-shadow: 0 2px 12px 0 rgba(60,40,10,0.07);
   padding: 6px 18px 6px 12px;
@@ -239,7 +239,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     border-radius: 12px;
   }
   .nav-logo-bg .brand-logo-img {
-    height: 48px !important;
+    height: 68px !important;
+    max-height: 68px;
+    width: auto;
+    margin-top: -8px;
+    margin-bottom: -8px;
   }
 }
 .logo-icon { font-size: 1.4rem; }
