@@ -130,7 +130,7 @@
 	// Cart helpers (supports both legacy {qty,img} and new {quantity,image})
 	// ---------------------------------------------------------------------------
 	function normalizeCartItem(item) {
-		const id = Number(item?.id);
+		const id = Number(item?.id ?? item?.product_id);
 		if (!Number.isFinite(id) || id <= 0) return null;
 
 		const quantityRaw = Number(item?.quantity ?? item?.qty ?? 1);
