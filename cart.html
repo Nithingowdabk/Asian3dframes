@@ -449,15 +449,27 @@
 	</style>
 </head>
 <body>
-	<header class="navbar">
-		<div class="container nav-wrap">
-			<a href="index.html" class="logo"><img src="/uploads/Asian3DFrames_logo.png" alt="Asian3DFrames logo" class="brand-logo-img" style="height:58px;width:auto;display:block;" /></a>
+	<nav class="navbar" id="navbar">
+		<div class="nav-container">
+			<a href="index.html" class="nav-logo nav-logo-bg"><img src="/uploads/Asian3DFrames_logo.png" alt="Asian3DFrames logo" class="brand-logo-img" /></a>
+			<ul class="nav-links" id="navLinks">
+				<li><a href="index.html" class="nav-link">Home</a></li>
+				<li><a href="products.html" class="nav-link">Products</a></li>
+				<li><a href="index.html#upload-section" class="nav-link">Upload</a></li>
+				<li><a href="index.html#openAlbum" class="nav-link">Album</a></li>
+				<li><a href="index.html#contact" class="nav-link">Contact</a></li>
+			</ul>
 			<div class="nav-actions">
-				<a href="products.html" class="btn-link">Continue Shopping</a>
-				<span class="cart-pill" id="topCartCount"><i class="fas fa-cart-shopping" aria-hidden="true"></i> 0 Items</span>
+				<a href="cart.html" class="icon-btn cart-icon-btn" title="Cart">
+					<i class="fas fa-cart-shopping"></i>
+					<span class="cart-badge" id="cartBadge">0</span>
+				</a>
+				<button class="hamburger" id="hamburger" aria-label="Menu">
+					<span></span><span></span><span></span>
+				</button>
 			</div>
 		</div>
-	</header>
+	</nav>
 
 	<main class="page">
 		<div class="container">
