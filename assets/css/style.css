@@ -1600,20 +1600,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     gap: 42px;
   }
 
-  .hero-content {
-    position: static;
-  }
-
-  .hero-btns {
-    position: absolute;
-    right: 5%;
-    bottom: 40px;
-    margin-bottom: 0;
-    justify-content: flex-end;
-    max-width: min(560px, 48vw);
-    z-index: 3;
-  }
-
   .hero-collage {
     transform: scale(0.8);
     transform-origin: right center;
