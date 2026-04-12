@@ -1623,7 +1623,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     text-align: center;
     background-position: 58% center;
   }
-  .hero-content { align-items: center; order: -2; }
+  .hero-content { align-items: center; }
   .hero-subtitle { margin: 0 auto 36px; }
   .hero-collage {
     order: -1;
