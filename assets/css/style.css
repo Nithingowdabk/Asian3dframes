@@ -1648,11 +1648,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-subtitle { margin: 0 auto 36px; }
   .hero-collage {
     order: -1;
-    width: min(260px, 70vw);
+    width: min(360px, 88vw);
     min-width: 0;
-    height: 160px;
-    margin: 64px auto 0 auto;
-    transform: scale(0.44);
+    height: 280px;
+    margin: 64px auto 16px auto;
+    transform: scale(0.56);
     transform-origin: right center;
   }
   .hero-frame-a { width: 128px; height: 88px; left: 90px; top:0px; z-index: 4; }
