@@ -1595,8 +1595,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 @media (min-width: 901px) {
   .hero {
     flex-wrap: nowrap;
-    min-height: 82vh;
-    padding: 120px 5% 56px;
+    min-height: 92vh;
+    padding: 136px 5% 72px;
     gap: 42px;
   }
 
