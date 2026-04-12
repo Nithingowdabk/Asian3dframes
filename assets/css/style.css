@@ -322,10 +322,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ── HERO ──────────────────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
-  background-image: url('/uploads/image.png');
-  background-size: contain;
-  background-position: center bottom;
-  background-repeat: no-repeat;
+  background-image: url('/uploads/image.png'), url('/uploads/image.png');
+  background-size: contain, cover;
+  background-position: center bottom, center bottom;
+  background-repeat: no-repeat, no-repeat;
   display: flex;
   align-items: center;
   position: relative;
