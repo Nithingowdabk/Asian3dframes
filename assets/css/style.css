@@ -1495,8 +1495,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ── FOOTER ─────────────────────────────────────────────────────────── */
 .footer {
-  background: #c88d5d;
+  background: #18130d;
   padding: 80px 0 0;
+  color: #fff;
 }
 
 .footer-grid {
@@ -1507,7 +1508,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .footer-brand p {
-  color: rgba(255,255,255,.5);
+  color: rgba(255,255,255,.7);
   font-size: .9rem;
   margin: 16px 0 24px;
   line-height: 1.7;
@@ -1637,7 +1638,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     flex-direction: column;
     padding: 120px 5% 60px;
     text-align: center;
+    background-image: url('/uploads/WhatsApp Image 2026-04-12 at 12.40.47 PM.jpeg');
+    background-size: cover;
     background-position: 58% center;
+    background-repeat: no-repeat;
   }
   .hero-content { align-items: center; }
   .hero-subtitle { margin: 0 auto 36px; }
