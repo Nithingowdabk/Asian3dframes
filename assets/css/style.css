@@ -1601,7 +1601,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
 
   .hero-collage {
-    transform: scale(0.86);
+    transform: scale(0.8);
     transform-origin: right center;
   }
 }
@@ -1631,6 +1631,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     min-width: 0;
     height: 280px;
     margin: 0 auto 16px;
+    transform: scale(0.76);
+    transform-origin: right center;
   }
   .hero-frame-a { width: 128px; height: 88px; left: 90px; top:0px; z-index: 4; }
   .hero-frame-b { width: 168px; height: 128px; right: 95px; top: 95px; z-index: 5; }
