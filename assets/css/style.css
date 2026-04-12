@@ -1594,15 +1594,26 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ── RESPONSIVE ─────────────────────────────────────────────────────── */
 @media (min-width: 901px) {
   .hero {
-    flex-wrap: nowrap;
-    min-height: 92vh;
+    flex-wrap: wrap;
+    min-height: 93.5vh;
     padding: 136px 5% 72px;
     gap: 42px;
   }
 
+  .hero-content {
+    flex: 1 1 460px;
+  }
+
   .hero-collage {
-    transform: scale(0.8);
+    flex: 0 0 auto;
+    transform: scale(0.86);
     transform-origin: right center;
+  }
+
+  .hero-btns {
+    flex-basis: 100%;
+    justify-content: center;
+    margin-top: 24px;
   }
 }
 
