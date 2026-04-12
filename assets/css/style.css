@@ -1439,11 +1439,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .cta-content { position: relative; z-index: 1; }
 .cta-banner h2 {
   font-family: var(--font-heading);
-  font-size: clamp(2.1rem, 4vw, 3.2rem);
-  line-height: 1.1;
-  color: var(--dark);
-  margin-top: 0;
-  margin-bottom: 20px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: #3f2816;
+  margin-bottom: 16px;
+}
 .cta-banner p { color: rgba(63,40,22,.8); font-size: 1.05rem; margin-bottom: 36px; }
 
 .custom-form {
@@ -1649,11 +1648,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-subtitle { margin: 0 auto 36px; }
   .hero-collage {
     order: -1;
-    width: min(360px, 88vw);
+    width: min(260px, 70vw);
     min-width: 0;
-    height: 280px;
-    margin: 124px auto 0 auto;
-    transform: scale(0.56);
+    height: 160px;
+    margin: 64px auto 0 auto;
+    transform: scale(0.44);
     transform-origin: right center;
   }
   .hero-frame-a { width: 128px; height: 88px; left: 90px; top:0px; z-index: 4; }
