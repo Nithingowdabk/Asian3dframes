@@ -1651,7 +1651,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     width: min(360px, 88vw);
     min-width: 0;
     height: 280px;
-    margin: 0 auto 16px;
+    margin: 24px auto 16px auto;
     transform: scale(0.56);
     transform-origin: right center;
   }
