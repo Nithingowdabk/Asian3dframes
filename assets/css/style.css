@@ -183,22 +183,27 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   z-index: 1000;
   padding: 22px 0;
   transition: all var(--trans);
-  background: rgba(18, 14, 11, .38);
+  background: #fff;
   backdrop-filter: blur(12px) saturate(130%);
   -webkit-backdrop-filter: blur(12px) saturate(130%);
-  border-bottom: 1px solid rgba(255,255,255,.1);
+  border-bottom: 1px solid #eee;
+  color: var(--dark);
 }
 .navbar.scrolled {
-  background: rgba(255,255,255,.78);
+  background: #fff;
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   padding: 14px 0;
   box-shadow: var(--shadow-sm);
-  border-bottom: 1px solid rgba(20,16,12,.08);
+  border-bottom: 1px solid #eee;
+  color: var(--dark);
 }
 .navbar.scrolled .nav-logo,
-.navbar.scrolled .nav-link,
-.navbar.scrolled .icon-btn { color: var(--dark); }
+ .navbar.scrolled .nav-link,
+ .navbar.scrolled .icon-btn,
+ .navbar .nav-logo,
+ .navbar .nav-link,
+ .navbar .icon-btn { color: var(--dark); }
 
 .nav-container {
   display: flex;
@@ -1636,12 +1641,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   .hero {
     flex-direction: column;
-    padding: 8px 0 4px !important;
-    min-height: 12vh !important;
+    padding: 4px 0 2px !important;
+    min-height: 6vh !important;
     text-align: center;
     background-image: url('/uploads/WhatsApp Image 2026-04-12 at 12.40.47 PM.jpeg');
     background-size: cover;
-    background-position: 58% center;
+    background-position: 48% center;
     background-repeat: no-repeat;
   }
   .hero-content { align-items: center; }
@@ -1651,7 +1656,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     width: min(360px, 88vw);
     min-width: 0;
     height: 280px;
-    margin: 0 auto 16px;
+    margin: 144px auto -124px auto;
     transform: scale(0.56);
     transform-origin: right center;
   }
