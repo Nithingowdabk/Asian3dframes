@@ -1594,26 +1594,24 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* ── RESPONSIVE ─────────────────────────────────────────────────────── */
 @media (min-width: 901px) {
   .hero {
-    flex-wrap: wrap;
-    min-height: 93.5vh;
+    flex-wrap: nowrap;
+    min-height: 92vh;
     padding: 136px 5% 72px;
     gap: 42px;
   }
 
-  .hero-content {
-    flex: 1 1 460px;
-  }
-
   .hero-collage {
-    flex: 0 0 auto;
-    transform: scale(0.86);
+    transform: scale(0.8);
     transform-origin: right center;
   }
 
   .hero-btns {
-    flex-basis: 100%;
-    justify-content: center;
-    margin-top: 24px;
+    position: absolute;
+    bottom: 40px;
+    right: 5%;
+    margin-bottom: 0;
+    flex-direction: column;
+    gap: 12px;
   }
 }
 
