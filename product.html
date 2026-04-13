@@ -423,7 +423,7 @@
       box-shadow: 0 18px 42px rgba(94, 66, 42, .14);
       padding: 14px;
       max-width: 560px;
-      grid-template-columns: minmax(0, 1fr) 88px;
+      grid-template-columns: minmax(0, 1fr);
       gap: 12px;
     }
     .media-slider {
@@ -457,6 +457,7 @@
       padding: 8px;
       gap: 8px;
       backdrop-filter: blur(6px);
+      width: 100%;
     }
     .mockup-inline-head {
       display: flex;
@@ -492,13 +493,20 @@
       background: linear-gradient(180deg, #fff, #f7f4ef);
     }
     .mockup-scenes {
+      display: flex;
       gap: 8px;
+      overflow-x: auto;
+      overflow-y: hidden;
       padding-right: 2px;
+      padding-bottom: 2px;
+      scrollbar-width: thin;
     }
     .mockup-scenes::-webkit-scrollbar-thumb { background: #b8a18c; }
     .mockup-scenes::-webkit-scrollbar-thumb:hover { background: #a88668; }
     .mockup-scene-tab {
-      width: 100%;
+      width: 68px;
+      height: 92px;
+      flex: 0 0 68px;
       border: 1px solid rgba(0,0,0,.14);
       border-radius: 12px;
       background: #fff;
@@ -525,7 +533,7 @@
     }
     @media (max-width: 1024px) {
       .product-layout { grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr); gap: 18px; }
-      .media-card { max-width: 470px; padding: 10px; grid-template-columns: minmax(0, 1fr) 80px; gap: 10px; }
+      .media-card { max-width: 470px; padding: 10px; grid-template-columns: minmax(0, 1fr); gap: 10px; }
       .media-slider { max-width: 100%; }
       .main-image, .mockup-canvas-wrap canvas { max-height: none; }
       .mockup-canvas-wrap { width: 100%; }
