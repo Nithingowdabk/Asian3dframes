@@ -1155,7 +1155,7 @@ h1, h2, h3, h4, h5, h6,
 }
 .overlay-btn:hover { background: var(--gold); color: var(--white); }
 
-.product-info { padding: 12px; }
+.product-info { padding: 8px 10px 6px 10px; min-height: 0; }
 
 .product-cat {
   font-size: .7rem;
@@ -1850,7 +1850,7 @@ h1, h2, h3, h4, h5, h6,
   .categories-grid { gap: 12px; }
   .products-grid   { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .product-card    { max-width: 100%; }
-  .product-info    { padding: 10px 10px; }
+  .product-info    { padding: 6px 8px; min-height: 0; }
   .product-name    { font-size: .86rem; }
   .product-price   { font-size: .92rem; }
   .how-section { padding: 34px 0; }
