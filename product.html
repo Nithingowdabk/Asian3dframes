@@ -34,7 +34,7 @@
           border-color: var(--gold);
         }
     .page-wrap { padding: 106px 0 54px; background: #f8f8fb; min-height: 100vh; }
-    .product-layout { display: grid; grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr); gap: 22px; align-items: start; }
+    .product-layout { display: grid; grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr); gap: 22px; align-items: stretch; }
     .media-card, .info-card { background: #fff; border: 1px solid rgba(0,0,0,.06); border-radius: 18px; box-shadow: var(--shadow-sm); }
     .media-card { border: 0; }
     .media-card { padding: 7px; max-width: 420px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) 64px; gap: 5px; align-items: stretch; height: 100%; }
@@ -54,7 +54,7 @@
     .thumb-btn { border:1px solid rgba(0,0,0,.12); background:#fff; border-radius:10px; padding:0; overflow:hidden; cursor:pointer; aspect-ratio:3/4; }
     .thumb-btn img { width:100%; height:100%; object-fit:cover; display:block; }
     .thumb-btn.is-active { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(200,149,108,.18); }
-    .info-card { padding: 22px; align-self: start; }
+    .info-card { padding: 22px; }
     .cat-chip { display:inline-block; background: rgba(200,149,108,.12); color: var(--gold-dark); padding: 5px 11px; border-radius: 999px; font-size: .7rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; }
     .best-chip { display:none; margin-left: 8px; background: linear-gradient(135deg,var(--gold),var(--gold-dark)); color:#fff; }
     .name { font-family: var(--font-heading); font-size: clamp(1.38rem, 2.3vw, 1.95rem); line-height: 1.15; margin-bottom: 8px; color: var(--dark); }
@@ -423,17 +423,19 @@
       box-shadow: 0 18px 42px rgba(94, 66, 42, .14);
       padding: 12px;
       max-width: 520px;
-      grid-template-columns: minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr) 86px;
       gap: 10px;
+      align-items: stretch;
     }
     .media-slider {
       border-radius: 16px;
       min-height: 500px;
-      max-width: 500px;
-      margin: 0 auto;
+      max-width: 100%;
+      margin: 0;
       background: radial-gradient(circle at 22% 15%, rgba(255,255,255,.95), rgba(245,238,228,.7));
       border: 1px solid rgba(160,112,74,.14);
       box-shadow: inset 0 0 0 1px rgba(255,255,255,.64);
+      grid-column: 1 / 2;
     }
     .media-slide {
       display: grid;
@@ -460,8 +462,10 @@
       gap: 6px;
       backdrop-filter: blur(6px);
       width: 100%;
-      max-width: 500px;
-      margin: 0 auto;
+      max-width: none;
+      margin: 0;
+      grid-column: 2 / 3;
+      min-height: 500px;
     }
     .mockup-inline-head {
       display: flex;
@@ -496,21 +500,35 @@
       letter-spacing: .07em;
       background: linear-gradient(180deg, #fff, #f7f4ef);
     }
-    .mockup-scenes {
-      display: flex;
+    .info-orientation .mockup-toolbar { margin-bottom: 0; }
+    .info-orientation .mockup-orientation-group {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px;
-      overflow-x: auto;
-      overflow-y: hidden;
-      padding-right: 2px;
-      padding-bottom: 2px;
+      max-width: 240px;
+    }
+    .info-orientation .mockup-orientation-btn {
+      min-height: 34px;
+      font-size: .72rem;
+      padding: 7px 10px;
+    }
+    .mockup-scenes {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding-right: 1px;
+      padding-bottom: 0;
       scrollbar-width: thin;
     }
     .mockup-scenes::-webkit-scrollbar-thumb { background: #b8a18c; }
     .mockup-scenes::-webkit-scrollbar-thumb:hover { background: #a88668; }
     .mockup-scene-tab {
-      width: 68px;
-      height: 92px;
-      flex: 0 0 68px;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3/4;
+      flex: none;
       border: 1px solid rgba(0,0,0,.14);
       border-radius: 12px;
       background: #fff;
@@ -538,6 +556,8 @@
     @media (max-width: 1024px) {
       .product-layout { grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr); gap: 18px; }
       .media-card { max-width: 470px; padding: 10px; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+      .media-slider { grid-column: auto; }
+      .mockup-inline-tools { grid-column: auto; min-height: auto; }
       .media-slider { max-width: 100%; }
       .main-image, .mockup-canvas-wrap canvas { max-height: none; }
       .mockup-canvas-wrap { width: 100%; }
@@ -562,13 +582,12 @@
       .mockup-canvas-wrap { width: 100%; aspect-ratio: 3/4; height: auto; }
       .mockup-inline-tools { margin-top: 0; height: auto; display: block; }
       .mockup-inline-head { display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 8px; }
-      .mockup-toolbar { margin-bottom: 12px; }
-      .mockup-orientation-group { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .mockup-orientation-btn { padding: 7px 14px; font-size: .76rem; }
       .mockup-frame-meta { flex-direction: row; gap: 8px; font-size: .74rem; }
       .mockup-scenes { display:flex; gap:8px; overflow-x:auto; overflow-y:hidden; padding-bottom: 2px; }
       .mockup-scene-tab { width: 62px; height: 84px; aspect-ratio: auto; flex: 0 0 62px; }
       .mockup-thumb { width: 100%; height: 100%; }
+      .info-orientation .mockup-orientation-group { max-width: none; }
+      .info-orientation .mockup-orientation-btn { padding: 7px 14px; font-size: .76rem; }
       .info-card { padding: 18px; }
       .trust-badges { grid-template-columns: 1fr; gap: 8px; }
       .trust-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
@@ -660,26 +679,6 @@
           </div>
 
           <div class="mockup-inline-tools" id="mockupCustomizer">
-
-            <div class="mockup-toolbar">
-              <div class="mockup-orientation-group" role="group" aria-label="Photo orientation">
-                <button
-                  type="button"
-                  class="mockup-orientation-btn is-active"
-                  data-photo-orientation="vertical"
-                  aria-label="Portrait orientation"
-                  aria-pressed="true"
-                >Portrait</button>
-                <button
-                  type="button"
-                  class="mockup-orientation-btn"
-                  data-photo-orientation="horizontal"
-                  aria-label="Landscape orientation"
-                  aria-pressed="false"
-                >Landscape</button>
-              </div>
-            </div>
-
             <div class="mockup-scenes" role="tablist" aria-label="Mockup scenes">
                             <button class="mockup-scene-tab" type="button" role="tab" data-scene="main_image">
                               <img src="https://placehold.co/48x64/f8f8f8/b7b7b7?text=Main" alt="Main Image" class="mockup-thumb" />
@@ -724,6 +723,28 @@
             <span class="old-price" id="pOldPrice"></span>
           </div>
           <p class="desc" id="pDesc">Please wait while we load the product details.</p>
+
+          <div class="option-block info-orientation">
+            <span class="option-title">Photo Orientation</span>
+            <div class="mockup-toolbar">
+              <div class="mockup-orientation-group" role="group" aria-label="Photo orientation">
+                <button
+                  type="button"
+                  class="mockup-orientation-btn is-active"
+                  data-photo-orientation="vertical"
+                  aria-label="Portrait orientation"
+                  aria-pressed="true"
+                >Portrait</button>
+                <button
+                  type="button"
+                  class="mockup-orientation-btn"
+                  data-photo-orientation="horizontal"
+                  aria-label="Landscape orientation"
+                  aria-pressed="false"
+                >Landscape</button>
+              </div>
+            </div>
+          </div>
 
           <div class="option-block">
             <span class="option-title">Frame Type</span>
