@@ -1322,7 +1322,7 @@
 			const bottom = Math.min(canvas.height, rect.y + rect.h + pad);
 
 			ctx.save();
-			ctx.fillStyle = "rgba(8, 10, 14, 0.56)";
+			ctx.fillStyle = "rgba(8, 10, 14, 0.40)";
 			ctx.fillRect(0, 0, canvas.width, top);
 			ctx.fillRect(0, bottom, canvas.width, canvas.height - bottom);
 			ctx.fillRect(0, top, left, bottom - top);
@@ -1337,8 +1337,8 @@
 				Math.max(canvas.width, canvas.height) * 0.72
 			);
 			vignette.addColorStop(0, "rgba(0,0,0,0)");
-			vignette.addColorStop(0.58, "rgba(0,0,0,0.24)");
-			vignette.addColorStop(1, "rgba(0,0,0,0.48)");
+			vignette.addColorStop(0.62, "rgba(0,0,0,0.14)");
+			vignette.addColorStop(1, "rgba(0,0,0,0.30)");
 			ctx.fillStyle = vignette;
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -1350,9 +1350,9 @@
 				rect.y + rect.h / 2,
 				Math.max(rect.w, rect.h) * 1.12
 			);
-			focusGlow.addColorStop(0, "rgba(255, 248, 220, 0.52)");
-			focusGlow.addColorStop(0.45, "rgba(255, 236, 184, 0.30)");
-			focusGlow.addColorStop(0.75, "rgba(255, 224, 156, 0.15)");
+			focusGlow.addColorStop(0, "rgba(255, 248, 220, 0.44)");
+			focusGlow.addColorStop(0.45, "rgba(255, 236, 184, 0.22)");
+			focusGlow.addColorStop(0.75, "rgba(255, 224, 156, 0.10)");
 			focusGlow.addColorStop(1, "rgba(255, 230, 170, 0)");
 			ctx.globalCompositeOperation = "screen";
 			ctx.fillStyle = focusGlow;
