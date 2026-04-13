@@ -1110,61 +1110,7 @@
 			photo: null,
 			photoName: "No photo selected",
 			hasUserUpload: false,
-			photoOrientation: "vertical",
-			backlightEnabled: true,
-			backlightIntensity: 1
-		};
-		let backlightAnimId = 0;
-
-		const backlightControl = qs("#backlightPullControl");
-		const backlightSwitch = qs("#backlightSwitch");
-		const backlightThread = qs("#backlightPullThread");
-		const backlightStatus = qs("#backlightStatus");
-
-		const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-
-		const animateBacklightTo = (target) => {
-			const clampedTarget = Math.max(0, Math.min(1, Number(target) || 0));
-			if (backlightAnimId) cancelAnimationFrame(backlightAnimId);
-			const from = state.backlightIntensity;
-			const start = performance.now();
-			const duration = 320;
-
-			const tick = (now) => {
-				const p = Math.min(1, (now - start) / duration);
-				state.backlightIntensity = from + (clampedTarget - from) * easeOutCubic(p);
-				draw();
-				if (p < 1) {
-					backlightAnimId = requestAnimationFrame(tick);
-				} else {
-					state.backlightIntensity = clampedTarget;
-					backlightAnimId = 0;
-				}
-			};
-
-			backlightAnimId = requestAnimationFrame(tick);
-		};
-
-		const syncBacklightControl = (animate = false) => {
-			const options = getCurrentOptions();
-			const isMobile = options.frameType === "mobile";
-			if (backlightControl) backlightControl.classList.toggle("is-visible", isMobile);
-			if (backlightSwitch) backlightSwitch.setAttribute("aria-hidden", isMobile ? "false" : "true");
-
-			const shouldBeOn = isMobile && state.backlightEnabled;
-			if (backlightControl) {
-				backlightControl.classList.toggle("is-on", shouldBeOn);
-				backlightControl.classList.remove("is-pulse");
-			}
-			if (backlightSwitch) backlightSwitch.setAttribute("aria-pressed", shouldBeOn ? "true" : "false");
-			if (backlightStatus) backlightStatus.textContent = shouldBeOn ? "Pull thread to turn off" : "Pull thread to turn on";
-
-			const target = shouldBeOn ? 1 : 0;
-			if (animate) {
-				animateBacklightTo(target);
-			} else {
-				state.backlightIntensity = target;
-			}
+			photoOrientation: "vertical"
 		};
 
 		const escSrc = (src) => String(src || "").trim();
@@ -1319,8 +1265,8 @@
 			ctx.restore();
 		};
 
-		const drawBacklightGlow = (rect, frameType, intensity = 1) => {
-			if (frameType !== "mobile" || intensity <= 0.01) return;
+		const drawBacklightGlow = (rect, frameType) => {
+			if (frameType !== "mobile") return;
 			const cx = rect.x + rect.w / 2;
 			const cy = rect.y + rect.h / 2;
 			const innerR = Math.max(rect.w, rect.h) * 0.89;
@@ -1332,43 +1278,43 @@
 			ctx.clip();
 			ctx.globalCompositeOperation = "screen";
 			const warmBloom = ctx.createRadialGradient(cx, cy, innerR, cx, cy, outerR);
-			warmBloom.addColorStop(0, `rgba(255, 248, 225, ${0.68 * intensity})`);
-			warmBloom.addColorStop(0.42, `rgba(248, 220, 165, ${0.36 * intensity})`);
-			warmBloom.addColorStop(0.78, `rgba(236, 196, 120, ${0.18 * intensity})`);
+			warmBloom.addColorStop(0, "rgba(255, 248, 225, 0.68)");
+			warmBloom.addColorStop(0.42, "rgba(248, 220, 165, 0.36)");
+			warmBloom.addColorStop(0.78, "rgba(236, 196, 120, 0.18)");
 			warmBloom.addColorStop(1, "rgba(236, 196, 120, 0)");
 			ctx.fillStyle = warmBloom;
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 
 			const topAura = ctx.createLinearGradient(rect.x, rect.y, rect.x, rect.y + rect.h);
-			topAura.addColorStop(0, `rgba(255, 251, 239, ${0.25 * intensity})`);
-			topAura.addColorStop(0.38, `rgba(255, 241, 210, ${0.12 * intensity})`);
+			topAura.addColorStop(0, "rgba(255, 251, 239, 0.25)");
+			topAura.addColorStop(0.38, "rgba(255, 241, 210, 0.12)");
 			topAura.addColorStop(1, "rgba(255, 241, 210, 0)");
 			ctx.fillStyle = topAura;
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 			ctx.restore();
 		};
 
-		const drawPhotoGloss = (rect, frameType, intensity = 1) => {
-			if (frameType !== "mobile" || intensity <= 0.01) return;
+		const drawPhotoGloss = (rect, frameType) => {
+			if (frameType !== "mobile") return;
 
 			const gloss = ctx.createLinearGradient(rect.x, rect.y, rect.x, rect.y + rect.h);
-			gloss.addColorStop(0, `rgba(255,255,255,${0.30 * intensity})`);
-			gloss.addColorStop(0.28, `rgba(255,255,255,${0.12 * intensity})`);
-			gloss.addColorStop(0.55, `rgba(255,255,255,${0.03 * intensity})`);
+			gloss.addColorStop(0, "rgba(255,255,255,.30)");
+			gloss.addColorStop(0.28, "rgba(255,255,255,.12)");
+			gloss.addColorStop(0.55, "rgba(255,255,255,.03)");
 			gloss.addColorStop(1, "rgba(255,255,255,0)");
 			ctx.fillStyle = gloss;
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 
 			// Subtle diagonal highlight gives a glassy look.
 			const sweep = ctx.createLinearGradient(rect.x, rect.y, rect.x + rect.w, rect.y + rect.h);
-			sweep.addColorStop(0, `rgba(255,255,255,${0.20 * intensity})`);
-			sweep.addColorStop(0.22, `rgba(255,255,255,${0.06 * intensity})`);
+			sweep.addColorStop(0, "rgba(255,255,255,.20)");
+			sweep.addColorStop(0.22, "rgba(255,255,255,.06)");
 			sweep.addColorStop(0.45, "rgba(255,255,255,0)");
 			ctx.fillStyle = sweep;
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 		};
 
-		const drawSceneDimming = (rect, frameType, intensity = 1) => {
+		const drawSceneDimming = (rect, frameType) => {
 			const pad = Math.max(14, Math.min(rect.w, rect.h) * 0.05);
 			const left = Math.max(0, rect.x - pad);
 			const top = Math.max(0, rect.y - pad);
@@ -1396,7 +1342,7 @@
 			ctx.fillStyle = vignette;
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-			if (frameType === "mobile" && intensity > 0.01) {
+			if (frameType === "mobile") {
 				const focusGlow = ctx.createRadialGradient(
 					rect.x + rect.w / 2,
 					rect.y + rect.h / 2,
@@ -1405,9 +1351,9 @@
 					rect.y + rect.h / 2,
 					Math.max(rect.w, rect.h) * 1.12
 				);
-				focusGlow.addColorStop(0, `rgba(255, 248, 220, ${0.44 * intensity})`);
-				focusGlow.addColorStop(0.45, `rgba(255, 236, 184, ${0.22 * intensity})`);
-				focusGlow.addColorStop(0.75, `rgba(255, 224, 156, ${0.10 * intensity})`);
+				focusGlow.addColorStop(0, "rgba(255, 248, 220, 0.44)");
+				focusGlow.addColorStop(0.45, "rgba(255, 236, 184, 0.22)");
+				focusGlow.addColorStop(0.75, "rgba(255, 224, 156, 0.10)");
 				focusGlow.addColorStop(1, "rgba(255, 230, 170, 0)");
 				ctx.save();
 				ctx.beginPath();
@@ -1441,19 +1387,19 @@
 			ctx.restore();
 		};
 
-		const drawProductPop = (rect, frameType, intensity = 1) => {
-			if (frameType !== "mobile" || intensity <= 0.01) return;
+		const drawProductPop = (rect, frameType) => {
+			if (frameType !== "mobile") return;
 			ctx.save();
-			ctx.strokeStyle = `rgba(255, 246, 214, ${0.72 * intensity})`;
+			ctx.strokeStyle = "rgba(255, 246, 214, 0.72)";
 			ctx.lineWidth = Math.max(4, rect.w * 0.014);
-			ctx.shadowColor = `rgba(255, 228, 164, ${0.46 * intensity})`;
+			ctx.shadowColor = "rgba(255, 228, 164, 0.46)";
 			ctx.shadowBlur = Math.max(12, rect.w * 0.04);
 			ctx.strokeRect(rect.x + 1.5, rect.y + 1.5, rect.w - 3, rect.h - 3);
 
 			const rimGlow = ctx.createLinearGradient(rect.x, rect.y, rect.x, rect.y + rect.h);
-			rimGlow.addColorStop(0, `rgba(255,255,255,${0.30 * intensity})`);
-			rimGlow.addColorStop(0.26, `rgba(255,255,255,${0.14 * intensity})`);
-			rimGlow.addColorStop(0.55, `rgba(255,244,214,${0.06 * intensity})`);
+			rimGlow.addColorStop(0, "rgba(255,255,255,0.30)");
+			rimGlow.addColorStop(0.26, "rgba(255,255,255,0.14)");
+			rimGlow.addColorStop(0.55, "rgba(255,244,214,0.06)");
 			rimGlow.addColorStop(1, "rgba(255,255,255,0)");
 			ctx.fillStyle = rimGlow;
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
@@ -1466,8 +1412,8 @@
 				rect.y + rect.h / 2,
 				Math.max(rect.w, rect.h) * 0.70
 			);
-			centerBoost.addColorStop(0, `rgba(255, 246, 224, ${0.20 * intensity})`);
-			centerBoost.addColorStop(0.65, `rgba(255, 246, 224, ${0.08 * intensity})`);
+			centerBoost.addColorStop(0, "rgba(255, 246, 224, 0.20)");
+			centerBoost.addColorStop(0.65, "rgba(255, 246, 224, 0.08)");
 			centerBoost.addColorStop(1, "rgba(255, 246, 224, 0)");
 			ctx.globalCompositeOperation = "screen";
 			ctx.fillStyle = centerBoost;
@@ -1515,7 +1461,7 @@
 				containDraw(sceneImg, 0, 0, canvas.width, canvas.height);
 
 				const rect = rectFromScene(state.scene, options.frameSize, state.photoOrientation);
-				drawSceneDimming(rect, options.frameType, state.backlightIntensity);
+				drawSceneDimming(rect, options.frameType);
 				drawFrameDepthShadow(rect, options.frameType, state.photoOrientation);
 
 				ctx.save();
@@ -1525,15 +1471,15 @@
 				if (state.photo) {
 					// Use cover so photo fills frame opening without top/bottom gaps.
 					coverDraw(state.photo, rect.x, rect.y, rect.w, rect.h);
-					drawBacklightGlow(rect, options.frameType, state.backlightIntensity);
-					drawPhotoGloss(rect, options.frameType, state.backlightIntensity);
-					drawProductPop(rect, options.frameType, state.backlightIntensity);
+					drawBacklightGlow(rect, options.frameType);
+					drawPhotoGloss(rect, options.frameType);
+					drawProductPop(rect, options.frameType);
 				} else {
 					ctx.fillStyle = "#d9d9dd";
 					ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
-					drawBacklightGlow(rect, options.frameType, state.backlightIntensity);
-					drawPhotoGloss(rect, options.frameType, state.backlightIntensity);
-					drawProductPop(rect, options.frameType, state.backlightIntensity);
+					drawBacklightGlow(rect, options.frameType);
+					drawPhotoGloss(rect, options.frameType);
+					drawProductPop(rect, options.frameType);
 				}
 				ctx.restore();
 
@@ -1590,73 +1536,8 @@
 		document.addEventListener("click", (event) => {
 			const control = event.target instanceof Element ? event.target.closest("[data-frame-type], [data-frame-size], [data-frame-color]") : null;
 			if (!control) return;
-			window.setTimeout(() => {
-				syncBacklightControl(true);
-				draw();
-			}, 0);
+			window.setTimeout(draw, 0);
 		});
-
-		if (backlightSwitch && backlightThread && backlightControl) {
-			let dragging = false;
-			let startY = 0;
-			let pullDelta = 0;
-
-			const maxPull = 30;
-			const threshold = 16;
-			const applyPull = (value) => {
-				pullDelta = Math.max(0, Math.min(maxPull, value));
-				backlightControl.style.setProperty("--pull-delta", `${pullDelta}px`);
-			};
-
-			const toggleBacklight = () => {
-				const options = getCurrentOptions();
-				if (options.frameType !== "mobile") return;
-				state.backlightEnabled = !state.backlightEnabled;
-				backlightControl.classList.remove("is-pulse");
-				void backlightControl.offsetWidth;
-				backlightControl.classList.add("is-pulse");
-				syncBacklightControl(true);
-			};
-
-			const endDrag = () => {
-				if (!dragging) return;
-				dragging = false;
-				backlightSwitch.classList.remove("is-dragging");
-				backlightControl.style.setProperty("--pull-delta", "0px");
-				if (pullDelta >= threshold) toggleBacklight();
-				pullDelta = 0;
-			};
-
-			const onMove = (event) => {
-				if (!dragging) return;
-				const clientY = event.touches ? event.touches[0]?.clientY : event.clientY;
-				if (typeof clientY !== "number") return;
-				applyPull(clientY - startY);
-			};
-
-			const startDrag = (event) => {
-				const options = getCurrentOptions();
-				if (options.frameType !== "mobile") return;
-				dragging = true;
-				const clientY = event.touches ? event.touches[0]?.clientY : event.clientY;
-				startY = typeof clientY === "number" ? clientY : 0;
-				backlightSwitch.classList.add("is-dragging");
-				event.preventDefault();
-			};
-
-			backlightSwitch.addEventListener("mousedown", startDrag);
-			backlightSwitch.addEventListener("touchstart", startDrag, { passive: false });
-			document.addEventListener("mousemove", onMove);
-			document.addEventListener("touchmove", onMove, { passive: true });
-			document.addEventListener("mouseup", endDrag);
-			document.addEventListener("touchend", endDrag);
-
-			backlightSwitch.addEventListener("keydown", (event) => {
-				if (event.key !== "Enter" && event.key !== " ") return;
-				event.preventDefault();
-				toggleBacklight();
-			});
-		}
 
 		const mainImage = qs("#pImage");
 		if (mainImage) {
@@ -1673,7 +1554,6 @@
 		// Custom preview logic removed: mockup always uses main product image
 
 		syncMeta();
-		syncBacklightControl(false);
 		setTabState();
 		draw();
 	}

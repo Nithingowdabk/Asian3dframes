@@ -162,92 +162,6 @@
       line-height: 1.42;
     }
     .mobile-frame-info-wrap { margin-top: 10px; }
-    .backlight-pull-control {
-      --pull-delta: 0px;
-      margin-top: 10px;
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      border: 1px solid rgba(200,149,108,.28);
-      background: linear-gradient(135deg, rgba(255,248,236,.95), rgba(255,255,255,.96));
-      border-radius: 12px;
-      padding: 10px 12px;
-    }
-    .backlight-pull-control.is-visible { display: flex; }
-    .backlight-label {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      color: #5b4635;
-      font-size: .76rem;
-      letter-spacing: .02em;
-    }
-    .backlight-label strong {
-      font-size: .8rem;
-      color: #3d2a1f;
-    }
-    .backlight-switch {
-      position: relative;
-      width: 54px;
-      height: 76px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      user-select: none;
-      touch-action: none;
-    }
-    .backlight-switch::before {
-      content: "";
-      width: 2px;
-      height: 34px;
-      background: linear-gradient(180deg, rgba(140,140,140,.8), rgba(110,110,110,.35));
-      border-radius: 999px;
-      transform: translateY(var(--pull-delta));
-      transition: transform .24s ease;
-    }
-    .backlight-pull-knob {
-      width: 16px;
-      height: 16px;
-      margin-top: -1px;
-      border-radius: 999px;
-      border: 1px solid rgba(90,90,90,.35);
-      background: radial-gradient(circle at 30% 30%, #ffffff, #d7d7d7);
-      box-shadow: 0 2px 6px rgba(0,0,0,.16);
-      transform: translateY(var(--pull-delta));
-      transition: transform .24s ease;
-      cursor: grab;
-    }
-    .backlight-switch.is-dragging .backlight-pull-knob { cursor: grabbing; }
-    .backlight-bulb {
-      width: 30px;
-      height: 30px;
-      margin-top: 6px;
-      border-radius: 999px;
-      border: 1px solid rgba(182,145,95,.35);
-      background: radial-gradient(circle at 35% 30%, #fffef8 0%, #f5efe1 45%, #c6b08f 100%);
-      color: #6f4f26;
-      display: grid;
-      place-items: center;
-      box-shadow: inset 0 1px 2px rgba(255,255,255,.8), 0 6px 12px rgba(0,0,0,.14);
-      transition: box-shadow .28s ease, filter .28s ease, background .28s ease;
-      font-size: .86rem;
-      line-height: 1;
-    }
-    .backlight-pull-control.is-on .backlight-bulb {
-      background: radial-gradient(circle at 35% 30%, #fffbe9 0%, #ffe9b0 46%, #d39f4d 100%);
-      box-shadow: 0 0 0 3px rgba(255,220,140,.28), 0 0 20px rgba(255,196,90,.58), 0 8px 14px rgba(0,0,0,.18);
-      filter: saturate(1.14);
-    }
-    .backlight-pull-control.is-pulse .backlight-bulb {
-      animation: backlightPulse .34s ease;
-    }
-    @keyframes backlightPulse {
-      0% { transform: scale(1); }
-      45% { transform: scale(1.08); }
-      100% { transform: scale(1); }
-    }
     .mobile-frame-info-btn {
       border: 1px solid rgba(200,149,108,.55);
       background: linear-gradient(135deg, #fff4ea, #fffdf9);
@@ -855,16 +769,6 @@
               <button type="button" class="pill-btn" data-frame-type="normal" aria-pressed="false">Normal Frame</button>
             </div>
             <p id="frameTypeHint" class="frame-type-note">Mobile Frame: Slim bezel, glossy photo finish, and warm backlight effect.</p>
-            <div class="backlight-pull-control is-visible is-on" id="backlightPullControl" aria-live="polite">
-              <div class="backlight-label">
-                <strong>Backlight Switch</strong>
-                <span id="backlightStatus">Pull thread to turn off</span>
-              </div>
-              <div class="backlight-switch" id="backlightSwitch" role="button" aria-label="Pull thread to toggle backlight" aria-pressed="true" tabindex="0">
-                <span class="backlight-pull-knob" id="backlightPullThread" aria-hidden="true"></span>
-                <span class="backlight-bulb" aria-hidden="true"><i class="fas fa-lightbulb"></i></span>
-              </div>
-            </div>
             <div class="mobile-frame-info-wrap">
               <button type="button" id="mobileFrameInfoBtn" class="mobile-frame-info-btn">
                 <i class="fas fa-circle-info"></i>
