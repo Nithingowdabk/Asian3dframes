@@ -207,6 +207,19 @@ h1, h2, h3, h4, h5, h6,
   border-bottom: 1px solid rgba(26,21,16,.12);
 }
 
+@keyframes navBrandFloat {
+  0%, 100% {
+    opacity: .76;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 2px 8px rgba(60, 38, 18, .12);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, calc(-50% - 1px));
+    text-shadow: 0 6px 18px rgba(200, 149, 108, .35);
+  }
+}
+
 .navbar .nav-logo,
 .navbar .nav-link,
 .navbar .icon-btn,
@@ -224,7 +237,6 @@ h1, h2, h3, h4, h5, h6,
   max-width: 1240px;
   margin: 0 auto;
   gap: 18px;
-  position: relative;
 }
 
 .nav-logo {
@@ -274,44 +286,6 @@ h1, h2, h3, h4, h5, h6,
 }
 .logo-icon { font-size: 1.4rem; }
 .logo-accent { color: var(--gold-light); }
-
-.nav-brand-text {
-  display: none;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-heading);
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--dark);
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  animation: brandPulse 3.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-@keyframes brandPulse {
-  0% {
-    opacity: 0.8;
-    letter-spacing: 0.02em;
-  }
-  50% {
-    opacity: 1;
-    letter-spacing: 0.08em;
-  }
-  100% {
-    opacity: 0.8;
-    letter-spacing: 0.02em;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-logo-bg {
-    display: none;
-  }
-  .nav-brand-text {
-    display: block;
-  }
-}
 
 .nav-links {
   display: flex;
@@ -1768,7 +1742,28 @@ h1, h2, h3, h4, h5, h6,
 
 @media (max-width: 768px) {
   .navbar { padding: 10px 0; }
-  .nav-container { width: 94%; }
+  .nav-container {
+    width: 94%;
+    position: relative;
+  }
+  .nav-container::after {
+    content: "Asian 3D Frames";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 156px);
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: clamp(.72rem, 3.3vw, .95rem);
+    letter-spacing: .06em;
+    color: #3c2817;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+    animation: navBrandFloat 2.6s ease-in-out infinite;
+  }
 
   body.nav-open {
     overflow: hidden;
