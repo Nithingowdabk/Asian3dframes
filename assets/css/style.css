@@ -1,3 +1,12 @@
+@media (max-width: 640px) {
+  .album-grid {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+  }
+  .album-grid::-webkit-scrollbar {
+    display: none; /* Chrome/Safari/Webkit */
+  }
+}
 @media (max-width: 1099px) {
   .hero-btns {
     margin-bottom: 0;
@@ -105,7 +114,7 @@
     min-width: 120px;
     max-width: 140px;
     flex: 0 0 120px;
-    background: none;
+    background: transparent;
     border: none;
     box-shadow: none;
     padding: 0;
