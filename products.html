@@ -13,7 +13,12 @@
     .page-hero { background: linear-gradient(135deg,#f6e3cf 0%,#e8c29c 60%,#d39b69 100%); padding: 130px 0 60px; text-align: center; position: relative; overflow: hidden; }
     .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(200,149,108,.15) 0%, transparent 70%); }
     .page-hero-content { position: relative; z-index: 1; }
-    .page-hero h1 { font-family: var(--font-heading); font-size: clamp(2.1rem,5vw,3.2rem); color: #3f2816; margin-bottom: 10px; }
+    .page-hero h1, h1, h2, h3, h4, .title, .headline, .section-title, .page-title {
+      font-family: 'Faven Brill Demo', var(--font-heading) !important;
+      font-feature-settings: "ss01";
+      letter-spacing: 0.01em;
+    }
+    .page-hero h1 { font-size: clamp(2.1rem,5vw,3.2rem); color: #3f2816; margin-bottom: 10px; }
     .page-hero p { color: rgba(63,40,22,.78); font-size: 1rem; }
     .shop-wrapper { padding: 56px 0 80px; }
     .shop-layout { display: block; }
@@ -22,7 +27,7 @@
     .btn-clear:hover { background: var(--light); }
     .products-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 20px; }
     .category-strip { margin: 10px 0 26px; }
-    .category-strip h3 { font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 14px; color: var(--dark); }
+    .category-strip h3 { font-size: 1.2rem; margin-bottom: 14px; color: var(--dark); }
     .category-row {
       display: flex;
       flex-wrap: nowrap;

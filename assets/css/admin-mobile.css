@@ -1,3 +1,25 @@
+@font-face {
+  font-family: 'Faven Brill Demo';
+  src: url('../../Faven Brill Demo.otf') format('opentype');
+  font-display: swap;
+}
+
+:root {
+  --font-heading: 'Faven Brill Demo', 'Bodoni Moda', Georgia, serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.title,
+.section-title,
+.topbar-title,
+.card-title,
+.logo,
+.brand,
+.sidebar-logo,
+[class*="title"] {
+  font-family: var(--font-heading) !important;
+}
+
 /* Shared mobile responsiveness for admin pages */
 @media (max-width: 900px) {
   body {

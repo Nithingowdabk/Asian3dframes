@@ -47,9 +47,7 @@
 
 @font-face {
   font-family: 'Faven Brill Demo';
-  src: url('../fonts/FavenBrillDemo.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
+  src: url('../../Faven Brill Demo.otf') format('opentype');
   font-display: swap;
 }
 
@@ -75,14 +73,6 @@
 
   /* Typography */
   --font-heading: 'Faven Brill Demo', 'Elika Gorica', 'Bodoni Moda', Georgia, serif;
-  /* Apply Faven Brill Demo to all major headlines and titles */
-  h1, h2, h3, h4,
-  .title, .headline,
-  .hero-title, .hero-album-title,
-  .section-title, .page-title {
-    font-family: 'Faven Brill Demo', var(--font-heading) !important;
-    letter-spacing: 0.01em;
-  }
   --font-body:    'Bodoni Moda', Georgia, serif;
 
   /* Spacing */
@@ -114,6 +104,13 @@ body {
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6,
+.title,
+.section-title,
+[class*="title"] {
+  font-family: var(--font-heading);
 }
 
 img { max-width: 100%; display: block; }
