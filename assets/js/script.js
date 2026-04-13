@@ -224,9 +224,19 @@
 				const createdLabel = created && !isNaN(created.getTime())
 					? created.toLocaleDateString(undefined, { day: "2-digit", month: "short", year: "numeric" })
 					: "Album";
-				const cover = album.cover_photo
-					? album.cover_photo
-					: "https://placehold.co/420x260/f5e6d3/c8956c?text=Album";
+				const rawCover = album.cover_photo || "";
+				let cover = "https://placehold.co/420x260/f5e6d3/c8956c?text=Album";
+				if (rawCover) {
+					if (/^https?:\/\//i.test(rawCover)) {
+						cover = rawCover;
+					} else if (rawCover.startsWith("/")) {
+						cover = rawCover;
+					} else {
+						// Stored as e.g. "albums/hanuman_.../cover.webp" relative to uploads
+						const cleaned = rawCover.replace(/^uploads[\\/]/i, "");
+						cover = "/uploads/" + cleaned;
+					}
+				}
 
 				return `
 				  <button class="album-card" type="button" data-album-id="${album.id}">
