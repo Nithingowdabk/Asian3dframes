@@ -8,17 +8,17 @@
     position: relative;
   }
 }
-/* Dark brown button for Buy Now */
+/* Light color button for Shop Now */
 .btn-brown {
-  background: linear-gradient(135deg, #fff7e6 0%, #ffe7c2 100%);
-  color: #4e2e13;
+  background: linear-gradient(135deg, #f5e6d3, #ead6bf);
+  color: #3f2816;
   border: none;
-  box-shadow: 0 2px 8px rgba(200,149,108,0.13);
+  box-shadow: 0 2px 8px rgba(200,149,108,0.12);
   transition: background .2s, color .2s;
 }
 .btn-brown:hover, .btn-brown:focus {
-  background: linear-gradient(135deg, #ffe7c2 0%, #fff7e6 100%);
-  color: #a16207;
+  background: linear-gradient(135deg, #ead6bf, #f5e6d3);
+  color: #3f2816;
 }
 /* Custom style for Continue Shopping button in cart */
 .btn-link {
