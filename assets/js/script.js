@@ -243,10 +243,6 @@
 				    <div class="album-thumb-wrap">
 				      <img src="${cover}" alt="${safeName}" onerror="this.src='https://placehold.co/420x260/f5e6d3/c8956c?text=Album'" />
 				    </div>
-				    <div class="album-meta">
-				      <h3 class="album-name">${safeName}</h3>
-				      <p class="album-created">${createdLabel}</p>
-				    </div>
 				  </button>
 				`;
 			}).join("");

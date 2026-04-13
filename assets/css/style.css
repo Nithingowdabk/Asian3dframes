@@ -69,18 +69,7 @@
   height: 100%;
   object-fit: cover;
 }
-.album-meta {
-  padding: 10px 12px 12px;
-}
-.album-name {
-  font-size: .98rem;
-  margin: 0 0 4px;
-  color: var(--dark);
-}
-.album-created {
-  font-size: .78rem;
-  color: var(--mid);
-}
+/* .album-meta, .album-name, .album-created removed for image-only grid */
 @media (max-width: 900px) {
   .album-grid {
     grid-auto-columns: minmax(0, 60%);
