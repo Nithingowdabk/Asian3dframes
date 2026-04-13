@@ -1282,8 +1282,8 @@
 			if (frameType !== "mobile") return;
 			const cx = rect.x + rect.w / 2;
 			const cy = rect.y + rect.h / 2;
-			const innerR = Math.max(rect.w, rect.h) * 0.08;
-			const outerR = Math.max(rect.w, rect.h) * 0.95;
+			const innerR = Math.max(rect.w, rect.h) * 0.10;
+			const outerR = Math.max(rect.w, rect.h) * 1.08;
 
 			ctx.save();
 			ctx.beginPath();
@@ -1291,17 +1291,17 @@
 			ctx.clip();
 			ctx.globalCompositeOperation = "screen";
 			const warmBloom = ctx.createRadialGradient(cx, cy, innerR, cx, cy, outerR);
-			warmBloom.addColorStop(0, "rgba(255, 248, 225, 0.08)");
-			warmBloom.addColorStop(0.42, "rgba(248, 220, 165, 0.035)");
-			warmBloom.addColorStop(0.78, "rgba(236, 196, 120, 0.012)");
-			warmBloom.addColorStop(1, "rgba(236, 196, 120, 0)");
+			warmBloom.addColorStop(0, "rgba(255, 252, 210, 0.19)");
+			warmBloom.addColorStop(0.32, "rgba(255, 236, 160, 0.11)");
+			warmBloom.addColorStop(0.68, "rgba(255, 210, 90, 0.045)");
+			warmBloom.addColorStop(1, "rgba(255, 210, 90, 0)");
 			ctx.fillStyle = warmBloom;
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 
 			const topAura = ctx.createLinearGradient(rect.x, rect.y, rect.x, rect.y + rect.h);
-			topAura.addColorStop(0, "rgba(255, 251, 239, 0.03)");
-			topAura.addColorStop(0.38, "rgba(255, 241, 210, 0.012)");
-			topAura.addColorStop(1, "rgba(255, 241, 210, 0)");
+			topAura.addColorStop(0, "rgba(255, 251, 210, 0.09)");
+			topAura.addColorStop(0.38, "rgba(255, 241, 180, 0.025)");
+			topAura.addColorStop(1, "rgba(255, 241, 180, 0)");
 			ctx.fillStyle = topAura;
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 			ctx.restore();
