@@ -1,23 +1,14 @@
 @font-face {
-  font-family: 'Faven Brill Demo';
-  src: url('../../Faven Brill Demo.otf') format('opentype');
+  font-family: 'Sirelia';
+  src: url('../fonts/Sirelia.otf') format('opentype');
   font-display: swap;
 }
 
-:root {
-  --font-heading: 'Faven Brill Demo', 'Bodoni Moda', Georgia, serif;
-}
-
 h1, h2, h3, h4, h5, h6,
-.title,
-.section-title,
-.topbar-title,
-.card-title,
-.logo,
-.brand,
-.sidebar-logo,
-[class*="title"] {
-  font-family: var(--font-heading) !important;
+.title, .headline, .section-title, .page-title,
+.topbar-title, .card-title, .modal-title,
+.logo, .sidebar-logo, .brand {
+  font-family: 'Sirelia', 'Bodoni Moda', Georgia, serif !important;
 }
 
 /* Shared mobile responsiveness for admin pages */

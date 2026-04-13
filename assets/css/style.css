@@ -46,8 +46,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800&display=swap');
 
 @font-face {
-  font-family: 'Faven Brill Demo';
-  src: url('../../Faven Brill Demo.otf') format('opentype');
+  font-family: 'Sirelia';
+  src: url('../fonts/Sirelia.otf') format('opentype');
   font-display: swap;
 }
 
@@ -72,7 +72,7 @@
   --accent-purple: #9c7cd4;
 
   /* Typography */
-  --font-heading: 'Faven Brill Demo', 'Elika Gorica', 'Bodoni Moda', Georgia, serif;
+  --font-heading: 'Sirelia', 'Bodoni Moda', Georgia, serif;
   --font-body:    'Bodoni Moda', Georgia, serif;
 
   /* Spacing */
@@ -106,17 +106,16 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6,
-.title,
-.section-title,
-[class*="title"] {
-  font-family: var(--font-heading);
-}
-
 img { max-width: 100%; display: block; }
 a  { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+h1, h2, h3, h4, h5, h6,
+.title, .headline, .section-title, .page-title,
+.topbar-title, .card-title, .modal-title {
+  font-family: var(--font-heading) !important;
+}
 
 .container {
   width: 92%;
