@@ -224,6 +224,7 @@ h1, h2, h3, h4, h5, h6,
   max-width: 1240px;
   margin: 0 auto;
   gap: 18px;
+  position: relative;
 }
 
 .nav-logo {
@@ -273,6 +274,44 @@ h1, h2, h3, h4, h5, h6,
 }
 .logo-icon { font-size: 1.4rem; }
 .logo-accent { color: var(--gold-light); }
+
+.nav-brand-text {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  animation: brandPulse 3.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes brandPulse {
+  0% {
+    opacity: 0.8;
+    letter-spacing: 0.02em;
+  }
+  50% {
+    opacity: 1;
+    letter-spacing: 0.08em;
+  }
+  100% {
+    opacity: 0.8;
+    letter-spacing: 0.02em;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-logo-bg {
+    display: none;
+  }
+  .nav-brand-text {
+    display: block;
+  }
+}
 
 .nav-links {
   display: flex;
