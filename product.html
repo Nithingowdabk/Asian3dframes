@@ -439,13 +439,13 @@
       padding: 8px;
     }
     .main-image {
-      border-radius: 12px;
+      border-radius: 14px;
       background: #ffffff;
-      padding: 4px;
+      padding: 8px;
       border: 1px solid rgba(0,0,0,.06);
-      box-shadow: 0 6px 14px rgba(17,24,39,.07);
-      max-width: 220px;
-      max-height: 290px;
+      box-shadow: 0 10px 24px rgba(17,24,39,.08);
+      max-width: 340px;
+      max-height: 440px;
     }
     .mockup-canvas-wrap {
       border: 1px solid rgba(0,0,0,.08);
@@ -540,7 +540,8 @@
       .product-layout { grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr); gap: 18px; }
       .media-card { max-width: 320px; padding: 6px; grid-template-columns: minmax(0, 1fr); gap: 7px; }
       .media-slider { max-width: 100%; min-height: 220px; }
-      .main-image, .mockup-canvas-wrap canvas { max-width: 160px; max-height: 210px; }
+      .main-image { max-width: 220px; max-height: 290px; }
+      .mockup-canvas-wrap canvas { max-width: 160px; max-height: 210px; }
       .mockup-canvas-wrap { width: 100%; max-width: 160px; max-height: 210px; }
       .mockup-inline-title { font-size: .68rem; }
       .mockup-frame-meta { font-size: .64rem; }
@@ -559,7 +560,8 @@
         gap: 7px;
       }
       .media-slider { max-width: 100%; min-height: 120px; aspect-ratio: 3/4; height: auto; }
-      .main-image, .mockup-canvas-wrap canvas { max-width: 120px; max-height: 150px; }
+      .main-image { max-width: 160px; max-height: 210px; }
+      .mockup-canvas-wrap canvas { max-width: 120px; max-height: 150px; }
       .mockup-canvas-wrap { width: 100%; aspect-ratio: 3/4; height: auto; max-width: 120px; max-height: 150px; }
       .mockup-inline-tools { margin-top: 0; height: auto; display: block; }
       .mockup-inline-head { display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 8px; }
