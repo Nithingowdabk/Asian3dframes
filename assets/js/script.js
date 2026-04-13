@@ -1322,7 +1322,7 @@
 			const bottom = Math.min(canvas.height, rect.y + rect.h + pad);
 
 			ctx.save();
-			ctx.fillStyle = "rgba(8, 10, 14, 0.44)";
+			ctx.fillStyle = "rgba(8, 10, 14, 0.56)";
 			ctx.fillRect(0, 0, canvas.width, top);
 			ctx.fillRect(0, bottom, canvas.width, canvas.height - bottom);
 			ctx.fillRect(0, top, left, bottom - top);
@@ -1337,8 +1337,8 @@
 				Math.max(canvas.width, canvas.height) * 0.72
 			);
 			vignette.addColorStop(0, "rgba(0,0,0,0)");
-			vignette.addColorStop(0.62, "rgba(0,0,0,0.14)");
-			vignette.addColorStop(1, "rgba(0,0,0,0.36)");
+			vignette.addColorStop(0.58, "rgba(0,0,0,0.24)");
+			vignette.addColorStop(1, "rgba(0,0,0,0.48)");
 			ctx.fillStyle = vignette;
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -1350,9 +1350,9 @@
 				rect.y + rect.h / 2,
 				Math.max(rect.w, rect.h) * 1.12
 			);
-			focusGlow.addColorStop(0, "rgba(255, 248, 220, 0.42)");
-			focusGlow.addColorStop(0.45, "rgba(255, 236, 184, 0.22)");
-			focusGlow.addColorStop(0.75, "rgba(255, 224, 156, 0.10)");
+			focusGlow.addColorStop(0, "rgba(255, 248, 220, 0.52)");
+			focusGlow.addColorStop(0.45, "rgba(255, 236, 184, 0.30)");
+			focusGlow.addColorStop(0.75, "rgba(255, 224, 156, 0.15)");
 			focusGlow.addColorStop(1, "rgba(255, 230, 170, 0)");
 			ctx.globalCompositeOperation = "screen";
 			ctx.fillStyle = focusGlow;
@@ -1361,21 +1361,21 @@
 		};
 
 		const drawFrameDepthShadow = (rect, frameType, orientation = "vertical") => {
-			const spread = frameType === "mobile" ? 34 : 40;
-			const lift = orientation === "horizontal" ? 12 : 16;
+			const spread = frameType === "mobile" ? 40 : 46;
+			const lift = orientation === "horizontal" ? 14 : 18;
 			ctx.save();
-			ctx.shadowColor = "rgba(5, 6, 10, 0.56)";
+			ctx.shadowColor = "rgba(5, 6, 10, 0.64)";
 			ctx.shadowBlur = spread;
 			ctx.shadowOffsetY = lift;
-			ctx.fillStyle = "rgba(0,0,0,0.30)";
+			ctx.fillStyle = "rgba(0,0,0,0.36)";
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 			ctx.restore();
 
 			ctx.save();
-			ctx.shadowColor = "rgba(0, 0, 0, 0.24)";
+			ctx.shadowColor = "rgba(0, 0, 0, 0.30)";
 			ctx.shadowBlur = Math.round(spread * 0.65);
 			ctx.shadowOffsetY = Math.round(lift * 0.55);
-			ctx.fillStyle = "rgba(0,0,0,0.12)";
+			ctx.fillStyle = "rgba(0,0,0,0.16)";
 			ctx.fillRect(rect.x + rect.w * 0.03, rect.y + rect.h * 0.02, rect.w * 0.94, rect.h * 0.94);
 			ctx.restore();
 		};
@@ -1453,7 +1453,7 @@
 				containDraw(sceneImg, 0, 0, canvas.width, canvas.height);
 
 				const rect = rectFromScene(state.scene, options.frameSize, state.photoOrientation);
-				// drawSceneDimming(rect); // removed to prevent dimming effect
+				drawSceneDimming(rect);
 				drawFrameDepthShadow(rect, options.frameType, state.photoOrientation);
 
 				ctx.save();
