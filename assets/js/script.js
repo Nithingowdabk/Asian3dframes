@@ -1617,17 +1617,19 @@
 			window.setTimeout(draw, 0);
 		});
 
-		const mainImage = qs("#pImage");
-		if (mainImage) {
-			const watch = new MutationObserver(() => {
-				const src = mainImage.getAttribute("src");
-				syncMainMockupThumb(src);
-				setPhotoFromUrl(src, "Product photo");
-			});
-			watch.observe(mainImage, { attributes: true, attributeFilter: ["src"] });
-			syncMainMockupThumb(mainImage.getAttribute("src"));
-			setPhotoFromUrl(mainImage.getAttribute("src"), "Product photo");
-		}
+				const mainImage = qs("#pImage");
+				if (mainImage) {
+					// Always set state.photo to the main image on load and when it changes
+					const setMainPhoto = () => {
+						const src = mainImage.getAttribute("src");
+						syncMainMockupThumb(src);
+						setPhotoFromUrl(src, "Product photo");
+						state.photo = null; // force reload
+					};
+					const watch = new MutationObserver(setMainPhoto);
+					watch.observe(mainImage, { attributes: true, attributeFilter: ["src"] });
+					setMainPhoto();
+				}
 
 		// Custom preview logic removed: mockup always uses main product image
 
