@@ -39,9 +39,10 @@
 }
 /* ════════════════════════════════════════════════════════════════════
   Asian3DFrames — Premium Style Sheet
-  Font stack: Bodoni Moda (site-wide)
+  Font stack: Elika Gorica (headings), Bodoni Moda (body)
    ════════════════════════════════════════════════════════════════════ */
 
+@import url('https://fonts.cdnfonts.com/css/elika-gorica');
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800&display=swap');
 
 /* ── RESET & BASE ──────────────────────────────────────────────────── */
@@ -65,7 +66,7 @@
   --accent-purple: #9c7cd4;
 
   /* Typography */
-  --font-heading: 'Bodoni Moda', Georgia, serif;
+  --font-heading: 'Elika Gorica', 'Bodoni Moda', Georgia, serif;
   --font-body:    'Bodoni Moda', Georgia, serif;
 
   /* Spacing */
@@ -498,7 +499,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   -webkit-background-clip: initial;
   -webkit-text-fill-color: initial;
   background-clip: initial;
-}
 }
 
 .gradient-text {
