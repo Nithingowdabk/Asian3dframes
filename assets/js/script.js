@@ -1554,6 +1554,9 @@
 
 		if (bulbSwitch && bulbHandle) {
 			let dragStartY = 0;
+			let dragStartX = 0;
+			let lastDeltaX = 0;
+			let kickDirection = 1;
 			let pulling = false;
 			let didToggle = false;
 
@@ -1562,11 +1565,28 @@
 				bulbSwitch.style.setProperty("--cord-pull", `${px}px`);
 			};
 
-			const toggleBacklight = () => {
+			const applySwingAngle = (value) => {
+				const deg = Math.max(-14, Math.min(14, value));
+				bulbSwitch.style.setProperty("--swing-angle", `${deg}deg`);
+			};
+
+			const kickBulb = (angle = 10) => {
+				const clamped = Math.max(-16, Math.min(16, angle));
+				bulbSwitch.style.setProperty("--kick-angle", `${clamped}deg`);
+				bulbSwitch.classList.remove("is-kicked");
+				void bulbSwitch.offsetWidth;
+				bulbSwitch.classList.add("is-kicked");
+				window.setTimeout(() => bulbSwitch.classList.remove("is-kicked"), 1200);
+			};
+
+			const toggleBacklight = (kickAngle = null) => {
 				if (getCurrentOptions().frameType !== "mobile") return;
 				state.backlightOn = !state.backlightOn;
 				bulbSwitch.classList.add("is-pulled");
 				window.setTimeout(() => bulbSwitch.classList.remove("is-pulled"), 280);
+				const nextKick = typeof kickAngle === "number" ? kickAngle : kickDirection * 9;
+				kickBulb(nextKick);
+				kickDirection *= -1;
 				draw();
 			};
 
@@ -1575,11 +1595,15 @@
 				didToggle = false;
 				bulbSwitch.classList.remove("is-pulling");
 				applyCordPull(0);
+				applySwingAngle(0);
+				lastDeltaX = 0;
 			};
 
 			bulbHandle.addEventListener("pointerdown", (event) => {
 				if (getCurrentOptions().frameType !== "mobile") return;
 				dragStartY = event.clientY;
+				dragStartX = event.clientX;
+				lastDeltaX = 0;
 				pulling = true;
 				didToggle = false;
 				bulbSwitch.classList.add("is-pulling");
@@ -1589,9 +1613,12 @@
 			bulbHandle.addEventListener("pointermove", (event) => {
 				if (!pulling) return;
 				const deltaY = Math.max(0, event.clientY - dragStartY);
+				const deltaX = event.clientX - dragStartX;
+				lastDeltaX = deltaX;
 				applyCordPull(deltaY);
+				applySwingAngle(deltaX * 0.26);
 				if (deltaY > 20 && !didToggle) {
-					toggleBacklight();
+					toggleBacklight(deltaX >= 0 ? 12 : -12);
 					didToggle = true;
 				}
 			});

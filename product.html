@@ -439,14 +439,33 @@
     }
     .mockup-bulb-switch {
       --cord-pull: 0px;
+      --swing-angle: 0deg;
+      --kick-angle: 10deg;
       position: absolute;
-      top: 0;
+      top: -2px;
       right: 16px;
       z-index: 6;
-      width: 56px;
+      width: 64px;
       display: grid;
       justify-items: center;
-      transition: opacity .24s ease, transform .24s ease;
+      transform-origin: 50% 0;
+      animation: bulbIdleSwing 5.4s ease-in-out infinite;
+      transition: opacity .24s ease, transform .24s ease, filter .3s ease;
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,.12));
+    }
+    .mockup-bulb-switch::before {
+      content: "";
+      position: absolute;
+      top: -36px;
+      left: 50%;
+      width: 2px;
+      height: 42px;
+      background: linear-gradient(180deg, #58534d, #2e2a26);
+      transform: translateX(-50%) rotate(14deg);
+      transform-origin: bottom center;
+      border-radius: 999px;
+      opacity: .92;
+      pointer-events: none;
     }
     .mockup-bulb-switch.is-hidden {
       opacity: 0;
@@ -455,74 +474,130 @@
     }
     .mockup-bulb-cord {
       width: 2px;
-      height: 44px;
-      background: linear-gradient(180deg, #736a61, #514840);
+      height: 52px;
+      background: linear-gradient(180deg, #4f4a45, #2f2b27);
       border-radius: 999px;
       transform: translateY(var(--cord-pull));
-      transition: transform .2s cubic-bezier(.2,.9,.2,1);
+      transition: transform .2s cubic-bezier(.2,.9,.2,1), background .32s ease;
     }
     .mockup-bulb-handle {
-      width: 18px;
-      height: 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(79,65,52,.45);
-      background: linear-gradient(180deg, #f4ebe1, #d8c7b6);
-      margin-top: -1px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid rgba(57,49,41,.75);
+      background: radial-gradient(circle at 30% 30%, #f8f4ef 0%, #ddd0c2 72%);
+      margin-top: 3px;
       transform: translateY(var(--cord-pull));
       transition: transform .2s cubic-bezier(.2,.9,.2,1), box-shadow .2s ease;
-      box-shadow: 0 2px 6px rgba(0,0,0,.16);
+      box-shadow: 0 2px 6px rgba(0,0,0,.2);
       cursor: ns-resize;
       touch-action: none;
     }
+    .mockup-bulb-handle:active { cursor: grabbing; }
     .mockup-bulb-icon {
-      margin-top: 6px;
-      width: 28px;
-      height: 36px;
-      border-radius: 14px 14px 12px 12px;
-      border: 1px solid rgba(110,91,72,.44);
-      background: linear-gradient(180deg, #d0d5db, #a9b2bc);
-      box-shadow: 0 4px 8px rgba(0,0,0,.14);
-      transition: background .28s ease, box-shadow .28s ease, border-color .28s ease;
+      margin-top: 5px;
+      width: 34px;
+      height: 45px;
+      border-radius: 51% 49% 50% 50% / 58% 58% 42% 42%;
+      border: 2px solid #34302b;
+      background: radial-gradient(circle at 36% 26%, rgba(255,255,255,.98) 0%, rgba(244,240,234,.9) 36%, rgba(230,224,215,.92) 100%);
+      box-shadow: inset 0 -6px 10px rgba(128,116,101,.16), 0 6px 12px rgba(0,0,0,.16);
+      transition: background .38s cubic-bezier(.2,.65,.18,1), box-shadow .38s cubic-bezier(.2,.65,.18,1), border-color .38s cubic-bezier(.2,.65,.18,1), transform .24s ease;
       position: relative;
     }
     .mockup-bulb-icon::before {
       content: "";
       position: absolute;
-      top: 3px;
-      left: 6px;
-      width: 14px;
-      height: 7px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.46);
+      top: -13px;
+      left: 50%;
+      width: 18px;
+      height: 12px;
+      transform: translateX(-50%);
+      border-radius: 8px 8px 5px 5px;
+      border: 2px solid #34302b;
+      background: repeating-linear-gradient(
+        to bottom,
+        #f7f2eb 0 2px,
+        #34302b 2px 3px,
+        #f7f2eb 3px 5px
+      );
+      box-shadow: 0 2px 4px rgba(0,0,0,.14);
+    }
+    .mockup-bulb-icon::after {
+      content: "";
+      position: absolute;
+      inset: -16px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,235,160,0.82) 0%, rgba(255,220,110,0.44) 36%, rgba(255,212,110,0.18) 72%, rgba(255,212,110,0) 100%);
+      opacity: 0;
+      transform: scale(.72);
+      transition: opacity .4s cubic-bezier(.2,.65,.18,1), transform .4s cubic-bezier(.2,.65,.18,1);
+      pointer-events: none;
     }
     .mockup-bulb-switch.is-on .mockup-bulb-icon {
-      border-color: rgba(191,141,88,.62);
-      background: linear-gradient(180deg, #fff4c7, #ffd877);
-      box-shadow: 0 0 0 2px rgba(255,220,145,.24), 0 0 20px rgba(255,215,120,.48), 0 6px 14px rgba(0,0,0,.16);
+      border-color: rgba(108,87,58,.95);
+      background: radial-gradient(circle at 35% 25%, #fffef1 0%, #ffe9b0 36%, #ffd36b 72%, #f0b54c 100%);
+      box-shadow: 0 0 0 6px rgba(255,235,160,0.22), 0 0 0 18px rgba(255,235,160,0.13),
+        0 0 0 32px rgba(255,235,160,0.07),
+        0 0 24px rgba(255,208,95,.68), 0 8px 16px rgba(0,0,0,.22),
+        inset 0 -8px 12px rgba(205,145,55,.32);
+    }
+    .mockup-bulb-switch.is-on .mockup-bulb-icon::after {
+      opacity: 1;
+      transform: scale(1.12);
     }
     .mockup-bulb-switch.is-on .mockup-bulb-handle {
       box-shadow: 0 0 10px rgba(255,212,121,.42), 0 2px 6px rgba(0,0,0,.18);
     }
+    .mockup-bulb-switch.is-on .mockup-bulb-cord {
+      background: linear-gradient(180deg, #6a655f, #3d3833);
+    }
     .mockup-bulb-state {
-      margin-top: 4px;
+      margin-top: 5px;
       font-size: .56rem;
       letter-spacing: .06em;
-      color: #5f554a;
+      color: #4f453b;
       font-weight: 700;
       text-transform: uppercase;
       user-select: none;
+      text-shadow: 0 1px 0 rgba(255,255,255,.56);
     }
+    .mockup-bulb-switch.is-on .mockup-bulb-state { color: #6e4b20; }
     .mockup-bulb-switch.is-pulling .mockup-bulb-cord,
     .mockup-bulb-switch.is-pulling .mockup-bulb-handle {
       transition: none;
     }
-    .mockup-bulb-switch.is-pulled {
-      animation: bulbPulse .28s ease;
+    .mockup-bulb-switch.is-pulling {
+      animation-play-state: paused;
+      transform: rotate(var(--swing-angle));
     }
-    @keyframes bulbPulse {
-      0% { transform: translateY(0); }
-      45% { transform: translateY(2px); }
-      100% { transform: translateY(0); }
+    .mockup-bulb-switch.is-pulled {
+      animation: bulbIdleSwing 5.4s ease-in-out infinite;
+    }
+    .mockup-bulb-switch.is-pulled .mockup-bulb-icon {
+      animation: bulbTapPop .28s ease;
+    }
+    .mockup-bulb-switch.is-kicked {
+      animation: bulbKick 1.16s cubic-bezier(.17,.84,.23,1.02) 1;
+    }
+    @keyframes bulbIdleSwing {
+      0%   { transform: rotate(-2.4deg); }
+      50%  { transform: rotate(2.4deg); }
+      100% { transform: rotate(-2.4deg); }
+    }
+    @keyframes bulbKick {
+      0%   { transform: rotate(var(--kick-angle)); }
+      18%  { transform: rotate(calc(var(--kick-angle) * -0.72)); }
+      36%  { transform: rotate(calc(var(--kick-angle) * 0.52)); }
+      53%  { transform: rotate(calc(var(--kick-angle) * -0.32)); }
+      68%  { transform: rotate(calc(var(--kick-angle) * 0.2)); }
+      82%  { transform: rotate(calc(var(--kick-angle) * -0.1)); }
+      100% { transform: rotate(0deg); }
+    }
+    @keyframes bulbTapPop {
+      0% { transform: scale(1); }
+      45% { transform: scale(.9); }
+      100% { transform: scale(1); }
     }
     .media-slide {
       display: grid;
@@ -689,9 +764,9 @@
       .mockup-scenes { display:flex; gap:8px; overflow-x:auto; overflow-y:hidden; padding-bottom: 2px; }
       .mockup-scene-tab { width: 62px; height: 84px; aspect-ratio: auto; flex: 0 0 62px; }
       .mockup-thumb { width: 100%; height: 100%; }
-      .mockup-bulb-switch { right: 10px; width: 50px; }
-      .mockup-bulb-cord { height: 36px; }
-      .mockup-bulb-icon { width: 24px; height: 31px; }
+      .mockup-bulb-switch { right: 10px; width: 54px; }
+      .mockup-bulb-cord { height: 42px; }
+      .mockup-bulb-icon { width: 30px; height: 40px; }
       .mockup-bulb-state { font-size: .5rem; }
       .info-orientation .mockup-orientation-group { max-width: none; }
       .info-orientation .mockup-orientation-btn { padding: 7px 14px; font-size: .76rem; }
@@ -767,7 +842,7 @@
               <span class="mockup-bulb-cord" aria-hidden="true"></span>
               <span class="mockup-bulb-handle" id="mockupBulbHandle" aria-hidden="true"></span>
               <span class="mockup-bulb-icon" aria-hidden="true"></span>
-              <span class="mockup-bulb-state" id="mockupBulbState">Light On</span>
+              <!-- Removed Light On/Off text for cleaner look -->
             </div>
             <div class="media-slider-track" id="mediaSliderTrack">
               <div class="media-slide" data-slide="product">
