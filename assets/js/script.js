@@ -1354,9 +1354,14 @@
 			focusGlow.addColorStop(0.45, "rgba(255, 236, 184, 0.22)");
 			focusGlow.addColorStop(0.75, "rgba(255, 224, 156, 0.10)");
 			focusGlow.addColorStop(1, "rgba(255, 230, 170, 0)");
+			ctx.save();
+			ctx.beginPath();
+			ctx.rect(rect.x, rect.y, rect.w, rect.h);
+			ctx.clip();
 			ctx.globalCompositeOperation = "screen";
 			ctx.fillStyle = focusGlow;
-			ctx.fillRect(0, 0, canvas.width, canvas.height);
+			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+			ctx.restore();
 			ctx.restore();
 		};
 
