@@ -1314,6 +1314,64 @@
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 		};
 
+		const drawSceneDimming = (rect) => {
+			const pad = Math.max(22, Math.min(rect.w, rect.h) * 0.08);
+			const left = Math.max(0, rect.x - pad);
+			const top = Math.max(0, rect.y - pad);
+			const right = Math.min(canvas.width, rect.x + rect.w + pad);
+			const bottom = Math.min(canvas.height, rect.y + rect.h + pad);
+
+			ctx.save();
+			ctx.fillStyle = "rgba(15, 18, 24, 0.26)";
+			ctx.fillRect(0, 0, canvas.width, top);
+			ctx.fillRect(0, bottom, canvas.width, canvas.height - bottom);
+			ctx.fillRect(0, top, left, bottom - top);
+			ctx.fillRect(right, top, canvas.width - right, bottom - top);
+
+			const focusGlow = ctx.createRadialGradient(
+				rect.x + rect.w / 2,
+				rect.y + rect.h / 2,
+				Math.max(rect.w, rect.h) * 0.25,
+				rect.x + rect.w / 2,
+				rect.y + rect.h / 2,
+				Math.max(rect.w, rect.h) * 0.95
+			);
+			focusGlow.addColorStop(0, "rgba(255, 245, 215, 0.22)");
+			focusGlow.addColorStop(0.55, "rgba(255, 230, 170, 0.11)");
+			focusGlow.addColorStop(1, "rgba(255, 230, 170, 0)");
+			ctx.globalCompositeOperation = "screen";
+			ctx.fillStyle = focusGlow;
+			ctx.fillRect(left, top, right - left, bottom - top);
+			ctx.restore();
+		};
+
+		const drawFrameDepthShadow = (rect, frameType, orientation = "vertical") => {
+			const spread = frameType === "mobile" ? 22 : 28;
+			const lift = orientation === "horizontal" ? 9 : 12;
+			ctx.save();
+			ctx.shadowColor = "rgba(8, 10, 14, 0.42)";
+			ctx.shadowBlur = spread;
+			ctx.shadowOffsetY = lift;
+			ctx.fillStyle = "rgba(0,0,0,0.18)";
+			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+			ctx.restore();
+		};
+
+		const drawProductPop = (rect) => {
+			ctx.save();
+			ctx.strokeStyle = "rgba(255, 242, 204, 0.44)";
+			ctx.lineWidth = Math.max(3, rect.w * 0.01);
+			ctx.strokeRect(rect.x + 1.5, rect.y + 1.5, rect.w - 3, rect.h - 3);
+
+			const rimGlow = ctx.createLinearGradient(rect.x, rect.y, rect.x, rect.y + rect.h);
+			rimGlow.addColorStop(0, "rgba(255,255,255,0.20)");
+			rimGlow.addColorStop(0.35, "rgba(255,255,255,0.08)");
+			rimGlow.addColorStop(1, "rgba(255,255,255,0)");
+			ctx.fillStyle = rimGlow;
+			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+			ctx.restore();
+		};
+
 		const setTabState = () => {
 			qsa(".mockup-scene-tab").forEach((btn) => {
 				btn.classList.toggle("is-active", btn.dataset.scene === state.scene);
@@ -1354,13 +1412,8 @@
 				containDraw(sceneImg, 0, 0, canvas.width, canvas.height);
 
 				const rect = rectFromScene(state.scene, options.frameSize, state.photoOrientation);
-				ctx.save();
-				ctx.shadowColor = "rgba(0,0,0,.22)";
-				ctx.shadowBlur = 28;
-				ctx.shadowOffsetY = 10;
-				ctx.fillStyle = "rgba(0,0,0,.16)";
-				ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
-				ctx.restore();
+				drawSceneDimming(rect);
+				drawFrameDepthShadow(rect, options.frameType, state.photoOrientation);
 
 				ctx.save();
 				ctx.beginPath();
@@ -1371,11 +1424,13 @@
 					coverDraw(state.photo, rect.x, rect.y, rect.w, rect.h);
 					drawBacklightGlow(rect, options.frameType);
 					drawPhotoGloss(rect, options.frameType);
+					drawProductPop(rect);
 				} else {
 					ctx.fillStyle = "#d9d9dd";
 					ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 					drawBacklightGlow(rect, options.frameType);
 					drawPhotoGloss(rect, options.frameType);
+					drawProductPop(rect);
 				}
 				ctx.restore();
 
