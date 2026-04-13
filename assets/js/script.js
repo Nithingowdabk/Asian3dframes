@@ -1045,6 +1045,9 @@
 
 		const ctx = canvas.getContext("2d");
 		if (!ctx) return;
+		const bulbSwitch = qs("#mockupBulbSwitch");
+		const bulbHandle = qs("#mockupBulbHandle");
+		const bulbState = qs("#mockupBulbState");
 
 		// Upload controls removed: mockup always uses main product image
 		const frameTypeLabel = qs("#mockupFrameType");
@@ -1110,7 +1113,8 @@
 			photo: null,
 			photoName: "No photo selected",
 			hasUserUpload: false,
-			photoOrientation: "vertical"
+			photoOrientation: "vertical",
+			backlightOn: true
 		};
 
 		const escSrc = (src) => String(src || "").trim();
@@ -1131,6 +1135,15 @@
 			const frameSize = String(rawSize || "A4").toUpperCase();
 			const frameColor = normalizeFrameColor(rawColor, frameType);
 			return { frameType, frameSize, frameColor };
+		};
+
+		const updateBulbUi = (options = getCurrentOptions()) => {
+			if (!bulbSwitch) return;
+			const mobileMode = options.frameType === "mobile";
+			bulbSwitch.classList.toggle("is-hidden", !mobileMode);
+			bulbSwitch.classList.toggle("is-on", mobileMode && state.backlightOn);
+			bulbSwitch.setAttribute("aria-pressed", mobileMode && state.backlightOn ? "true" : "false");
+			if (bulbState) bulbState.textContent = mobileMode && state.backlightOn ? "Light On" : "Light Off";
 		};
 
 		const syncMeta = () => {
@@ -1314,7 +1327,7 @@
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 		};
 
-		const drawSceneDimming = (rect, frameType) => {
+		const drawSceneDimming = (rect, frameType, backlightOn) => {
 			const pad = Math.max(14, Math.min(rect.w, rect.h) * 0.05);
 			const left = Math.max(0, rect.x - pad);
 			const top = Math.max(0, rect.y - pad);
@@ -1342,7 +1355,7 @@
 			ctx.fillStyle = vignette;
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-			if (frameType === "mobile") {
+			if (frameType === "mobile" && backlightOn) {
 				const focusGlow = ctx.createRadialGradient(
 					rect.x + rect.w / 2,
 					rect.y + rect.h / 2,
@@ -1430,6 +1443,7 @@
 		const draw = async () => {
 			const options = getCurrentOptions();
 			syncMeta();
+			updateBulbUi(options);
 			setRendering(true);
 
 			try {
@@ -1461,8 +1475,9 @@
 				containDraw(sceneImg, 0, 0, canvas.width, canvas.height);
 
 				const rect = rectFromScene(state.scene, options.frameSize, state.photoOrientation);
-				drawSceneDimming(rect, options.frameType);
+				drawSceneDimming(rect, options.frameType, state.backlightOn);
 				drawFrameDepthShadow(rect, options.frameType, state.photoOrientation);
+				const showBacklight = options.frameType === "mobile" && state.backlightOn;
 
 				ctx.save();
 				ctx.beginPath();
@@ -1471,15 +1486,19 @@
 				if (state.photo) {
 					// Use cover so photo fills frame opening without top/bottom gaps.
 					coverDraw(state.photo, rect.x, rect.y, rect.w, rect.h);
-					drawBacklightGlow(rect, options.frameType);
-					drawPhotoGloss(rect, options.frameType);
-					drawProductPop(rect, options.frameType);
+					if (showBacklight) {
+						drawBacklightGlow(rect, options.frameType);
+						drawPhotoGloss(rect, options.frameType);
+						drawProductPop(rect, options.frameType);
+					}
 				} else {
 					ctx.fillStyle = "#d9d9dd";
 					ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
-					drawBacklightGlow(rect, options.frameType);
-					drawPhotoGloss(rect, options.frameType);
-					drawProductPop(rect, options.frameType);
+					if (showBacklight) {
+						drawBacklightGlow(rect, options.frameType);
+						drawPhotoGloss(rect, options.frameType);
+						drawProductPop(rect, options.frameType);
+					}
 				}
 				ctx.restore();
 
@@ -1532,6 +1551,65 @@
 				draw();
 			});
 		});
+
+		if (bulbSwitch && bulbHandle) {
+			let dragStartY = 0;
+			let pulling = false;
+			let didToggle = false;
+
+			const applyCordPull = (value) => {
+				const px = Math.max(0, Math.min(32, value));
+				bulbSwitch.style.setProperty("--cord-pull", `${px}px`);
+			};
+
+			const toggleBacklight = () => {
+				if (getCurrentOptions().frameType !== "mobile") return;
+				state.backlightOn = !state.backlightOn;
+				bulbSwitch.classList.add("is-pulled");
+				window.setTimeout(() => bulbSwitch.classList.remove("is-pulled"), 280);
+				draw();
+			};
+
+			const finishPull = () => {
+				pulling = false;
+				didToggle = false;
+				bulbSwitch.classList.remove("is-pulling");
+				applyCordPull(0);
+			};
+
+			bulbHandle.addEventListener("pointerdown", (event) => {
+				if (getCurrentOptions().frameType !== "mobile") return;
+				dragStartY = event.clientY;
+				pulling = true;
+				didToggle = false;
+				bulbSwitch.classList.add("is-pulling");
+				bulbHandle.setPointerCapture(event.pointerId);
+			});
+
+			bulbHandle.addEventListener("pointermove", (event) => {
+				if (!pulling) return;
+				const deltaY = Math.max(0, event.clientY - dragStartY);
+				applyCordPull(deltaY);
+				if (deltaY > 20 && !didToggle) {
+					toggleBacklight();
+					didToggle = true;
+				}
+			});
+
+			bulbHandle.addEventListener("pointerup", finishPull);
+			bulbHandle.addEventListener("pointercancel", finishPull);
+
+			bulbSwitch.addEventListener("click", (event) => {
+				if (event.target === bulbHandle) return;
+				toggleBacklight();
+			});
+
+			bulbSwitch.addEventListener("keydown", (event) => {
+				if (event.key !== "Enter" && event.key !== " ") return;
+				event.preventDefault();
+				toggleBacklight();
+			});
+		}
 
 		document.addEventListener("click", (event) => {
 			const control = event.target instanceof Element ? event.target.closest("[data-frame-type], [data-frame-size], [data-frame-color]") : null;
