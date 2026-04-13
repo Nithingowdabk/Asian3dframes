@@ -1314,7 +1314,7 @@
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 		};
 
-		const drawSceneDimming = (rect) => {
+		const drawSceneDimming = (rect, frameType) => {
 			const pad = Math.max(14, Math.min(rect.w, rect.h) * 0.05);
 			const left = Math.max(0, rect.x - pad);
 			const top = Math.max(0, rect.y - pad);
@@ -1342,26 +1342,28 @@
 			ctx.fillStyle = vignette;
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-			const focusGlow = ctx.createRadialGradient(
-				rect.x + rect.w / 2,
-				rect.y + rect.h / 2,
-				Math.max(rect.w, rect.h) * 0.12,
-				rect.x + rect.w / 2,
-				rect.y + rect.h / 2,
-				Math.max(rect.w, rect.h) * 1.12
-			);
-			focusGlow.addColorStop(0, "rgba(255, 248, 220, 0.44)");
-			focusGlow.addColorStop(0.45, "rgba(255, 236, 184, 0.22)");
-			focusGlow.addColorStop(0.75, "rgba(255, 224, 156, 0.10)");
-			focusGlow.addColorStop(1, "rgba(255, 230, 170, 0)");
-			ctx.save();
-			ctx.beginPath();
-			ctx.rect(rect.x, rect.y, rect.w, rect.h);
-			ctx.clip();
-			ctx.globalCompositeOperation = "screen";
-			ctx.fillStyle = focusGlow;
-			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
-			ctx.restore();
+			if (frameType === "mobile") {
+				const focusGlow = ctx.createRadialGradient(
+					rect.x + rect.w / 2,
+					rect.y + rect.h / 2,
+					Math.max(rect.w, rect.h) * 0.12,
+					rect.x + rect.w / 2,
+					rect.y + rect.h / 2,
+					Math.max(rect.w, rect.h) * 1.12
+				);
+				focusGlow.addColorStop(0, "rgba(255, 248, 220, 0.44)");
+				focusGlow.addColorStop(0.45, "rgba(255, 236, 184, 0.22)");
+				focusGlow.addColorStop(0.75, "rgba(255, 224, 156, 0.10)");
+				focusGlow.addColorStop(1, "rgba(255, 230, 170, 0)");
+				ctx.save();
+				ctx.beginPath();
+				ctx.rect(rect.x, rect.y, rect.w, rect.h);
+				ctx.clip();
+				ctx.globalCompositeOperation = "screen";
+				ctx.fillStyle = focusGlow;
+				ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+				ctx.restore();
+			}
 			ctx.restore();
 		};
 
@@ -1385,7 +1387,8 @@
 			ctx.restore();
 		};
 
-		const drawProductPop = (rect) => {
+		const drawProductPop = (rect, frameType) => {
+			if (frameType !== "mobile") return;
 			ctx.save();
 			ctx.strokeStyle = "rgba(255, 246, 214, 0.72)";
 			ctx.lineWidth = Math.max(4, rect.w * 0.014);
@@ -1458,7 +1461,7 @@
 				containDraw(sceneImg, 0, 0, canvas.width, canvas.height);
 
 				const rect = rectFromScene(state.scene, options.frameSize, state.photoOrientation);
-				drawSceneDimming(rect);
+				drawSceneDimming(rect, options.frameType);
 				drawFrameDepthShadow(rect, options.frameType, state.photoOrientation);
 
 				ctx.save();
@@ -1470,13 +1473,13 @@
 					coverDraw(state.photo, rect.x, rect.y, rect.w, rect.h);
 					drawBacklightGlow(rect, options.frameType);
 					drawPhotoGloss(rect, options.frameType);
-					drawProductPop(rect);
+					drawProductPop(rect, options.frameType);
 				} else {
 					ctx.fillStyle = "#d9d9dd";
 					ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 					drawBacklightGlow(rect, options.frameType);
 					drawPhotoGloss(rect, options.frameType);
-					drawProductPop(rect);
+					drawProductPop(rect, options.frameType);
 				}
 				ctx.restore();
 
