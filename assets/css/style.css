@@ -207,19 +207,6 @@ h1, h2, h3, h4, h5, h6,
   border-bottom: 1px solid rgba(26,21,16,.12);
 }
 
-@keyframes navBrandFloat {
-  0%, 100% {
-    opacity: .76;
-    transform: translate(-50%, -50%);
-    text-shadow: 0 2px 8px rgba(60, 38, 18, .12);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, calc(-50% - 1px));
-    text-shadow: 0 6px 18px rgba(200, 149, 108, .35);
-  }
-}
-
 .navbar .nav-logo,
 .navbar .nav-link,
 .navbar .icon-btn,
@@ -379,6 +366,16 @@ h1, h2, h3, h4, h5, h6,
 .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@keyframes navBrandFloat {
+  0%, 100% { transform: translate(-50%, -50%); }
+  50% { transform: translate(-50%, -54%); }
+}
+
+@keyframes navBrandShimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
 
 /* ── HERO ──────────────────────────────────────────────────────────── */
 .hero {
@@ -1746,23 +1743,27 @@ h1, h2, h3, h4, h5, h6,
     width: 94%;
     position: relative;
   }
+
   .nav-container::after {
-    content: "Asian 3D Frames";
+    content: 'Asian 3D Frames';
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: calc(100% - 156px);
-    text-align: center;
     font-family: var(--font-heading);
-    font-size: clamp(.72rem, 3.3vw, .95rem);
-    letter-spacing: .06em;
-    color: #3c2817;
+    font-size: clamp(.84rem, 4vw, 1.1rem);
+    font-weight: 700;
+    letter-spacing: .04em;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     pointer-events: none;
-    animation: navBrandFloat 2.6s ease-in-out infinite;
+    background: linear-gradient(90deg, #5b3a1f 0%, #c8956c 45%, #3b2a1d 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 1px 6px rgba(200,149,108,.16);
+    animation: navBrandFloat 3.6s ease-in-out infinite, navBrandShimmer 2.8s linear infinite;
+    z-index: 1000;
   }
 
   body.nav-open {
