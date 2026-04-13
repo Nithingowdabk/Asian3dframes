@@ -114,12 +114,12 @@
     min-width: 120px;
     max-width: 140px;
     flex: 0 0 120px;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 0;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
     scroll-snap-align: start;
-    margin: 0;
   }
   @media (max-width: 900px) {
     .album-card {
