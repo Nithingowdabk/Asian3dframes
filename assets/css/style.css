@@ -45,6 +45,14 @@
 @import url('https://fonts.cdnfonts.com/css/elika-gorica');
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800&display=swap');
 
+@font-face {
+  font-family: 'Faven Brill Demo';
+  src: url('../fonts/FavenBrillDemo.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ── RESET & BASE ──────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -66,7 +74,15 @@
   --accent-purple: #9c7cd4;
 
   /* Typography */
-  --font-heading: 'Elika Gorica', 'Bodoni Moda', Georgia, serif;
+  --font-heading: 'Faven Brill Demo', 'Elika Gorica', 'Bodoni Moda', Georgia, serif;
+  /* Apply Faven Brill Demo to all major headlines and titles */
+  h1, h2, h3, h4,
+  .title, .headline,
+  .hero-title, .hero-album-title,
+  .section-title, .page-title {
+    font-family: 'Faven Brill Demo', var(--font-heading) !important;
+    letter-spacing: 0.01em;
+  }
   --font-body:    'Bodoni Moda', Georgia, serif;
 
   /* Spacing */
