@@ -443,19 +443,10 @@
       top: 0;
       right: 16px;
       z-index: 6;
-      width: 62px;
+      width: 56px;
       display: grid;
       justify-items: center;
-      transition: opacity .24s ease, transform .24s ease, filter .24s ease;
-      filter: drop-shadow(0 3px 8px rgba(20, 15, 10, .16));
-    }
-    .mockup-bulb-switch::before {
-      content: "";
-      width: 18px;
-      height: 8px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #ceb59a, #8c6f53);
-      box-shadow: 0 1px 0 rgba(255,255,255,.42) inset, 0 2px 4px rgba(0,0,0,.18);
+      transition: opacity .24s ease, transform .24s ease;
     }
     .mockup-bulb-switch.is-hidden {
       opacity: 0;
@@ -464,35 +455,33 @@
     }
     .mockup-bulb-cord {
       width: 2px;
-      height: 46px;
-      background: linear-gradient(180deg, #5f5145, #2f2720);
+      height: 44px;
+      background: linear-gradient(180deg, #736a61, #514840);
       border-radius: 999px;
       transform: translateY(var(--cord-pull));
-      transition: transform .24s cubic-bezier(.2,.9,.2,1);
+      transition: transform .2s cubic-bezier(.2,.9,.2,1);
     }
     .mockup-bulb-handle {
-      width: 19px;
-      height: 12px;
+      width: 18px;
+      height: 10px;
       border-radius: 999px;
-      border: 1px solid rgba(95,73,54,.56);
-      background: linear-gradient(180deg, #f4e5d2, #c7a884);
+      border: 1px solid rgba(79,65,52,.45);
+      background: linear-gradient(180deg, #f4ebe1, #d8c7b6);
       margin-top: -1px;
       transform: translateY(var(--cord-pull));
-      transition: transform .24s cubic-bezier(.2,.9,.2,1), box-shadow .22s ease, background .22s ease;
-      box-shadow: 0 3px 8px rgba(0,0,0,.24), 0 1px 0 rgba(255,255,255,.35) inset;
+      transition: transform .2s cubic-bezier(.2,.9,.2,1), box-shadow .2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,.16);
       cursor: ns-resize;
       touch-action: none;
     }
     .mockup-bulb-icon {
       margin-top: 6px;
-      width: 30px;
-      height: 40px;
-      border-radius: 15px 15px 12px 12px;
-      border: 1px solid rgba(102,88,74,.44);
-      background:
-        radial-gradient(circle at 28% 18%, rgba(255,255,255,.88), rgba(255,255,255,0) 34%),
-        linear-gradient(180deg, #e9edf2, #bdc6d1);
-      box-shadow: 0 5px 12px rgba(0,0,0,.18), 0 1px 0 rgba(255,255,255,.52) inset;
+      width: 28px;
+      height: 36px;
+      border-radius: 14px 14px 12px 12px;
+      border: 1px solid rgba(110,91,72,.44);
+      background: linear-gradient(180deg, #d0d5db, #a9b2bc);
+      box-shadow: 0 4px 8px rgba(0,0,0,.14);
       transition: background .28s ease, box-shadow .28s ease, border-color .28s ease;
       position: relative;
     }
@@ -501,48 +490,34 @@
       position: absolute;
       top: 3px;
       left: 6px;
-      width: 16px;
-      height: 8px;
+      width: 14px;
+      height: 7px;
       border-radius: 999px;
-      background: rgba(255,255,255,.54);
-    }
-    .mockup-bulb-icon::after {
-      content: "";
-      position: absolute;
-      left: 9px;
-      bottom: 3px;
-      width: 12px;
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(138, 147, 159, .55);
+      background: rgba(255,255,255,.46);
     }
     .mockup-bulb-switch.is-on .mockup-bulb-icon {
-      border-color: rgba(193,143,84,.68);
-      background:
-        radial-gradient(circle at 28% 18%, rgba(255,255,255,.95), rgba(255,255,255,0) 35%),
-        linear-gradient(180deg, #fff6cf, #ffd26d);
-      box-shadow: 0 0 0 2px rgba(255,223,154,.25), 0 0 24px rgba(255,210,108,.42), 0 8px 16px rgba(0,0,0,.16);
+      border-color: rgba(191,141,88,.62);
+      background: linear-gradient(180deg, #fff4c7, #ffd877);
+      box-shadow: 0 0 0 2px rgba(255,220,145,.24), 0 0 20px rgba(255,215,120,.48), 0 6px 14px rgba(0,0,0,.16);
     }
     .mockup-bulb-switch.is-on .mockup-bulb-handle {
-      background: linear-gradient(180deg, #f7e8d5, #d3b08a);
-      box-shadow: 0 0 10px rgba(255,212,121,.34), 0 3px 8px rgba(0,0,0,.24), 0 1px 0 rgba(255,255,255,.36) inset;
+      box-shadow: 0 0 10px rgba(255,212,121,.42), 0 2px 6px rgba(0,0,0,.18);
     }
     .mockup-bulb-state {
-      margin-top: 5px;
+      margin-top: 4px;
       font-size: .56rem;
-      letter-spacing: .08em;
-      color: #4f4336;
+      letter-spacing: .06em;
+      color: #5f554a;
       font-weight: 700;
       text-transform: uppercase;
       user-select: none;
-      text-shadow: 0 1px 0 rgba(255,255,255,.45);
     }
     .mockup-bulb-switch.is-pulling .mockup-bulb-cord,
     .mockup-bulb-switch.is-pulling .mockup-bulb-handle {
       transition: none;
     }
     .mockup-bulb-switch.is-pulled {
-      animation: bulbPulse .34s cubic-bezier(.24,.8,.24,1);
+      animation: bulbPulse .28s ease;
     }
     @keyframes bulbPulse {
       0% { transform: translateY(0); }
