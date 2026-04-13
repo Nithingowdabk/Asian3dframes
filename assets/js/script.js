@@ -49,6 +49,13 @@
 
 	const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
+	// Simple JSON fetch helper
+	async function fetchJSON(url, options = {}) {
+		const res = await fetch(url, options);
+		if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+		return res.json();
+	}
+
 	// ---------------------------------------------------------------------------
 	// Toast notification system for user feedback
 	// ---------------------------------------------------------------------------
@@ -195,6 +202,50 @@
 		}
 
 		saveCart(cart);
+	}
+
+	// ---------------------------------------------------------------------------
+	// Home page: render album folders in "Our Album" section
+	// ---------------------------------------------------------------------------
+	async function setupHomeAlbums() {
+		const grid = qs("#homeAlbumGrid");
+		if (!grid) return;
+
+		try {
+			const data = await fetchJSON("php/get_albums.php");
+			if (!data?.success || !Array.isArray(data.albums) || !data.albums.length) {
+				grid.innerHTML = '<p class="album-empty">No albums available yet.</p>';
+				return;
+			}
+
+			const items = data.albums.map((album) => {
+				const safeName = (album.name || album.id || "Album").toString();
+				const created = album.created_at ? new Date(album.created_at) : null;
+				const createdLabel = created && !isNaN(created.getTime())
+					? created.toLocaleDateString(undefined, { day: "2-digit", month: "short", year: "numeric" })
+					: "Album";
+				const cover = album.cover_photo
+					? album.cover_photo
+					: "https://placehold.co/420x260/f5e6d3/c8956c?text=Album";
+
+				return `
+				  <button class="album-card" type="button" data-album-id="${album.id}">
+				    <div class="album-thumb-wrap">
+				      <img src="${cover}" alt="${safeName}" onerror="this.src='https://placehold.co/420x260/f5e6d3/c8956c?text=Album'" />
+				    </div>
+				    <div class="album-meta">
+				      <h3 class="album-name">${safeName}</h3>
+				      <p class="album-created">${createdLabel}</p>
+				    </div>
+				  </button>
+				`;
+			}).join("");
+
+			grid.innerHTML = items;
+		} catch (err) {
+			console.error("Failed to load albums", err);
+			grid.innerHTML = '<p class="album-empty">Unable to load albums right now.</p>';
+		}
 	}
 
 	// ---------------------------------------------------------------------------
@@ -2459,6 +2510,7 @@
 		safeInit("setupRefundPolicyPopup", setupRefundPolicyPopup);
 		safeInit("setupFaqPopup", setupFaqPopup);
 		safeInit("setupTermsPopup", setupTermsPopup);
+		safeInit("setupHomeAlbums", setupHomeAlbums);
 
 		safeInit("setupMobileNavToggle", setupMobileNavToggle);
 		safeInit("setupProductHoverEffect", setupProductHoverEffect);
