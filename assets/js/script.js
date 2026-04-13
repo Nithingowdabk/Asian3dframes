@@ -1453,7 +1453,7 @@
 				containDraw(sceneImg, 0, 0, canvas.width, canvas.height);
 
 				const rect = rectFromScene(state.scene, options.frameSize, state.photoOrientation);
-				drawSceneDimming(rect);
+				// drawSceneDimming(rect); // removed to prevent dimming effect
 				drawFrameDepthShadow(rect, options.frameType, state.photoOrientation);
 
 				ctx.save();
