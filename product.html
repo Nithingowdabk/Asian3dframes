@@ -535,15 +535,15 @@
       overflow: hidden;
       box-shadow: 0 3px 8px rgba(0,0,0,.08);
       transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-      opacity: .42;
-      filter: grayscale(.62) saturate(.45) contrast(.82) brightness(.72);
+      opacity: .82;
+      filter: saturate(.88) contrast(.96) brightness(.88);
     }
     .mockup-scene-tab:hover {
       transform: translateY(-1px);
       border-color: rgba(160,112,74,.7);
       box-shadow: 0 8px 16px rgba(0,0,0,.16);
-      opacity: .72;
-      filter: grayscale(.26) saturate(.72) contrast(.9) brightness(.86);
+      opacity: .92;
+      filter: saturate(.95) contrast(.98) brightness(.94);
     }
     .mockup-scene-tab.is-active {
       border-color: var(--gold-dark);
@@ -563,7 +563,7 @@
       transition: filter .18s ease, transform .18s ease;
     }
     .mockup-scene-tab:not(.is-active) .mockup-thumb {
-      filter: grayscale(.72) saturate(.45) brightness(.78);
+      filter: saturate(.9) brightness(.9);
     }
     .mockup-scene-tab.is-active .mockup-thumb {
       filter: none;
