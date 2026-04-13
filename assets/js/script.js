@@ -1291,16 +1291,16 @@
 			ctx.clip();
 			ctx.globalCompositeOperation = "screen";
 			const warmBloom = ctx.createRadialGradient(cx, cy, innerR, cx, cy, outerR);
-			warmBloom.addColorStop(0, "rgba(255, 248, 225, 0.68)");
-			warmBloom.addColorStop(0.42, "rgba(248, 220, 165, 0.36)");
-			warmBloom.addColorStop(0.78, "rgba(236, 196, 120, 0.18)");
+			warmBloom.addColorStop(0, "rgba(255, 248, 225, 0.46)");
+			warmBloom.addColorStop(0.42, "rgba(248, 220, 165, 0.24)");
+			warmBloom.addColorStop(0.78, "rgba(236, 196, 120, 0.12)");
 			warmBloom.addColorStop(1, "rgba(236, 196, 120, 0)");
 			ctx.fillStyle = warmBloom;
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 
 			const topAura = ctx.createLinearGradient(rect.x, rect.y, rect.x, rect.y + rect.h);
-			topAura.addColorStop(0, "rgba(255, 251, 239, 0.25)");
-			topAura.addColorStop(0.38, "rgba(255, 241, 210, 0.12)");
+			topAura.addColorStop(0, "rgba(255, 251, 239, 0.16)");
+			topAura.addColorStop(0.38, "rgba(255, 241, 210, 0.08)");
 			topAura.addColorStop(1, "rgba(255, 241, 210, 0)");
 			ctx.fillStyle = topAura;
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
@@ -1311,8 +1311,8 @@
 			if (frameType !== "mobile") return;
 
 			const gloss = ctx.createLinearGradient(rect.x, rect.y, rect.x, rect.y + rect.h);
-			gloss.addColorStop(0, "rgba(255,255,255,.30)");
-			gloss.addColorStop(0.28, "rgba(255,255,255,.12)");
+			gloss.addColorStop(0, "rgba(255,255,255,.20)");
+			gloss.addColorStop(0.28, "rgba(255,255,255,.08)");
 			gloss.addColorStop(0.55, "rgba(255,255,255,.03)");
 			gloss.addColorStop(1, "rgba(255,255,255,0)");
 			ctx.fillStyle = gloss;
@@ -1320,8 +1320,8 @@
 
 			// Subtle diagonal highlight gives a glassy look.
 			const sweep = ctx.createLinearGradient(rect.x, rect.y, rect.x + rect.w, rect.y + rect.h);
-			sweep.addColorStop(0, "rgba(255,255,255,.20)");
-			sweep.addColorStop(0.22, "rgba(255,255,255,.06)");
+			sweep.addColorStop(0, "rgba(255,255,255,.12)");
+			sweep.addColorStop(0.22, "rgba(255,255,255,.04)");
 			sweep.addColorStop(0.45, "rgba(255,255,255,0)");
 			ctx.fillStyle = sweep;
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
@@ -1364,9 +1364,9 @@
 					rect.y + rect.h / 2,
 					Math.max(rect.w, rect.h) * 1.12
 				);
-				focusGlow.addColorStop(0, "rgba(255, 248, 220, 0.44)");
-				focusGlow.addColorStop(0.45, "rgba(255, 236, 184, 0.22)");
-				focusGlow.addColorStop(0.75, "rgba(255, 224, 156, 0.10)");
+				focusGlow.addColorStop(0, "rgba(255, 248, 220, 0.28)");
+				focusGlow.addColorStop(0.45, "rgba(255, 236, 184, 0.14)");
+				focusGlow.addColorStop(0.75, "rgba(255, 224, 156, 0.07)");
 				focusGlow.addColorStop(1, "rgba(255, 230, 170, 0)");
 				ctx.save();
 				ctx.beginPath();
@@ -1403,15 +1403,15 @@
 		const drawProductPop = (rect, frameType) => {
 			if (frameType !== "mobile") return;
 			ctx.save();
-			ctx.strokeStyle = "rgba(255, 246, 214, 0.72)";
+			ctx.strokeStyle = "rgba(255, 246, 214, 0.48)";
 			ctx.lineWidth = Math.max(4, rect.w * 0.014);
-			ctx.shadowColor = "rgba(255, 228, 164, 0.46)";
+			ctx.shadowColor = "rgba(255, 228, 164, 0.28)";
 			ctx.shadowBlur = Math.max(12, rect.w * 0.04);
 			ctx.strokeRect(rect.x + 1.5, rect.y + 1.5, rect.w - 3, rect.h - 3);
 
 			const rimGlow = ctx.createLinearGradient(rect.x, rect.y, rect.x, rect.y + rect.h);
-			rimGlow.addColorStop(0, "rgba(255,255,255,0.30)");
-			rimGlow.addColorStop(0.26, "rgba(255,255,255,0.14)");
+			rimGlow.addColorStop(0, "rgba(255,255,255,0.20)");
+			rimGlow.addColorStop(0.26, "rgba(255,255,255,0.10)");
 			rimGlow.addColorStop(0.55, "rgba(255,244,214,0.06)");
 			rimGlow.addColorStop(1, "rgba(255,255,255,0)");
 			ctx.fillStyle = rimGlow;
@@ -1425,8 +1425,8 @@
 				rect.y + rect.h / 2,
 				Math.max(rect.w, rect.h) * 0.70
 			);
-			centerBoost.addColorStop(0, "rgba(255, 246, 224, 0.20)");
-			centerBoost.addColorStop(0.65, "rgba(255, 246, 224, 0.08)");
+			centerBoost.addColorStop(0, "rgba(255, 246, 224, 0.12)");
+			centerBoost.addColorStop(0.65, "rgba(255, 246, 224, 0.05)");
 			centerBoost.addColorStop(1, "rgba(255, 246, 224, 0)");
 			ctx.globalCompositeOperation = "screen";
 			ctx.fillStyle = centerBoost;
