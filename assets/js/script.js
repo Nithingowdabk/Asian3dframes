@@ -1315,59 +1315,100 @@
 		};
 
 		const drawSceneDimming = (rect) => {
-			const pad = Math.max(22, Math.min(rect.w, rect.h) * 0.08);
+			const pad = Math.max(14, Math.min(rect.w, rect.h) * 0.05);
 			const left = Math.max(0, rect.x - pad);
 			const top = Math.max(0, rect.y - pad);
 			const right = Math.min(canvas.width, rect.x + rect.w + pad);
 			const bottom = Math.min(canvas.height, rect.y + rect.h + pad);
 
 			ctx.save();
-			ctx.fillStyle = "rgba(15, 18, 24, 0.26)";
+			ctx.fillStyle = "rgba(8, 10, 14, 0.44)";
 			ctx.fillRect(0, 0, canvas.width, top);
 			ctx.fillRect(0, bottom, canvas.width, canvas.height - bottom);
 			ctx.fillRect(0, top, left, bottom - top);
 			ctx.fillRect(right, top, canvas.width - right, bottom - top);
 
+			const vignette = ctx.createRadialGradient(
+				canvas.width / 2,
+				canvas.height / 2,
+				Math.min(canvas.width, canvas.height) * 0.18,
+				canvas.width / 2,
+				canvas.height / 2,
+				Math.max(canvas.width, canvas.height) * 0.72
+			);
+			vignette.addColorStop(0, "rgba(0,0,0,0)");
+			vignette.addColorStop(0.62, "rgba(0,0,0,0.14)");
+			vignette.addColorStop(1, "rgba(0,0,0,0.36)");
+			ctx.fillStyle = vignette;
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+
 			const focusGlow = ctx.createRadialGradient(
 				rect.x + rect.w / 2,
 				rect.y + rect.h / 2,
-				Math.max(rect.w, rect.h) * 0.25,
+				Math.max(rect.w, rect.h) * 0.12,
 				rect.x + rect.w / 2,
 				rect.y + rect.h / 2,
-				Math.max(rect.w, rect.h) * 0.95
+				Math.max(rect.w, rect.h) * 1.12
 			);
-			focusGlow.addColorStop(0, "rgba(255, 245, 215, 0.22)");
-			focusGlow.addColorStop(0.55, "rgba(255, 230, 170, 0.11)");
+			focusGlow.addColorStop(0, "rgba(255, 248, 220, 0.42)");
+			focusGlow.addColorStop(0.45, "rgba(255, 236, 184, 0.22)");
+			focusGlow.addColorStop(0.75, "rgba(255, 224, 156, 0.10)");
 			focusGlow.addColorStop(1, "rgba(255, 230, 170, 0)");
 			ctx.globalCompositeOperation = "screen";
 			ctx.fillStyle = focusGlow;
-			ctx.fillRect(left, top, right - left, bottom - top);
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
 			ctx.restore();
 		};
 
 		const drawFrameDepthShadow = (rect, frameType, orientation = "vertical") => {
-			const spread = frameType === "mobile" ? 22 : 28;
-			const lift = orientation === "horizontal" ? 9 : 12;
+			const spread = frameType === "mobile" ? 34 : 40;
+			const lift = orientation === "horizontal" ? 12 : 16;
 			ctx.save();
-			ctx.shadowColor = "rgba(8, 10, 14, 0.42)";
+			ctx.shadowColor = "rgba(5, 6, 10, 0.56)";
 			ctx.shadowBlur = spread;
 			ctx.shadowOffsetY = lift;
-			ctx.fillStyle = "rgba(0,0,0,0.18)";
+			ctx.fillStyle = "rgba(0,0,0,0.30)";
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+			ctx.restore();
+
+			ctx.save();
+			ctx.shadowColor = "rgba(0, 0, 0, 0.24)";
+			ctx.shadowBlur = Math.round(spread * 0.65);
+			ctx.shadowOffsetY = Math.round(lift * 0.55);
+			ctx.fillStyle = "rgba(0,0,0,0.12)";
+			ctx.fillRect(rect.x + rect.w * 0.03, rect.y + rect.h * 0.02, rect.w * 0.94, rect.h * 0.94);
 			ctx.restore();
 		};
 
 		const drawProductPop = (rect) => {
 			ctx.save();
-			ctx.strokeStyle = "rgba(255, 242, 204, 0.44)";
-			ctx.lineWidth = Math.max(3, rect.w * 0.01);
+			ctx.strokeStyle = "rgba(255, 246, 214, 0.72)";
+			ctx.lineWidth = Math.max(4, rect.w * 0.014);
+			ctx.shadowColor = "rgba(255, 228, 164, 0.46)";
+			ctx.shadowBlur = Math.max(12, rect.w * 0.04);
 			ctx.strokeRect(rect.x + 1.5, rect.y + 1.5, rect.w - 3, rect.h - 3);
 
 			const rimGlow = ctx.createLinearGradient(rect.x, rect.y, rect.x, rect.y + rect.h);
-			rimGlow.addColorStop(0, "rgba(255,255,255,0.20)");
-			rimGlow.addColorStop(0.35, "rgba(255,255,255,0.08)");
+			rimGlow.addColorStop(0, "rgba(255,255,255,0.30)");
+			rimGlow.addColorStop(0.26, "rgba(255,255,255,0.14)");
+			rimGlow.addColorStop(0.55, "rgba(255,244,214,0.06)");
 			rimGlow.addColorStop(1, "rgba(255,255,255,0)");
 			ctx.fillStyle = rimGlow;
+			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+
+			const centerBoost = ctx.createRadialGradient(
+				rect.x + rect.w / 2,
+				rect.y + rect.h / 2,
+				Math.min(rect.w, rect.h) * 0.14,
+				rect.x + rect.w / 2,
+				rect.y + rect.h / 2,
+				Math.max(rect.w, rect.h) * 0.70
+			);
+			centerBoost.addColorStop(0, "rgba(255, 246, 224, 0.20)");
+			centerBoost.addColorStop(0.65, "rgba(255, 246, 224, 0.08)");
+			centerBoost.addColorStop(1, "rgba(255, 246, 224, 0)");
+			ctx.globalCompositeOperation = "screen";
+			ctx.fillStyle = centerBoost;
 			ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
 			ctx.restore();
 		};
