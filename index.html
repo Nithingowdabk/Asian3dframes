@@ -1181,6 +1181,22 @@
       });
     }
 
+    // Clicking an album card in the homepage grid should open the
+    // album modal and show that album's photos directly.
+    const homeAlbumGrid = document.getElementById('homeAlbumGrid');
+    if (homeAlbumGrid) {
+      homeAlbumGrid.addEventListener('click', async (e) => {
+        const card = e.target && e.target.closest ? e.target.closest('.album-card') : null;
+        if (!card) return;
+        const albumId = card.getAttribute('data-album-id') || '';
+        if (!albumId) return;
+
+        openHeroAlbumModal();
+        await loadAlbumsIntoHero();
+        selectHeroAlbum(albumId);
+      });
+    }
+
     if (useAlbumPhotoBtn) {
       useAlbumPhotoBtn.addEventListener('click', () => {
         if (!selectedAlbumPhoto) {
