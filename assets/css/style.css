@@ -262,7 +262,14 @@ h1, h2, h3, h4, h5, h6,
 }
 
 @media (max-width: 700px) {
-  /* No mobile override for logo: keep desktop style for both */
+  .btn-lg {
+    padding: 10px 22px;
+    font-size: 0.92rem;
+  }
+  .hero-btns {
+    margin-top: 18px !important;
+    gap: 10px;
+  }
 }
 .logo-icon { font-size: 1.4rem; }
 .logo-accent { color: var(--gold-light); }
