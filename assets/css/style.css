@@ -1348,7 +1348,7 @@ h1, h2, h3, h4, h5, h6,
   display: flex;
   align-items: center;
   gap: 3px;
-  margin-bottom: 14px;
+  margin-bottom: 0 !important;
 }
 .product-rating i { color: #f59e0b; font-size: .8rem; }
 .product-rating span { font-size: .78rem; color: var(--mid); margin-left: 4px; }
@@ -1357,6 +1357,8 @@ h1, h2, h3, h4, h5, h6,
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .product-price {
