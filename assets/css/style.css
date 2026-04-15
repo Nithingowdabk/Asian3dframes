@@ -17,17 +17,17 @@
 
 /* Light color button for Shop Now */
 .btn-brown {
-  background: linear-gradient(135deg, #0f1c5f 0%, #132873 48%, #0d1a4f 100%);
-  color: #fff;
+  background: linear-gradient(135deg, #e8c09a 0%, #c8956c 60%, #a0704a 100%);
+  color: #3f2816;
   border: none;
-  box-shadow: 0 2px 8px rgba(16,40,115,0.12);
+  box-shadow: 0 2px 8px rgba(200,149,108,0.18);
   transition: background .2s, color .2s;
 }
 
 .btn-brown:hover,
   .btn-brown:focus {
-  background: linear-gradient(135deg, #132873 0%, #0f1c5f 100%);
-  color: #fff;
+  background: linear-gradient(135deg, #c8956c 0%, #e8c09a 100%);
+  color: #3f2816;
 }
 
 /* Our Album: round frames + horizontal scroll */
@@ -244,14 +244,14 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #0f1c5f 0%, #132873 48%, #0d1a4f 100%);
-  color: #fff;
-  box-shadow: 0 6px 24px rgba(16,40,115,.35);
+  background: linear-gradient(135deg, #e8c09a 0%, #c8956c 60%, #a0704a 100%);
+  color: #3f2816;
+  box-shadow: 0 6px 24px rgba(200,149,108,.28);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 36px rgba(16,40,115,.5);
-  background: linear-gradient(135deg, #132873 0%, #0f1c5f 100%);
+  box-shadow: 0 12px 36px rgba(200,149,108,.38);
+  background: linear-gradient(135deg, #c8956c 0%, #e8c09a 100%);
 }
 
 .btn-ghost {
