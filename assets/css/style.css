@@ -111,6 +111,39 @@
     max-width: 100px;
     flex-basis: 100px;
   }
+  .btn-brown, .btn-primary {
+    font-size: 1.05rem;
+    padding: 13px 0;
+    min-width: 120px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #e8c09a 0%, #c8956c 60%, #a0704a 100%);
+    color: #3f2816;
+    border: 2px solid #c8956c;
+  }
+  .btn-brown:focus, .btn-brown:hover, .btn-primary:focus, .btn-primary:hover {
+    background: linear-gradient(135deg, #c8956c 0%, #e8c09a 100%);
+    color: #3f2816;
+    border: 2px solid #a0704a;
+  }
+  .icon-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    color: #fff;
+    border: 2px solid #c8956c;
+    background: rgba(10,15,31,0.92);
+  }
+  .icon-btn:hover {
+    background: #c8956c;
+    color: #0a0f1f;
+    border-color: #c8956c;
+  }
+  .hamburger span {
+    width: 20px;
+    height: 3px;
+    background: #fff;
+  }
 }
 
 .btn-link {
