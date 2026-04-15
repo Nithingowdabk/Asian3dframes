@@ -1685,7 +1685,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* ── FOOTER ─────────────────────────────────────────────────────────── */
 .footer {
-  background: #18130d;
+  background: linear-gradient(135deg, #0f1c5f 0%, #132873 48%, #0d1a4f 100%);
   padding: 80px 0 0;
   color: #fff;
 }
