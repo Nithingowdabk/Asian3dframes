@@ -478,15 +478,15 @@ h1, h2, h3, h4, h5, h6,
   color: #fff;
   font-size: 1.18rem;
   transition: all var(--trans);
-  border: 2px solid #c8956c;
-  background: rgba(10,15,31,0.92);
-  box-shadow: 0 2px 8px rgba(200,149,108,0.10);
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 .icon-btn:hover {
-  background: #c8956c;
-  color: #0a0f1f;
-  border-color: #c8956c;
-  transform: translateY(-1px);
+  background: transparent;
+  color: #fff;
+  border: none;
+  transform: none;
 }
 
 .cart-badge {
@@ -801,12 +801,13 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .hero-album-close {
-  width: 36px;
-  height: 36px;
-  border-radius: 999px;
-  border: 1px solid rgba(26,21,16,.12);
-  background: rgba(255,255,255,.7);
-  color: var(--dark);
+  width: 22px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all var(--trans);
+  transform-origin: center;
+  box-shadow: none !important;
   font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
