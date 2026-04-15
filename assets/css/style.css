@@ -503,7 +503,7 @@ h1, h2, h3, h4, h5, h6,
 /* ── HERO ──────────────────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
-  background-image: url('/uploads/image.png');
+  background-image: url('/uploads/hero_image.png');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
