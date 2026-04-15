@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Ranmor';
-  src: url('../fonts/ranmor.otf') format('opentype');
+  src: url('../fonts/Ranmor.otf') format('opentype');
   font-display: swap;
 }
 @media (max-width: 1099px) {
