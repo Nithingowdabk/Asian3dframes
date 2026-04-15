@@ -1340,11 +1340,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .product-name {
-  font-family: var(--font-heading);
-  font-size: .9rem;
-  color: var(--dark);
-  margin: 4px 0 6px;
-  line-height: 1.3;
+  display: none;
 }
 
 .product-rating {
@@ -2050,7 +2046,7 @@ h1, h2, h3, h4, h5, h6,
   .products-grid   { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .product-card    { max-width: 100%; }
   .product-info    { padding: 6px 8px; min-height: 0; }
-  .product-name    { font-size: .86rem; }
+  .product-name    { display: none; }
   .product-price   { font-size: .92rem; }
   .how-section { padding: 34px 0; }
   .how-section .section-header { margin-bottom: 14px; }

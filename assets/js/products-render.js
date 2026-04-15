@@ -206,7 +206,6 @@
             <img src="${img}" alt="${name}" loading="lazy" onerror="this.src='https://placehold.co/420x560/f8f8f8/b7b7b7?text=Asian3DFrames';" />
           </div>
           <div class="product-info">
-            <h3 class="product-name">${name}</h3>
             <div class="product-footer">
               <div class="product-price-row">
                 ${Number(p.price) > 0 ? `<span class="product-price">${formatEgp(p.price)}</span>` : ''}
