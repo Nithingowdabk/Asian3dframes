@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Asian3DFrames – Frame Your Memories</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=202604511"/>
+  <link rel="stylesheet" href="assets/css/style.css?v=202604492"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -128,7 +128,7 @@
   </div>
 
   <!-- ═══════════════════════════ OUR ALBUM ═══════════════════════════ -->
-  <section class="section" id="our-album">
+  <section class="section" id="our-album" style="background:#fff;">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Memories</span>
@@ -544,6 +544,7 @@
                 <img src="${p.image}" alt="${p.name}" onerror="this.src='https://placehold.co/300x300/f5e6d3/c8956c?text=Asian3DFrames'"/>
               </div>
               <div class="product-info">
+                <h3 class="product-name">${p.name}</h3>
                 <div class="product-footer">
                   <div>
                     ${Number(p.price) > 0 ? `<span class="product-price">${Number(p.price).toFixed(0)}</span>` : ''}
