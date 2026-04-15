@@ -19,7 +19,7 @@
 .btn-brown {
   background: linear-gradient(135deg, #e8c09a 0%, #c8956c 60%, #a0704a 100%);
   color: #3f2816;
-  border: 2px solid #e8c09a;
+  border: 2px solid #c8956c;
   border-radius: 32px;
   box-shadow: 0 2px 8px rgba(200,149,108,0.18);
   transition: background .2s, color .2s, border-color .2s;
@@ -29,6 +29,7 @@
   .btn-brown:focus {
   background: linear-gradient(135deg, #c8956c 0%, #e8c09a 100%);
   color: #3f2816;
+  border: 2px solid #a0704a;
 }
 
 /* Our Album: round frames + horizontal scroll */
@@ -247,7 +248,7 @@ h1, h2, h3, h4, h5, h6,
 .btn-primary {
   background: linear-gradient(135deg, #e8c09a 0%, #c8956c 60%, #a0704a 100%);
   color: #3f2816;
-  border: 2px solid #e8c09a;
+  border: 2px solid #c8956c;
   border-radius: 32px;
   box-shadow: 0 6px 24px rgba(200,149,108,.28);
 }
@@ -255,6 +256,7 @@ h1, h2, h3, h4, h5, h6,
   transform: translateY(-2px);
   box-shadow: 0 12px 36px rgba(200,149,108,.38);
   background: linear-gradient(135deg, #c8956c 0%, #e8c09a 100%);
+  border: 2px solid #a0704a;
 }
 
 .btn-ghost {
