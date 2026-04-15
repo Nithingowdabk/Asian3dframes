@@ -287,22 +287,22 @@ h1, h2, h3, h4, h5, h6,
   z-index: 1000;
   padding: 12px 0;
   transition: all var(--trans);
-  background: linear-gradient(135deg, #0f1c5f 0%, #132873 48%, #0d1a4f 100%);
-  border-bottom: 1px solid rgba(255,255,255,.18);
-  box-shadow: 0 10px 30px rgba(9,14,48,.34), inset 0 1px 0 rgba(255,255,255,.2);
+  background: linear-gradient(135deg, #0a0f1f 0%, #0f131f 50%, #08090f 100%);
+  border-bottom: 1px solid rgba(200,149,108,.15);
+  box-shadow: 0 10px 30px rgba(0,0,0,.5), inset 0 1px 0 rgba(200,149,108,.1);
   overflow: hidden;
 }
 .navbar.scrolled {
-  background: linear-gradient(135deg, #0b1650 0%, #102462 55%, #091347 100%);
+  background: linear-gradient(135deg, #080c17 0%, #0d1019 55%, #070809 100%);
   padding: 8px 0;
-  box-shadow: 0 14px 34px rgba(5,10,37,.45), inset 0 1px 0 rgba(255,255,255,.16);
-  border-bottom: 1px solid rgba(255,255,255,.16);
+  box-shadow: 0 14px 34px rgba(0,0,0,.6), inset 0 1px 0 rgba(200,149,108,.08);
+  border-bottom: 1px solid rgba(200,149,108,.12);
 }
 .navbar::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,0) 46%);
+  background: linear-gradient(180deg, rgba(200,149,108,.12) 0%, rgba(200,149,108,0) 46%);
   pointer-events: none;
   z-index: 0;
 }
@@ -313,7 +313,7 @@ h1, h2, h3, h4, h5, h6,
   left: -40%;
   width: 38%;
   height: 340%;
-  background: linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.2) 45%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(115deg, rgba(200,149,108,0) 0%, rgba(200,149,108,.15) 45%, rgba(200,149,108,0) 100%);
   transform: skewX(-24deg);
   animation: navGlossSweep 7.2s ease-in-out infinite;
   pointer-events: none;
@@ -1685,7 +1685,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* ── FOOTER ─────────────────────────────────────────────────────────── */
 .footer {
-  background: linear-gradient(135deg, #0a1027 0%, #10182f 60%, #070b18 100%);
+  background: linear-gradient(135deg, #0a0f1f 0%, #0f131f 50%, #08090f 100%);
   padding: 80px 0 0;
   color: #fff;
 }
