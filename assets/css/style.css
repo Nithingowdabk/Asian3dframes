@@ -163,7 +163,7 @@
   --accent-purple: #9c7cd4;
 
   /* Typography */
-  --font-heading: 'Ranmor', 'Sirelia', 'Bodoni Moda', Georgia, serif;
+  --font-heading: 'Ranmor';
   --font-body:    'Bodoni Moda', Georgia, serif;
 
   /* Spacing */
@@ -202,9 +202,9 @@ ul { list-style: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
 h1, h2, h3, h4, h5, h6,
-.title, .headline, .section-title, .page-title,
-.topbar-title, .card-title, .modal-title {
-  font-family: 'Ranmor', var(--font-heading), 'Bodoni Moda', Georgia, serif !important;
+  .title, .headline, .section-title, .page-title,
+  .topbar-title, .card-title, .modal-title {
+  font-family: 'Ranmor' !important;
   font-weight: normal;
 }
 
