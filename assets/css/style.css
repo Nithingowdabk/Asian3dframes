@@ -325,45 +325,42 @@ h1, h2, h3, h4, h5, h6,
   z-index: 1000;
   padding: 12px 0;
   transition: all var(--trans);
-  background: linear-gradient(135deg, #0a0f1f 0%, #1a130f 50%, #08090f 100%);
-  border-bottom: 1px solid rgba(200,149,108,.15);
-  box-shadow: 0 10px 30px rgba(0,0,0,.5), inset 0 1px 0 rgba(200,149,108,.1);
+  background:
+    radial-gradient(140% 110% at 0% 0%, rgba(164, 184, 242, .13) 0%, rgba(164, 184, 242, 0) 45%),
+    linear-gradient(120deg, #0a146f 0%, #07124f 36%, #030925 68%, #000000 100%);
+  border-bottom: 1px solid rgba(196, 206, 233, .42);
+  box-shadow: 0 10px 30px rgba(0,0,0,.55), inset 0 1px 0 rgba(146, 171, 255, .2);
   overflow: hidden;
 }
 .navbar.scrolled {
-  background: linear-gradient(135deg, #080c17 0%, #15100d 55%, #070809 100%);
+  background:
+    radial-gradient(140% 110% at 0% 0%, rgba(152, 173, 232, .11) 0%, rgba(152, 173, 232, 0) 45%),
+    linear-gradient(120deg, #09105e 0%, #060f42 38%, #02071b 70%, #000000 100%);
   padding: 8px 0;
-  box-shadow: 0 14px 34px rgba(0,0,0,.6), inset 0 1px 0 rgba(200,149,108,.08);
-  border-bottom: 1px solid rgba(200,149,108,.12);
+  box-shadow: 0 14px 34px rgba(0,0,0,.62), inset 0 1px 0 rgba(130, 157, 255, .14);
+  border-bottom: 1px solid rgba(201, 210, 235, .34);
 }
 .navbar::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(200,149,108,.12) 0%, rgba(200,149,108,0) 46%);
+  background:
+    repeating-linear-gradient(35deg, rgba(228, 236, 255, .045) 0 1px, rgba(0, 0, 0, 0) 1px 4px),
+    repeating-linear-gradient(-35deg, rgba(5, 11, 36, .05) 0 1px, rgba(0, 0, 0, 0) 1px 5px),
+    linear-gradient(180deg, rgba(193, 209, 255, .12) 0%, rgba(193, 209, 255, .03) 35%, rgba(136, 164, 255, 0) 62%);
+  opacity: .88;
   pointer-events: none;
   z-index: 0;
 }
 .navbar::after {
   content: '';
   position: absolute;
-  top: -120%;
-  left: -40%;
-  width: 38%;
-  height: 340%;
-  background: linear-gradient(115deg, rgba(200,149,108,0) 0%, rgba(200,149,108,.15) 45%, rgba(200,149,108,0) 100%);
-  transform: skewX(-24deg);
-  animation: navGlossSweep 7.2s ease-in-out infinite;
+  inset: 0;
+  background: radial-gradient(120% 90% at 50% 110%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .22) 62%, rgba(0, 0, 0, .35) 100%);
+  opacity: .75;
   pointer-events: none;
   z-index: 0;
 }
-@keyframes navGlossSweep {
-  0%, 20% { left: -42%; opacity: 0; }
-  30% { opacity: .95; }
-  58% { left: 125%; opacity: .15; }
-  100% { left: 125%; opacity: 0; }
-}
-
 .navbar .nav-logo,
 .navbar .nav-link,
 .navbar .icon-btn,
@@ -1272,7 +1269,7 @@ h1, h2, h3, h4, h5, h6,
   overflow: hidden;
   background: var(--white);
   box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(0,0,0,.06);
+  border: 2.5px solid #111;
   transition: transform var(--trans), box-shadow var(--trans);
 }
 .product-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
@@ -1857,7 +1854,7 @@ h1, h2, h3, h4, h5, h6,
   .categories-grid { gap: 20px; }
   .cat-card { flex-basis: 180px; }
   .products-grid   { grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .product-card    { max-width: 100%; }
+  .product-card    { max-width: 100%; border: 2.5px solid #111; }
   .footer-grid     { grid-template-columns: 1fr 1fr; gap: 40px; }
 }
 
