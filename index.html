@@ -543,17 +543,6 @@
                 ${p.is_best_seller ? '<span class="product-badge bestseller">Best Seller</span>' : ''}
                 <img src="${p.image}" alt="${p.name}" onerror="this.src='https://placehold.co/300x300/f5e6d3/c8956c?text=Asian3DFrames'"/>
               </div>
-              <div class="product-info">
-                <div class="product-footer">
-                  <div>
-                    ${Number(p.price) > 0 ? `<span class="product-price">${Number(p.price).toFixed(0)}</span>` : ''}
-                    ${p.old_price ? `<span class="product-old-price">${Number(p.old_price).toFixed(0)}</span>` : ''}
-                  </div>
-                  ${Number(p.price) > 0 ? `<button class="add-to-cart-btn" onclick="event.preventDefault(); addToCart(${p.id},'${String(p.name).replace(/'/g, "\\'")}',${Number(p.price)},'${String(p.image).replace(/'/g, "\\'")}')">
-                    <i class="fas fa-cart-plus"></i>
-                  </button>` : ''}
-                </div>
-              </div>
             </article>
           </a>
         `;
